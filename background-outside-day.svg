@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <g class="layer">
+  <title>Blue sky</title>
+  <rect fill="#007fff" height="476.000006" id="svg_1" stroke="#007fff" stroke-width="5" width="636.999992" x="1.500022" y="2.999994"/>
+  <rect fill="#00bf00" height="29" id="svg_26" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="49" x="638.5" y="1411.5"/>
+  <rect fill="#00bf00" height="14" id="svg_27" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="29" x="636.5" y="1424.5"/>
+  <rect fill="#00bf00" height="39" id="svg_28" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="56" x="638.5" y="1397.5"/>
+  <rect fill="#00bf00" height="69" id="svg_29" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="43" x="636.5" y="1186.5"/>
+  <rect fill="#00bf00" height="126" id="svg_30" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="89" x="679.5" y="1197.5"/>
+  <rect fill="#00bf00" height="112" id="svg_31" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="121" x="638.5" y="1327.5"/>
+  <rect fill="#00bf00" height="81" id="svg_32" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="182" x="677.5" y="1221.5"/>
+  <rect fill="#00bf00" height="113" id="svg_33" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="166" x="696.5" y="1146.5"/>
+  <ellipse cx="648.5" cy="1185.5" fill="#00bf00" id="svg_34" rx="247" ry="109" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+  <ellipse cx="900.5" cy="1294.5" fill="#00bf00" id="svg_35" rx="102" ry="75" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+ </g>
+ <g class="layer">
+  <title>Land</title>
+  <rect fill="#00bf00" height="109.999997" id="svg_36" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" width="637.999992" x="0.5" y="371.500003"/>
+  <path d="m0.498771,369.5c9.968809,11 927.099219,125 546.290723,10c-380.808497,-115 -556.259532,-21 -546.290723,-10z" fill="#00bf00" id="svg_37" stroke="#00bf00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+ </g>
+ <g class="layer">
+  <title>Sun</title>
+  <ellipse cx="528.999996" cy="91.000002" fill="#ffff00" id="svg_38" rx="53.499996" ry="50.500002" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5"/>
+  <path d="m449.816622,141.086387c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_47" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(-117.631 461.537 127.833)"/>
+  <path d="m474.899462,167.832313c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_48" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(-140.172 486.62 154.579)"/>
+  <path d="m516.012042,181.425308c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_49" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(-176.667 527.732 168.172)"/>
+  <path d="m555.061358,172.324317c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_50" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(153.738 566.782 159.071)"/>
+  <path d="m584.45653,145.903762c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_51" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(124.058 596.177 132.651)"/>
+  <path d="m594.505999,106.391571c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_52" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(93.1237 606.226 93.1385)"/>
+  <path d="m585.832141,65.92691c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_53" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(60.9726 597.553 52.6738)"/>
+  <path d="m556.792468,38.740875c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_54" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(34.6885 568.513 25.4878)"/>
+  <path d="m516.88103,29.476471c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_55" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(4.22109 528.601 16.2234)"/>
+  <path d="m477.688952,39.103286c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_56" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(-30.3072 489.409 25.8502)"/>
+  <path d="m449.331286,66.11972c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_57" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(-63.3073 461.052 52.8666)"/>
+  <path d="m440.176943,104.093795c0,0 17.584719,-0.547002 22.500838,-0.449163c4.916118,0.09784 -11.029823,-25.602302 -11.471016,-26.051465c-0.441193,-0.449164 -11.029822,26.500628 -11.029822,26.500628z" fill="#ffff00" id="svg_58" stroke="#ffff00" stroke-dasharray="null" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" transform="rotate(-93.4278 451.897 90.8407)"/>
+ </g>
+</svg>
