@@ -1,0 +1,133 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'Mali', cursive;
+    vertical-align: baseline;
+}
+
+/* HEADER */
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 50px;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer"
+}
+
+header {
+    grid-area: header;
+    background: #FFF7C0;
+    padding: 1em 1em;
+}
+
+header h1 {
+    color: #FA7C92;
+    font-size: 2em;
+}
+
+header nav ul {
+    list-style: none;
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 3em;
+}
+
+.button {
+    padding: 0.5em 1em;
+    background: #FA7C92;
+    border-radius: 20px;
+    color: #FFF7C0;
+}
+
+.button a {
+    text-decoration: none;
+    color: #FFF7C0;
+}
+
+header nav ul li:nth-child(1) {
+    grid-column: 2 / 3;
+}
+header nav ul li:nth-child(2) {
+    grid-column: 3 / 4;
+}
+header nav ul li:nth-child(3) {
+    grid-column: 4 / 5;
+}
+header nav ul li:nth-child(4) {
+    grid-column: 5 / 6;
+}
+header nav ul li:nth-child(5) {
+    grid-column: 6 / 7;
+}
+header nav ul li:nth-child(6) {
+    grid-column: 7 / 8;
+}
+
+main {
+    grid-area: main;
+    background: #66AB8C;
+    opacity: 0.7;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 50% 50%;
+    /* justify-content: center;
+    align-content: center; */
+    text-align: center;
+    color: #FFF7C0;
+}
+
+/* LOGIN & REGISTER PAGE*/
+
+main input {
+    padding: 0.5em 1em;
+    border-radius: 20px;
+    margin: 1em;
+}
+
+#login_form_container {
+    grid-column: 1 / 2;
+    align-self: center;
+    justify-self: right;
+    margin-right: 4em;
+}
+
+#register_form_container {
+    grid-column: 2 / 3;
+    align-self: center;
+    justify-self: left;
+    margin-left: 4em;
+}
+
+/* FOOTER */
+
+footer {
+    grid-area: footer;
+    background: #FFF7C0; 
+    text-align: center;
+}
