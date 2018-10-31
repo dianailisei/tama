@@ -4,13 +4,25 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" type="text/css" media="screen" href="bk-1.css"/>
-    <link rel="icon" type="image/png" href="..\resources\logo.jpg">     
+     <link rel="stylesheet" type="text/css" media="screen" href="..\menu\menu.css"/>     
+     <link rel="icon" type="image/png" href="..\resources\logo.jpg">     
      <title>Makiko</title>
 </head>
 <body>
 
     <div class="body-container">
-          <div  id="penguin-container">
+        <nav class="top-right open">
+            <a class="disc l3">
+                 <div>Your Pets</div>
+            </a>
+            <a class="disc l4">
+                 <div>Friends</div>
+            </a>
+            <a class="disc l5 menuToggle">
+                 Menu
+            </a>
+         </nav>  
+        <div  id="penguin-container">
                <svg  id="penguin-down" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 500 500" enable-background="new 0 0 200 200">
                     <ellipse id="penguin--white-belly" ry="48.5" rx="53.5" cy="214.98" cx="138.98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" /> <style>#penguin--white-belly {fill:#ffffff;} </style>
                     <path id="penguin--left-foot" fill="#F15A29" d="m114.5933,264.46832c-0.7,2.2 -2.5,4.2 -5.4,6.1c-2.6,1.7 5,-2.1 7.1,5.7c0.9,3.4 -0.5,-6.5 8.8,-2.7c1.6,0.6 -3.4,-3.4 -4.4,-8.6c-1.9,-0.2 -4,-0.3 -6.1,-0.5z"/>
@@ -74,5 +86,6 @@
      
 
      <script src="bk-1.js"></script>
+     <script src="..\menu\js\menu.js"></script>
 </body>
 </html>
