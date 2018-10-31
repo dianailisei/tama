@@ -55,12 +55,27 @@ body {
      height:400px;
 }
 
-.pet-state {
+#pet-state {
      visibility: hidden;
      position: absolute;
      display: block;
-     background-color: #fff;
+     height: 150px;
+     width: 200px;
+     top:50%;
+     left:15%;
+     background-color: white;
+     border-radius: 5%;
+     box-sizing: border-box;
+     border: 5px solid #fff7c0;
 }
+
+#img-pet-food, #img-pet-heart {
+     margin-top: 5%;
+     margin-right: 20%;
+     height:50px;
+     width: 50px;
+}
+
 
 #pet-reaction {
      position: absolute;     
@@ -74,7 +89,7 @@ body {
 .pet-reaction-animation {
      animation-name: petReactionHeart;
      animation-duration: 5s;
-     animation-timing-function: ease-in;
+     animation-timing-function: linear;
 }
 
 @keyframes petReactionHeart{
