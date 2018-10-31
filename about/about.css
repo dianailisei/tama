@@ -1,0 +1,51 @@
+body {
+     font-family: 'Montserrat', sans-serif;
+     line-height: 3em;
+     margin: 3em;
+     font-size: 20px;
+     display: grid;
+     grid-template-areas:
+          "header"
+          "main";
+     grid-template-rows: 1fr 8fr;
+}
+
+header {
+     grid-area: header;
+
+     color: #6ec4db;
+}
+
+main {
+     grid-area: main;
+     display: grid;
+     grid-template-areas: 
+          "dev logo"
+          "short logo";
+     grid-template-rows: 1fr 8fr;
+}
+#short-story {
+     grid-area: short;
+}
+#developers {
+     grid-area: dev;
+}
+
+.small-header {
+     color: #6ec4db;
+     font-size: 32px;
+}
+
+p{
+     margin: 10px;
+}
+
+#short-story , #developers {
+     margin-bottom: 30px;
+}
+
+#logo-animation {
+     height: 200px;
+     width: 200px;
+     animation: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
