@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans:800,900");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 html, body {
   height: 100%;
 }
 
 body {
-  /* font-family: Alegreya Sans, sans-serif; */
-  color:beige;
+  font-family: 'Montserrat', sans-serif;
 }
 
 nav {
   display: block;
   position: fixed;
+  color:beige;
   z-index:8;
   width: 500px;
   height: 500px;
@@ -73,6 +73,8 @@ nav.top-right {
   -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
           transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
+  text-decoration: none;
+  color: beige;
 }
 .open .l1:hover {
   background: shade(tomato, 90%);
@@ -83,6 +85,7 @@ nav.top-right {
   background: shade(tomato, 50%);
   color: tomato;
 }
+
 .open .l1.menuToggle {
   -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
           transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
@@ -101,6 +104,8 @@ nav.top-right {
   -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
           transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
+  text-decoration: none;
+  color: beige;
 }
 .open .l2:hover {
   background: shade(#ff7a39, 90%);
@@ -129,6 +134,8 @@ nav.top-right {
   -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
           transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
+  text-decoration: none;
+  color: beige;
 }
 .open .l3:hover {
   background: shade(#ff912b, 90%);
@@ -157,6 +164,8 @@ nav.top-right {
   -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
           transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
+  text-decoration: none;
+  color: beige;
 }
 .open .l4:hover {
   background: shade(#ffa91c, 90%);
@@ -185,6 +194,8 @@ nav.top-right {
   -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
           transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
+  text-decoration: none;
+  color: beige;
 }
 .open .l5:hover {
   background: shade(#ffc00e, 90%);
@@ -226,3 +237,4 @@ nav.top-right {
           transform: scale(0.9);
   transition-duration: 0s;
 }
+

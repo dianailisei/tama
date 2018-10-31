@@ -1,0 +1,64 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 3em;
+    margin: 3em;
+    font-size: 20px;
+}
+
+header {
+    color: #6ec4db;
+}
+
+form {
+    width: 70%;
+    display: grid;
+    grid-template-areas: 
+    "picture input"
+    "picture input"
+    "upload-picture input"
+    ". input"
+}
+
+#profile-pic {
+    grid-area: picture;
+    width: 200px;
+    height: 200px;
+    margin: 2em;
+}
+
+#upload-profile-pic-container {
+    grid-area: upload-picture;
+    
+}
+#upload-profile-pic {
+    
+}
+#profile-info {
+    grid-area: input;
+}
+input {
+    display: inline;
+    margin: 0;
+    border: none;
+    line-height: auto;
+    font-size: inherit;
+}
+
+button {
+    margin-top: 1em;
+    color: #6ec4db;
+    background: white;
+    padding: 0.7em 2em;
+    border: solid 2px #6ec4db;
+    font-size: 20px;
+}
+
+button:hover {
+    border-color: #66ab8c;
+    color: #66ab8c;
+}
+
+button:active {
+    border-color: #fa7c92;
+    color: #fa7c92;
+}
