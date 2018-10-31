@@ -35,10 +35,15 @@
     <main class="profile-settings-container">
         <form name="update-profile">
             <img src="../resources/default-profile-pic.png" id="profile-pic">
-            <div class="upload-profile-pic-container">
-                <input type="file" id="upload-profile-pic">
-            </div>
 
+            <div class="file-upload">
+                <div class="file-select">
+                    <div class="file-select-button" id="fileName">Choose File</div>
+                    <div class="file-select-name" id="noFile">No file chosen...</div>
+                    <input type="file" id="upload-profile-pic">
+                </div>
+            </div>
+            
             <div id="profile-info">
                 <label for="email">Email: </label>
                 <input name="email" type="email" placeholder="marrypoppins@gmail.com" readonly><br>

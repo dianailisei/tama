@@ -1,0 +1,50 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 3em;
+    font-size: 20px;
+}
+.login_register_main {
+    margin: 0 auto;
+    width: 70%; 
+    display: grid;
+    grid-template-areas: "login-form register-form";
+    padding-top: 3em;
+}
+
+#login_form_container {
+    grid-area: login-form;
+    margin-right: 1.5em;
+    padding-top: 3em;
+}
+
+#register_form_container {
+    grid-area: register-form;
+    margin-left: 1.5em;
+}
+
+input {
+    display: inline;
+    margin: 0;
+    border: none;
+    line-height: auto;
+    font-size: inherit;
+}
+
+button {
+    margin-top: 1em;
+    color: #6ec4db;
+    background: white;
+    padding: 0.7em 2em;
+    border: solid 2px #6ec4db;
+    font-size: 20px;
+}
+
+button:hover {
+    border-color: #66ab8c;
+    color: #66ab8c;
+}
+
+button:active {
+    border-color: #fa7c92;
+    color: #fa7c92;
+}
