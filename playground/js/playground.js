@@ -1,7 +1,12 @@
 var petContainer = document.getElementById("penguin-down");
 var petReaction = document.getElementById("pet-reaction");
 
-petContainer.addEventListener("click", function(){
+function startHeartAnimation(){      
+     petReaction.classList.add("pet-reaction-animation");
+     
      petReaction.style.visibility = "visible"; 
-
-}, true);
+     setTimeout(() => {
+          petReaction.style.visibility = "hidden"; 
+          petReaction.classList.remove("pet-reaction-animation");
+     }, 5000);
+}
