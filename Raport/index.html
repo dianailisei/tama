@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html property="http://scholarly-html.org/schtml">
+
+<head>
+    <meta charset="utf-8">
+    <title> Prototip al interfetei Web - raport</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <article resource="#" typeof="schema:ScholarlyArticle">
+        <header>
+            <h1 property="schema:name"> Prototip al interfetei Web - raport </h1>
+            <p role="doc-subtitle" property="schema:alternateName">
+                <a href="#cerinta">1. Cerinta</a>
+            </p>
+            <p role="doc-subtitle" property="schema:alternateName">
+                <a href="#design-general">2. Design general</a>
+            </p>
+            <p role="doc-subtitle" property="schema:alternateName">
+                <a href="#structura">3. Structura</a>
+            </p>
+            <p role="doc-subtitle" property="schema:alternateName">
+                <a href="#pasi">4. Pasii pe care i-am urmat</a>
+            </p>
+            <p role="doc-subtitle" property="schema:alternateName">
+                <a href="#sarcini">5. Impartirea sarcinilor</a>
+            </p>
+        </header>
+        <meta property="schema:accessibilityFeature" content="alternativeText">
+        <meta property="schema:accessibilityFeature" content="MathML">
+        <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+    </article>
+    <section typeof="sa:Cerinta" id="cerinta">
+        <h3>1. Cerinta</h3>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    Să se creeze un mini-framework MV* pentru dezvoltarea de aplicaţii Web animate vectoriale la nivel
+                    de client. Ca studiu de caz efectiv, acesta va fi utilizat pentru a implementa un simulator al
+                    jocului Tamagotchi. Minimal, fiecare utilizator autentificat va gestiona unul sau mai multe
+                    personaje pe care le va îngriji (hrăni, educa, amuza). Aplicaţia Web va oferi un mod interactiv de
+                    a crea şi configura aceste personaje, plus partajarea acestora în utilizatori. Bonus: implementarea
+                    unui sistem de dirijare a mesajelor la nivel de client pentru a putea construi aplicaţii de tip SPA
+                    – Single Page Application.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+    </section>
+    <section typeof="sa:Design general" id="design-general">
+        <h3>2. Design general</h3>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">Avand in vedere faptul ca aplicatia
+                    Makiko va fi destinata petrecerii timpului liber intr-un mod cat mai distractiv, am ales sa
+                    implementam un
+                    design "light", minimalist, usor de folosit, de aceea am si ales o paleta de culori vii. Numele
+                    aplicatiei este inspirat de la un caracter tamagotchi.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+    </section>
+    <section typeof="sa:Structura" id="structura"> 
+        <h3>3. Structura</h3>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <p role="doc-subtitle"> Aplicatia va contine urmatoarele pagini: </p>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <ul>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Home</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Account</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Friends</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Your Pets</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Friend's Account</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Register</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Playground</span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+                <span property="schema:name">Add Pet</span>
+            </li>
+        </ul>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    1. Home este de start a aplicatiei, de unde un utilizator (nou sau nu) poate accesa contul folosind
+                    meniul.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    2. Account este pagina propriu zisa a contului utilizatorului. Prin aceasta, un utilizator logat
+                    isi poate modifica/adauga informatii despre acesta (fotografie de profil, parola, tara).
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    3. Friends este pagina in care un utilizator logat isi poate vizualiza lista de prieteni adaugati
+                    in aceasta aplicatie. De asemenea, acesta poate cauta un alt utilizator inregistrat in aplicatie.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    4. Your Pets este pagina in care un utilizator logat poate vizualiza si modifica lista de
+                    animalute.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    5. Friend's Account va afisa date despre un anumit prieten din lista de prieteni a unui utilizator
+                    logat. De asemenea, acesta poate vizualiza lista de animalute a prietenului sau chiar adauga un pet
+                    ca prieten pentru un animalut propriu.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    6. Register este pagina in care un utilizator isi poate face un cont nou sau se poate loga cu un
+                    cont deja existent.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    7. Playground este "spatiul de joaca" pentru animalutele unui utilizator logat. Aici este locul
+                    unde acesta va putea interactiona cu caracterele alese.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    8. Add Pet este pagina din care un utilizator logat poate sa isi creeze un pet nou si sa il
+                    personalizeze cu diverse informatii.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+    </section>
+    <section typeof="sa:Pasi" id="pasi">
+        <h3>4. Pasii pe care i-am urmat</h3>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    Am inceput cu cateva schite pe hartie ca mai apoi sa stabilim structura fisierelor si ierarhia lor.
+                    Am continuat cu alegerea unei palete de culori potrivita tematicii proiectului si am stabilit
+                    stilul general al design-ului.
+                </span>
+            </header>
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+    </section>
+    <section typeof="sa:Sarcini" id="sarcini">
+        <h3>5. Impartirea sarcinilor</h3>
+        <article resource="#" typeof="schema:ScholarlyArticle">
+            <header>
+                <span role="doc-acknowledgments" property="schema:alternateName">
+                    <p role="doc-subtitle"> Pentru gestionarea codului-sursa am folosit GitHub. Ne-am impartit
+                        task-urile dupa cum urmeaza: </p>
+                </span>
+            </header>
+            <ul>
+                <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                    Antalut Cristiana
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Creare pagini Home, About, Playground, Add Pet
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Creare template meniu
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Documentare despre SVG
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Design responsive pentru viewport-uri mobile
+                        </li>
+                    </ul>
+                </li>
+                <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                    Diana Ilisei
+                    <ul>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Creare pagini Friend's Account, Your Pets, Register, Account, Your Friends
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Creare design responsive pentru viewport-uri desktop
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Raport 
+                        </li>
+                        <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
+                            Validarea codului
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <meta property="schema:accessibilityFeature" content="alternativeText">
+            <meta property="schema:accessibilityFeature" content="MathML">
+            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
+        </article>
+    </section>
+</body>
+
+</html>
