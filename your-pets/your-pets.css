@@ -4,18 +4,25 @@ body {
     font-size: 17px;
 }
 
-header {
-    color: #6ec4db;
-}
-
 main {
     width: 70%;
+    display:grid;
+    grid-template-areas:
+    "title button"
+    "list list";
+    grid-gap: 1em;
 }
 #pets-list {
+    grid-area: list;
     list-style-type:none;
     display:grid;
-    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+    grid-template:repeat(2, 1fr) / repeat(2, 1fr);
     grid-gap: 1em;
+}
+
+main h1 {
+    grid-area: title;
+    color: #6ec4db;
 }
 
 .pet-container {
@@ -70,4 +77,27 @@ main {
 
 .pet-friend-name {
     margin: 0;
+}
+
+#add-pet-btn {
+    grid-area: button;
+    padding: 0 0;
+    width: 10em;
+    height: 3em;
+    align-self:center;
+    color: #6ec4db;
+    background: white;
+    border: solid 2px #6ec4db;
+    font-size: 20px;
+    margin-left: 3em;
+}
+
+#add-pet-btn:hover {
+    border-color: #66ab8c;
+    color: #66ab8c;
+}
+
+#add-pet-btn:active {
+    border-color: #fa7c92;
+    color: #fa7c92;
 }
