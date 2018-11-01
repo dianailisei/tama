@@ -1,28 +1,26 @@
 body {
      font-family: 'Montserrat', sans-serif;
-     line-height: 3em;
-     margin: 3em;
      font-size: 20px;
      display: grid;
      grid-template-areas:
           "header"
           "main";
-     grid-template-rows: 1fr 8fr;
 }
 
 header {
      grid-area: header;
-
      color: #6ec4db;
+     align-self: center;
 }
 
 main {
      grid-area: main;
      display: grid;
      grid-template-areas: 
-          "dev logo"
-          "short logo";
-     grid-template-rows: 1fr 8fr;
+          "dev logo logo"
+          "short logo logo"
+          ". logo logo";
+     align-self: center;
 }
 #short-story {
      grid-area: short;
@@ -45,7 +43,8 @@ p{
 }
 
 #logo-animation {
-     height: 200px;
-     width: 200px;
+    grid-area: logo;
+     /* height: 200px;
+     width: 200px; */
      animation: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
