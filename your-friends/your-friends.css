@@ -13,16 +13,17 @@ header {
     list-style-type:none;
     display:grid;
     grid-template: repeat(3, 6em) / repeat(2, 1fr);
-    grid-gap: 1.5em;
+    grid-gap: 1em;
 }
 
 .friend-container {
     width: 70%;
-    background:rgba(250, 124, 146, 0.8);
+    background:rgba(110, 196, 219, 0.7);
+    color: beige;
     display: grid;
     grid-template-areas:
     "friend-pic friend-info";
-    color: beige;
+    
 }
  
 .friend-pic {

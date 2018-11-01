@@ -1,0 +1,73 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 3em;
+    font-size: 17px;
+}
+
+header {
+    color: #6ec4db;
+}
+
+main {
+    width: 70%;
+}
+#pets-list {
+    list-style-type:none;
+    display:grid;
+    grid-template: repeat(3, 1fr) / repeat(2, 1fr);
+    grid-gap: 1em;
+}
+
+.pet-container {
+    background:rgba(110, 196, 219, 0.7);
+    color: beige;
+    display: grid;
+    grid-template-areas:
+    "pet-pic pet-info"
+    "pet-friends pet-friends";
+}
+
+.pet-pic {
+    grid-area: pet-pic;
+    align-self: center;
+    justify-self: left;
+    height: 7em;
+    
+}
+
+.pet-info {
+    grid-area: pet-info;
+    justify-self: left;
+    align-self: center;
+}
+
+.pet-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pet-friends-container {
+    grid-area: pet-friends;
+}
+
+.pet-friends-container h3 {
+    padding-left: 1em;
+}
+.pet-friends {
+    display: grid;
+    grid-template: 1fr / repeat(4, 1fr);
+    list-style-type:none;
+}
+
+.pet-friend {
+    height: 5em;
+}
+
+.pet-friend img {
+    height: 3em;
+    width: auto;
+}
+
+.pet-friend-name {
+    margin: 0;
+}
