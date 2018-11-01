@@ -1,62 +1,36 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    margin: 3em;
-    font-size: 17px;
-}
-
-main {
-    width: 70%;
-    display: grid;
-    grid-template-areas: 
-    "pic info"
-    "button info";
 }
 
 #profile-pic-container {
     grid-area: pic;
-    
 }
 
 #profile-info {
     grid-area: info;
-    justify-self: left;
-    padding-left: 2em;
 }
 
 #pets-list {
     list-style-type:none;
-    display:grid;
-    grid-template: repeat(3, 5em) / repeat(3, 1fr);
-    grid-gap: 0.5em;
 }
 
 .pet-container {
     background:rgba(110, 196, 219, 0.7);
     color: beige;
-    display: grid;
-    grid-template-areas:
-    "pet-pic pet-name";
 }
 
 .pet-pic {
     grid-area: pet-pic;
-    width: 5em;
 }
 
 .pet-name {
     grid-area: pet-name;
-    font-size: 30px;
-    font-weight: bold;
-    padding-right: 1em;
 }
 
 button {
-    color: #6ec4db;
+    color: #fa7c92;
     background: white;
-    border: solid 2px #6ec4db;
-    font-size: 20px;
-    padding: 0.5em 1em;
-    margin-top: 1em;
+    border: solid 2px #fa7c92;
 }
 
 button:hover {
@@ -65,6 +39,133 @@ button:hover {
 }
 
 button:active {
-    border-color: #fa7c92;
-    color: #fa7c92;
+    border-color: red;
+    color: red;
+}
+
+@media only screen and (min-width:321px) and (max-width:767px) {
+    body {
+        margin: 1.5em;
+        font-size: 15px;
+        align-items: center;
+    }
+    main {
+        left: 10%;
+        display: grid;
+        grid-template-areas: 
+        "pic"
+        "info";
+    }
+    #profile-pic-container {
+        justify-self: center;
+    }
+    #profile-info {
+        justify-self: center;
+    }
+    #pets-list {
+        display:grid;
+        grid-template: repeat(3, 4em) / repeat(1, 1fr);
+        grid-gap: 0.5em;
+    }
+    .pet-container {
+        display: grid;
+        grid-template-areas:
+        "pet-pic pet-name";
+    }
+    .pet-pic {
+        width: 4em;
+    }
+    .pet-name {
+        font-size: 26px;
+        font-weight: bold;
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+    button {
+        font-size: 20px;
+        padding: 0.5em 1em;
+        margin-top: 1em;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:959px) { 
+    body {
+        margin: 2em;
+        font-size: 15px;
+    }
+    main {
+        width: 80%;
+        display: grid;
+        grid-template-areas: 
+        "pic info"
+        "button info";
+    }
+    #profile-info {
+        padding-left: 1em;
+        justify-self: left;
+    }
+    #pets-list {
+        display:grid;
+        grid-template: repeat(6, 5em) / repeat(2, 1fr);
+        grid-gap: 1em;
+    }
+    .pet-container {
+        display: grid;
+        grid-template-areas:
+        "pet-pic pet-name";
+    }
+    .pet-pic {
+        width: 4em;
+    }
+    .pet-name {
+        font-size: 26px;
+        font-weight: bold;
+        padding-right: 1em;
+    }
+    button {
+        font-size: 20px;
+        padding: 0.5em 1em;
+        margin-top: 1em;
+    }
+}
+
+@media only screen and (min-width:959px) { 
+    body {
+        margin: 3em;
+        font-size: 17px;
+    }
+    main {
+        width: 70%;
+        display: grid;
+        grid-template-areas: 
+        "pic info"
+        "button info";
+    }
+    #profile-info {
+        padding-left: 2em;
+        justify-self: left;
+    }
+    #pets-list {
+        display:grid;
+        grid-template: repeat(3, 5em) / repeat(3, 1fr);
+        grid-gap: 0.5em;
+    }
+    .pet-container {
+        display: grid;
+        grid-template-areas:
+        "pet-pic pet-name";
+    }
+    .pet-pic {
+        width: 5em;
+    }
+    .pet-name {
+        font-size: 30px;
+        font-weight: bold;
+        padding-right: 1em;
+    }
+    button {
+        font-size: 20px;
+        padding: 0.5em 1em;
+        margin-top: 1em;
+    }
 }

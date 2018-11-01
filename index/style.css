@@ -15,7 +15,6 @@ main {
 }
 div p {
   display: inline-block;
-  font-size: 72px;
   color: #66ab8c;
   text-transform: uppercase;
   text-align: center;
@@ -92,3 +91,22 @@ div p:nth-of-type(15){
   }
 }
 
+@media only screen and (min-width:321px) and (max-width:767px) {
+  div p {
+    font-size: 30px;
+    top: 25%;
+  }
+}
+
+@media only screen and (min-width:768px) and (max-width:959px) { 
+  div p {
+    font-size: 50px;
+    top: 10%;
+  }
+}
+
+@media only screen and (min-width:959px) { 
+  div p {
+    font-size: 72px;
+  }
+}
