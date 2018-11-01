@@ -1,0 +1,50 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 3em;
+    font-size: 17px;
+}
+
+header {
+    color: #6ec4db;
+}
+
+#friends-list {
+    width: 70%;
+    list-style-type:none;
+    display:grid;
+    grid-template: repeat(3, 6em) / repeat(2, 1fr);
+    grid-gap: 1.5em;
+}
+
+.friend-container {
+    width: 70%;
+    background:rgba(250, 124, 146, 0.8);
+    display: grid;
+    grid-template-areas:
+    "friend-pic friend-info";
+    color: beige;
+}
+ 
+.friend-pic {
+    grid-area: friend-pic;
+    align-self: center;
+    justify-self: center;
+}
+
+.friend-pic img {
+    height: auto;
+    width: 5em;
+}
+
+.friend-info {
+    grid-area: friend-info;
+}
+
+.friend-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.friend-pets-number {
+    font-style: italic;
+}
