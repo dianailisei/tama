@@ -11,19 +11,14 @@ nav {
   z-index:8;
   width: 500px;
   height: 500px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-transform: translate3d(25px, -25px, 0);
-          transform: translate3d(25px, -25px, 0);
+  user-select: none;
+  transform: translate3d(25px, -25px, 0);
   transition: -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
   transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
   transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9), -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
 }
 nav.open {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 nav.top-right {
   top: -140px;
@@ -39,8 +34,6 @@ nav.top-right {
   line-height: 40px;
   padding-top: 10px;
   border-radius: 250px;
-  -webkit-transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 0, 1, 190deg);
-          transform: scale3d(0.5, 0.5, 0.5) rotate3d(0, 0, 1, 190deg);
   pointer-events: none;
   opacity: 0;
   cursor: pointer;
@@ -49,8 +42,7 @@ nav.top-right {
   transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9), opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.3, 1.4, 0.5, 0.9);
 }
 .disc div {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 .open .disc {
   pointer-events: auto;
@@ -67,8 +59,7 @@ nav.top-right {
 }
 .open .l1 {
   transition-delay: 0s;
-  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
-          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
   text-decoration: none;
   color: beige;
@@ -84,8 +75,7 @@ nav.top-right {
 }
 
 .open .l1.menuToggle {
-  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
-          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+  transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
 }
 
 .l2 {
@@ -98,8 +88,7 @@ nav.top-right {
 }
 .open .l2 {
   transition-delay: 0.1s;
-  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
-          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
   text-decoration: none;
   color: beige;
@@ -114,8 +103,7 @@ nav.top-right {
   color: #ff7a39;
 }
 .open .l2.menuToggle {
-  -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
-          transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
+  transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, 10deg);
 }
 
 .l3 {
@@ -128,8 +116,7 @@ nav.top-right {
 }
 .open .l3 {
   transition-delay: 0.2s;
-  -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
-          transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
+  transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 190deg);
   opacity: 1;
   text-decoration: none;
   color: beige;
