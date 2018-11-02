@@ -103,7 +103,44 @@ body {
   95%  { left:200px; top:50px; opacity: 0.15;}
   100% { left:230px; top:0px; opacity: 0;}
 }
- 
+
+#no-resolution {
+  visibility: hidden;
+  position: absolute;
+}
+
+/*done*/
+@media only screen and (min-width:960px) and (max-width:1024px){
+  #penguin-container {
+    top: 20%;
+    left:30%;
+    height: 200px;
+    width: 200px;
+  }
+
+  #pet-state {
+    height: 100px;
+    width: 200px;
+    top:40%;
+    left:30%;
+  }
+  #pet-reaction {
+    font-size: 24px;
+    left:50%;
+    top: 100%;
+  }
+    
+  #img-pet-food, #img-pet-heart {
+    margin-top: 5%;
+    margin-right: 10%;
+    margin-left: 5%;
+    height:30px;
+    width: 30px;
+  }
+  meter {
+    height: 15px;
+  }
+}
 /*done*/
 @media only screen and (min-width:768px) and (max-width:959px) { 
   #penguin-container {
@@ -126,12 +163,20 @@ body {
   }
 }
 
-@media only screen and (min-width:959px) and (max-width:1023px){
-  
+@media all and (max-width:767px) {
+  .background-container{
+    visibility: hidden;
+  }
+  #penguin-container{
+    visibility: hidden;
+  }
+  .bird-container , .bird-container--one{
+      visibility: hidden;
+  }
 }
 
 /*done*/
-@media only screen and (min-width:1024px){
+@media all and (min-width:1025px){
   #penguin-container {
     top: 20%;
     left:30%;
@@ -162,6 +207,12 @@ body {
   meter {
     height: 50px;
     width: 200px;
+  }
+}
+@media (min-width: 1450px){
+  #penguin-container {
+      top: 30%;
+      left: 40%;
   }
 }
 
