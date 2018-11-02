@@ -49,10 +49,10 @@ body {
 #penguin-container {
   z-index:8;
   position: absolute;
-  top: 30%;
-  left:30%;
+  /* top: 30%;
+  left:30%; 
   width:400px;
-  height:400px;
+  height:400px;*/
 }
 
 #pet-state {
@@ -104,29 +104,20 @@ body {
   100% { left:230px; top:0px; opacity: 0;}
 }
  
-
+/*done*/
 @media only screen and (min-width:768px) and (max-width:959px) { 
   #penguin-container {
-    z-index:8;
-    position: absolute;
-    top: 30%;
-    left:30%;
-    width:400px;
-    height:400px;
+    left:15%;
+    width:200px;
+    height:200px;
   }
   #penguin-down {
-    z-index:8;
-    position: absolute;
     top: 60%;
     left:30%;
-    width:400px;
-    height:400px;
   }
   #pet-state {
-    height: 150px;
-    width: 200px;
-    top:50%;
-    left:15%;
+    top: 70%;
+    left: 50%;
   }
   #pet-reaction {
     font-size: 28px;
@@ -136,12 +127,7 @@ body {
 }
 
 @media only screen and (min-width:959px) and (max-width:1023px){
-  #penguin-container {
-    top: 10%;
-    left:30%;
-    width:400px;
-    height:400px;
-  }
+  
 }
 
 /*done*/
@@ -149,8 +135,6 @@ body {
   #penguin-container {
     top: 20%;
     left:30%;
-    width:400px;
-    height:400px;
   }
   #penguin-down {
     top: 30%;
