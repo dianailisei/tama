@@ -18,10 +18,10 @@
           <a class="disc l2" href="../account/account.html">
                <div>Account</div>
           </a>
-          <a class="disc l3">
+          <a class="disc l3" href="../your-pets/your-pets.html">
                <div>Your Pets</div>
           </a>
-          <a class="disc l4">
+          <a class="disc l4" href="../your-friends/your-friends.html">
                <div>Friends</div>
           </a>
           <a class="disc l5 menuToggle">
@@ -33,7 +33,7 @@
           <div id="new-pet-form-container">
                <form id="pet-form">
                     <label for="pet-select">This is a: </label>
-                    <select id="pet-select">
+                    <select id="pet-select" onchange="changePetSVG()">
                          <option value="penguin-up">Tall Penguin</option>
                          <option value="dog">Dog</option>
                          <option value="cat">Cat</option>
@@ -44,7 +44,7 @@
                     <label for="pet-age">Age: </label>
                     <input id="pet-age" types="text" placeholder="How old is your pet?"><br>
                     <label for="pet-color"> Pet's color: </label>
-                    <select id="pet-color">
+                    <select id="pet-color" onchange="changePetColor(value)" >
                          <option value="white">white</option>
                          <option value="blue">Blue</option>
                          <option value="red">Red</option>
@@ -52,7 +52,7 @@
                          <option value="green">Green</option>
                     </select> <br>
                     <label for="pet-eyes-color"> Pet's eyes color: </label>
-                    <select id="pet-eyes-color">
+                    <select id="pet-eyes-color" onchange="changePetEyesColor(value)">
                          <option value="white">white</option>
                          <option value="blue">Blue</option>
                          <option value="red">Red</option>
