@@ -19,93 +19,170 @@ time, mark, audio, video {
 }
 
 body {
-     width: 100%;
-     height: 75%;
+  width: 100%;
+  height: 100%;
 
-     display: grid; 
-     grid-template-columns: 1fr;
-     grid-template-rows: 1fr;
-     grid-template-areas:
-          "body-container";
+  display: grid; 
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "body-container";
 }
 
 .body-container {
-     grid-area: body-container;
+  grid-area: body-container;
 }
 
 .background-container {
-     display: block;
-     position: relative;
+  display: block;
+  position: relative;
 }   
 
 #penguin-down {
-     z-index:8;
-     position: absolute;
-     top: 60%;
-     left:30%;
-     width:400px;
-     height:400px;
+  z-index:8;
+  position: absolute;
+  /* top: 60%;
+  left:30%; */
+  width:400px;
+  height:400px;
 }
 #penguin-container {
-     z-index:8;
-     position: absolute;
-     top: 30%;
-     left:30%;
-     width:400px;
-     height:400px;
+  z-index:8;
+  position: absolute;
+  top: 30%;
+  left:30%;
+  width:400px;
+  height:400px;
 }
 
 #pet-state {
-     visibility: hidden;
-     position: absolute;
-     display: block;
-     height: 150px;
-     width: 200px;
-     top:50%;
-     left:15%;
-     background-color: white;
-     border-radius: 5%;
-     box-sizing: border-box;
-     border: 5px solid #fff7c0;
+  visibility: hidden;
+  position: absolute;
+  display: block;
+  height: 150px;
+  width: 200px;
+  top:50%;
+  left:15%;
+  background-color: white;
+  border-radius: 5%;
+  box-sizing: border-box;
+  border: 5px solid #fff7c0;
 }
 
 #img-pet-food, #img-pet-heart {
-     margin-top: 5%;
-     margin-right: 20%;
-     height:50px;
-     width: 50px;
+  margin-top: 5%;
+  margin-right: 20%;
+  height:50px;
+  width: 50px;
 }
 
-
 #pet-reaction {
-     position: absolute;     
-     visibility: hidden;
-     z-index: 8;
-     font-size: 28px;
-     left:50%;
-     top: 80%;
+  position: absolute;     
+  visibility: hidden;
+  z-index: 8;
+  font-size: 28px;
+  left:50%;
+  top: 80%;
 }
 
 .pet-reaction-animation {
-     animation-name: petReactionHeart;
-     animation-duration: 5s;
-     animation-timing-function: linear;
+  animation-name: petReactionHeart;
+  animation-duration: 5s;
+  animation-timing-function: linear;
 }
 
 @keyframes petReactionHeart{
-     0%   { left:230px; top:350px;}
-     25%  { left:230px; top:300px; opacity: 0.95;}
-     30%  { left:200px; top:250px; opacity: 0.90; }
-     50%  { left:230px; top:240px; opacity: 0.80;}
-     60%  { left:200px; top:200px; opacity: 0.70;}
-     75%  { left:240px; top:190px; opacity: 0.65;}
-     80%  { left:190px; top:150px; opacity: 0.50;}
-     90%  { left:250px; top:100px; opacity: 0.30;}
-     95%  { left:200px; top:50px; opacity: 0.15;}
-     100% { left:230px; top:0px; opacity: 0;}
+  0%   { left:230px; top:350px;}
+  25%  { left:230px; top:300px; opacity: 0.95;}
+  30%  { left:200px; top:250px; opacity: 0.90; }
+  50%  { left:230px; top:240px; opacity: 0.80;}
+  60%  { left:200px; top:200px; opacity: 0.70;}
+  75%  { left:240px; top:190px; opacity: 0.65;}
+  80%  { left:190px; top:150px; opacity: 0.50;}
+  90%  { left:250px; top:100px; opacity: 0.30;}
+  95%  { left:200px; top:50px; opacity: 0.15;}
+  100% { left:230px; top:0px; opacity: 0;}
 }
  
 
+@media only screen and (min-width:768px) and (max-width:959px) { 
+  #penguin-container {
+    z-index:8;
+    position: absolute;
+    top: 30%;
+    left:30%;
+    width:400px;
+    height:400px;
+  }
+  #penguin-down {
+    z-index:8;
+    position: absolute;
+    top: 60%;
+    left:30%;
+    width:400px;
+    height:400px;
+  }
+  #pet-state {
+    height: 150px;
+    width: 200px;
+    top:50%;
+    left:15%;
+  }
+  #pet-reaction {
+    font-size: 28px;
+    left:50%;
+    top: 80%;
+  }
+}
+
+@media only screen and (min-width:959px) and (max-width:1023px){
+  #penguin-container {
+    top: 10%;
+    left:30%;
+    width:400px;
+    height:400px;
+  }
+}
+
+/*done*/
+@media only screen and (min-width:1024px){
+  #penguin-container {
+    top: 20%;
+    left:30%;
+    width:400px;
+    height:400px;
+  }
+  #penguin-down {
+    top: 30%;
+    width:700px;
+    height:700px;
+  }
+  #pet-state {
+    height: 250px;
+    width: 400px;
+    top:40%;
+  }
+  #pet-reaction {
+    font-size: 48px;
+    left:50%;
+    top: 100%;
+  }
+    
+  #img-pet-food, #img-pet-heart {
+    margin-top: 5%;
+    margin-right: 10%;
+    margin-left: 5%;
+    height:80px;
+    width: 80px;
+  }
+  meter {
+    height: 50px;
+    width: 200px;
+  }
+}
+
+
+/* BIRD */
 .container {
   z-index: 1;
   position: absolute;
@@ -165,59 +242,26 @@ body {
   animation-delay: 10.25s;
 }
 @keyframes fly-cycle {
-  100% {
-    background-position: -900px 0;
-  }
+  100% {background-position: -900px 0;}
 }
 @keyframes fly-right-one {
-  0% {
-    transform: scale(0.3) translateX(-10vw);
-  }
-  10% {
-    transform: translateY(2vh) translateX(10vw) scale(0.4);
-  }
-  20% {
-    transform: translateY(0vh) translateX(30vw) scale(0.5);
-  }
-  30% {
-    transform: translateY(4vh) translateX(50vw) scale(0.6);
-  }
-  40% {
-    transform: translateY(2vh) translateX(70vw) scale(0.6);
-  }
-  50% {
-    transform: translateY(0vh) translateX(90vw) scale(0.6);
-  }
-  60% {
-    transform: translateY(0vh) translateX(110vw) scale(0.6);
-  }
-  100% {
-    transform: translateY(0vh) translateX(110vw) scale(0.6);
-  }
+  0% {transform: scale(0.3) translateX(-10vw);}
+  10% {transform: translateY(2vh) translateX(10vw) scale(0.4);}
+  20% { transform: translateY(0vh) translateX(30vw) scale(0.5);}
+  30% {transform: translateY(4vh) translateX(50vw) scale(0.6);}
+  40% { transform: translateY(2vh) translateX(70vw) scale(0.6);}
+  50% {transform: translateY(0vh) translateX(90vw) scale(0.6);}
+  60% {transform: translateY(0vh) translateX(110vw) scale(0.6);}
+  100% {transform: translateY(0vh) translateX(110vw) scale(0.6);}
 }
 @keyframes fly-right-two {
-  0% {
-    transform: translateY(-2vh) translateX(-10vw) scale(0.5);
-  }
-  10% {
-    transform: translateY(0vh) translateX(10vw) scale(0.4);
-  }
-  20% {
-    transform: translateY(-4vh) translateX(30vw) scale(0.6);
-  }
-  30% {
-    transform: translateY(1vh) translateX(50vw) scale(0.45);
-  }
-  40% {
-    transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
-  }
-  50% {
-    transform: translateY(0vh) translateX(90vw) scale(0.45);
-  }
-  51% {
-    transform: translateY(0vh) translateX(110vw) scale(0.45);
-  }
-  100% {
-    transform: translateY(0vh) translateX(110vw) scale(0.45);
-  }
+  0% {transform: translateY(-2vh) translateX(-10vw) scale(0.5);}
+  10% {transform: translateY(0vh) translateX(10vw) scale(0.4);}
+  20% {transform: translateY(-4vh) translateX(30vw) scale(0.6);}
+  30% {transform: translateY(1vh) translateX(50vw) scale(0.45);}
+  40% {transform: translateY(-2.5vh) translateX(70vw) scale(0.5);}
+  50% {transform: translateY(0vh) translateX(90vw) scale(0.45);}
+  51% {transform: translateY(0vh) translateX(110vw) scale(0.45);}
+  100% {transform: translateY(0vh) translateX(110vw) scale(0.45);}
 }
+/* END BIRD*/
