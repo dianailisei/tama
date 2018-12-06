@@ -2,7 +2,7 @@
 <html property="http://scholarly-html.org/schtml">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" lang="ro">
     <title> Prototip al interfetei Web - raport</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -11,26 +11,61 @@
     <article resource="#" typeof="schema:ScholarlyArticle">
         <header>
             <h1 property="schema:name"> Prototip al interfetei Web - raport </h1>
-            <p role="doc-subtitle" property="schema:alternateName">
-                <a href="#cerinta">1. Cerinta</a>
-            </p>
-            <p role="doc-subtitle" property="schema:alternateName">
-                <a href="#design-general">2. Design general</a>
-            </p>
-            <p role="doc-subtitle" property="schema:alternateName">
-                <a href="#structura">3. Structura</a>
-            </p>
-            <p role="doc-subtitle" property="schema:alternateName">
-                <a href="#pasi">4. Pasii pe care i-am urmat</a>
-            </p>
-            <p role="doc-subtitle" property="schema:alternateName">
-                <a href="#sarcini">5. Impartirea sarcinilor</a>
-            </p>
+            <ol role="directory">
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName"><a href="#cerinta"><span>1. </span>Cerinta</a></p>
+                </li>
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName"><a href="#design-general"><span>2. </span>Design
+                            general</a></p>
+                </li>
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName"><a href="#structura"><span>3. </span>Structura</a></p>
+                </li>
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName"><a href="#pasi"><span>4. </span>Pasii pe
+                            care i-am urmat</a></p>
+                </li>
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName"><a href="#diagrame"><span>5. </span>Detalii
+                            arhitecturale</a></p>
+                    <ol>
+                        <li>
+                            <p role="doc-subtitle" property="schema:alternateName"><a href="#diagrama1"><span>5.1
+                                    </span>Diagrama Use Case</a></p>
+                        </li>
+                        <li>
+                            <p role="doc-subtitle" property="schema:alternateName"><a href="#diagrama2"><span>5.2
+                                    </span>Diagrama Componentelor SPA</a></p>
+                        </li>
+                        <li>
+                            <p role="doc-subtitle" property="schema:alternateName"><a href="#diagrama3"><span>5.3
+                                    </span>Diagrama Componentelor Framework-ului</a></p>
+                        </li>
+                        <li>
+                            <p role="doc-subtitle" property="schema:alternateName"><a href="#diagrama4"><span>5.4
+                                    </span>Diagrama Framework Flow</a></p>
+                        </li>
+                        <li>
+                            <p role="doc-subtitle" property="schema:alternateName"><a href="#diagrama5"><span>5.5
+                                    </span>Diagrama de clase</a></p>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName">
+                        <a href="#sarcini">6. Stocarea Datelor</a>
+                    </p>
+                </li>
+                <li>
+                    <p role="doc-subtitle" property="schema:alternateName">
+                        <a href="#sarcini">7. Impartirea sarcinilor</a>
+                    </p>
+                </li>
+            </ol>
         </header>
-        <meta property="schema:accessibilityFeature" content="alternativeText">
-        <meta property="schema:accessibilityFeature" content="MathML">
-        <meta property="schema:accessibilityHazard" content="noFlashingHazard">
     </article>
+
     <section typeof="sa:Cerinta" id="cerinta">
         <h3>1. Cerinta</h3>
         <article resource="#" typeof="schema:ScholarlyArticle">
@@ -45,9 +80,6 @@
                     – Single Page Application.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
     </section>
     <section typeof="sa:Design general" id="design-general">
@@ -61,20 +93,14 @@
                     aplicatiei este inspirat de la un caracter tamagotchi.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
     </section>
-    <section typeof="sa:Structura" id="structura"> 
+    <section typeof="sa:Structura" id="structura">
         <h3>3. Structura</h3>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
                 <p role="doc-subtitle"> Aplicatia va contine urmatoarele pagini: </p>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <ul>
             <li typeof="sa:ContributorRole" property="schema:author">
@@ -109,9 +135,6 @@
                     meniul.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -120,9 +143,6 @@
                     isi poate modifica/adauga informatii despre acesta (fotografie de profil, parola, tara).
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -131,9 +151,6 @@
                     in aceasta aplicatie. De asemenea, acesta poate cauta un alt utilizator inregistrat in aplicatie.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -142,9 +159,6 @@
                     animalute.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -154,9 +168,6 @@
                     ca prieten pentru un animalut propriu.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -165,9 +176,6 @@
                     cont deja existent.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -176,9 +184,6 @@
                     unde acesta va putea interactiona cu caracterele alese.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
@@ -187,28 +192,155 @@
                     personalizeze cu diverse informatii.
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
     </section>
     <section typeof="sa:Pasi" id="pasi">
         <h3>4. Pasii pe care i-am urmat</h3>
-        <article resource="#" typeof="schema:ScholarlyArticle">
+
+        <section typeof="sa:Prototipul" id="prototipul">
+            <h4>4.1 Prototip</h4>
+            <article resource="#" typeof="schema:ScholarlyArticle">
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        Am inceput cu cateva schite pe hartie ca mai apoi sa stabilim structura fisierelor si ierarhia
+                        lor.
+                        Am continuat cu alegerea unei palete de culori potrivita tematicii proiectului si am stabilit
+                        stilul general al design-ului.
+                    </span>
+                </header>
+        </section>
+
+        <section typeof="sa:Arhitectura" id="arhitectura">
+            <h4>4.2 Arhitectura</h4>
+            <article resource="#" typeof="schema:ScholarlyArticle">
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        Am dezvoltat partea de front-end a aplicatiei, pornind de la prototipul stabilit in
+                        prealabil.
+                        Pentru partea de arhitectura, avand in vedere faptul ca trebuie sa construim un
+                        mini-framework
+                        pe
+                        client-side, am preferat sa studiem modul in care functioneaza doua dintre cele mai
+                        populare
+                        framework-uri, Angular si Vue.js.
+                        Am stabilit sa facem un mini-framework MVC, deoarece ne este mai familiar decat modelul
+                        comportamental MVVM, iar apoi am stabilit cum vom implementa functionalitatile oferite de
+                        framework.
+                    </span>
+                </header>
+        </section>
+        </article>
+
+    </section>
+
+    <section typeof="sa:diagrame" id="diagrame">
+        <h3>5. Detalii arhitecturale</h3>
+        <section typeof="sa:diagrama1" id="diagrama1">
+            <article resource="#diagrama1" typeof="schema:ScholarlyArticle">
+                <h4>5.1 Diagrama Use Case</h4>
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        <p role="doc-subtitle">
+                            Aceasta diagrama prezinta actiunile pe care le poate face un utilizator logat sau nelogat.
+                        </p>
+                        <img src="../resources/architecture/UseCase.png">
+                    </span>
+                </header>
+            </article>
+        </section>
+
+        <section typeof="sa:diagrama2" id="diagrama2">
+            <article resource="#2" typeof="schema:ScholarlyArticle">
+                <h4>5.2 Diagrama Componentelor SPA</h4>
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        <p role="doc-subtitle">
+
+                        </p>
+                        <img src="../resources/architecture/SPA.png">
+                    </span>
+                </header>
+            </article>
+        </section>
+
+        <section typeof="sa:diagrama3" id="diagrama3">
+            <article resource="#3" typeof="schema:ScholarlyArticle">
+                <h4>5.3 Diagrama Componentelor Framework-ului </h4>
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        <p role="doc-subtitle">
+                            In diagrama de mai jos am modularizat framework-ul.
+                        </p>
+                        <img src="../resources/architecture/Framework.png">
+                    </span>
+                </header>
+            </article>
+        </section>
+
+        <section typeof="sa:diagrama4" id="diagrama4">
+            <article resource="#4" typeof="schema:ScholarlyArticle">
+                <h4>5.4 Diagrama Framework Flow </h4>
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        <p role="doc-subtitle">
+                            In diagrama de mai jos este abstractizat modul in care se proceseaza o cerere de la
+                            utilizator.
+                        </p>
+                        <img src="../resources/architecture/FlowFramework.png">
+                    </span>
+                </header>
+            </article>
+        </section>
+
+        <section typeof="sa:diagrama5" id="diagrama5">
+            <article resource="#5" typeof="schema:ScholarlyArticle">
+                <h4>5.5 Diagrama de clase</h4>
+                <header>
+                    <span role="doc-acknowledgments" property="schema:alternateName">
+                        <p role="doc-subtitle">
+                            Am reprezentat clasele de baza impreuna cu proprietatile si metodele necesare pentru
+                            prototipul framework-ului, urmand ca acestea sa fie completate pe parcursul dezvoltarii.
+                        </p>
+                        <img src="#">
+                    </span>
+                </header>
+            </article>
+        </section>
+    </section>
+    <section typeof="sa:Baza de date" id="bazadedate">
+        <article resource="bd" typeof="schema:ScholarlyArticle">
+            <h3>6. Stocarea datelor</h3>
             <header>
+
                 <span role="doc-acknowledgments" property="schema:alternateName">
-                    Am inceput cu cateva schite pe hartie ca mai apoi sa stabilim structura fisierelor si ierarhia lor.
-                    Am continuat cu alegerea unei palete de culori potrivita tematicii proiectului si am stabilit
-                    stilul general al design-ului.
+                    <p role="doc-subtitle">
+                        Ne-am propus ca datele sa le salvam intr-o baza de date MySQL, iar la nivel de client, datele
+                        relevante (utilizator logat, statusul jocului) vor fi salvate in Local Storage si Session
+                        Storage.
+                        Astfel, daca utilizatorul inchide pagina aplicatiei, acesta va putea reveni oricand in joc,
+                        fara a i se pierde progresul. In cazul aplicatiei noastre, statusul pet-ului se va modifica
+                        odata cu trecerea timpului.
+                        Baza de date va contine urmatoarele tabele :
+                        <ul>
+                            <li>
+                                Utilizatori -> id, nume, email, parola, lastUpdate
+                            </li>
+                            <li>
+                                Prieteni -> idUser, idFriend
+                            </li>
+                            <li>
+                                Pet-uri -> idUser, idPet, caracteristici (JSON, css pentru SVG)
+                            </li>
+
+                        </ul>
+                    </p>
+
                 </span>
             </header>
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
     </section>
     <section typeof="sa:Sarcini" id="sarcini">
-        <h3>5. Impartirea sarcinilor</h3>
+        <h3>7. Impartirea sarcinilor</h3>
         <article resource="#" typeof="schema:ScholarlyArticle">
             <header>
                 <span role="doc-acknowledgments" property="schema:alternateName">
@@ -230,7 +362,7 @@
                             Documentare despre SVG
                         </li>
                         <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
-                            Creare design responsive                             
+                            Design responsive pentru viewport-uri mobile
                         </li>
                     </ul>
                 </li>
@@ -241,10 +373,10 @@
                             Creare pagini Friend's Account, Your Pets, Register, Account, Your Friends
                         </li>
                         <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
-                            Creare design responsive 
+                            Creare design responsive pentru viewport-uri desktop
                         </li>
                         <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
-                            Raport 
+                            Raport
                         </li>
                         <li property="schema:roleContactPoint" typeof="schema:ContactPoint">
                             Validarea codului
@@ -252,10 +384,6 @@
                     </ul>
                 </li>
             </ul>
-
-            <meta property="schema:accessibilityFeature" content="alternativeText">
-            <meta property="schema:accessibilityFeature" content="MathML">
-            <meta property="schema:accessibilityHazard" content="noFlashingHazard">
         </article>
     </section>
 </body>
