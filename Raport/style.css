@@ -1,14 +1,4 @@
-@import "normalize.css/normalize.css";
-@import "../fonts/roboto.css";
-@import "../fonts/roboto-mono.css";
-
-/*
-  XXX
-  figure styles
-  links
-*/
-
-body {
+html, body {
   max-width: 21cm;
   margin: auto;
   line-height: 1.6;
@@ -22,23 +12,12 @@ header > h1 {
   font-size: 3em;
   padding-top: 4em;
 }
-div.banner {
-  display: flex;
-  justify-content: space-between;
-}
-div.banner > img {
-  height: 100%;
-}
-div.banner > div.status {
-  color: #fff;
-  background: #9400bf;
-  width: 350px;
-  padding: 10px;
-  text-align: right;
-}
+
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.0375em;
+
 }
+
 h1, h2 {
   color: #4b0061;
 }
@@ -57,17 +36,15 @@ h4 {
 
 /* contentinfo */
 [role="contentinfo"] a {
-  text-decoration: none;
+  text-decoration:none;
+}
+[role="legenda"] {
+  text-decoration:none;  
 }
 ol[role="directory"], [role="directory"] ol {
   list-style-type: none;
 }
-[role="contentinfo"] dt {
-  font-weight: bold;
-}
-[role="contentinfo"] dd {
-  margin-bottom: 1em;
-}
+
 
 /* link types */
 a.onto {
