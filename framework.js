@@ -76,23 +76,42 @@
     var viewContainer = function (renderDelegate) {
         this.render = renderDelegate;
         this.isAsync = false;
+        this.removeLastCssLink = function () {
+            var links = document.getElementsByTagName('link');
+            links = Array.from(links);
+            links.forEach(link => {
+                if (link.href != 'css/menu.css') {
+                    link.parentNode.removeChild(link);
+                }
+                
+            })
+        }
         this.addCssLink = function (url) {
             var link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = url;
-            document.getElementsByTagName('head')[0].appendChild(link);
+            if (!this.checkIfFileIsLoaded(url, 'link')) {
+                document.getElementsByTagName('head')[0].appendChild(link);
+            }
         }
         this.addScript = function (source) {
             var s = document.createElement('script');
             s.src = source;
-            if (!this.checkIfScriptIsLoaded(source)) {
+            if (!this.checkIfFileIsLoaded(source, 'script')) {
                 document.body.appendChild(s);
             }
         }
-        this.checkIfScriptIsLoaded = function (s) {
-            var scripts = document.getElementsByTagName("script");
-            for (var i = 0; i < scripts.length; i++)
-                if (scripts[i].getAttribute('src') == src) return true;
+        this.checkIfFileIsLoaded = function (s, type) {
+            var files = document.getElementsByTagName(type);
+            for (var i = 0; i < files.length; i++) {
+                if (type == 'script') {
+                    if (files[i].getAttribute('src') == s) return true;
+                }
+                else if (type == 'link') {
+                    if (files[i].getAttribute('href') == s) return true;
+                }
+            }
+
             return false;
         }
     }
