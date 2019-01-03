@@ -1,0 +1,82 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 2em;
+    font-size: 20px;
+}
+
+header {
+    color: #6ec4db;
+}
+
+input {
+    display: inline;
+    margin: 0;
+    border: none;
+    font-size: inherit;
+}
+
+#new-pet-form-container {
+    grid-area: pet-form;
+    margin-right: 1.5em;
+    padding-top: 3em;
+}
+
+#pet-svg-container {
+    grid-area: pet-setup;
+    display: block;
+}
+
+button {
+    grid-area: button;
+    display: block;
+    color: #6ec4db;
+    background: white;
+    border-color: #6ec4db;
+}
+
+button:hover {
+    border-color: #66ab8c;
+    color: #66ab8c;
+}
+
+button:active {
+    border-color: #fa7c92;
+    color: #fa7c92;
+}
+
+@media  (min-width:960px) {
+    body {
+         margin: 1.5em;
+         font-size: 15px;
+    }
+    main {
+         left: 10%;
+         display: grid;
+         grid-template-areas: 
+         "pet-form pet-setup"
+         "button pet-setup"
+         ". pet-setup";
+         grid-template-columns: 2fr 2fr;
+         grid-template-rows: 2fr 1fr 1fr;
+    }
+     
+    button {
+         display: block;
+         height: 50px;
+         width: 100px;
+         font-size: 20px;
+         padding: 0.5em 1em;
+         margin-top: 1em;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:959px) { 
+   
+}
+
+@media only screen and (min-width:959px) { 
+   
+}
+@media only screen and (min-width:321px) and (max-width:767px) {
+    
+}
