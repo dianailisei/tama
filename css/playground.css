@@ -1,0 +1,302 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'Montserrat', sans-serif;
+    vertical-align: baseline;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+
+  display: grid; 
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "body-container";
+}
+
+.body-container {
+  grid-area: body-container;
+}
+
+.background-container {
+  display: block;
+  position: relative;
+}   
+
+#penguin-down {
+  z-index:8;
+  position: absolute;
+  /* top: 60%;
+  left:30%; */
+  width:400px;
+  height:400px;
+}
+#penguin-container {
+  z-index:8;
+  position: absolute;
+  /* top: 30%;
+  left:30%; 
+  width:400px;
+  height:400px;*/
+}
+
+#pet-state {
+  visibility: hidden;
+  position: absolute;
+  display: block;
+  height: 150px;
+  width: 200px;
+  top:50%;
+  left:15%;
+  background-color: white;
+  border-radius: 5%;
+  box-sizing: border-box;
+  border: 5px solid #fff7c0;
+}
+
+#img-pet-food, #img-pet-heart {
+  margin-top: 5%;
+  margin-right: 20%;
+  height:50px;
+  width: 50px;
+}
+
+#pet-reaction {
+  position: absolute;     
+  visibility: hidden;
+  z-index: 8;
+  font-size: 28px;
+  left:50%;
+  top: 80%;
+}
+
+.pet-reaction-animation {
+  animation-name: petReactionHeart;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes petReactionHeart{
+  0%   { left:230px; top:350px;}
+  25%  { left:230px; top:300px; opacity: 0.95;}
+  30%  { left:200px; top:250px; opacity: 0.90; }
+  50%  { left:230px; top:240px; opacity: 0.80;}
+  60%  { left:200px; top:200px; opacity: 0.70;}
+  75%  { left:240px; top:190px; opacity: 0.65;}
+  80%  { left:190px; top:150px; opacity: 0.50;}
+  90%  { left:250px; top:100px; opacity: 0.30;}
+  95%  { left:200px; top:50px; opacity: 0.15;}
+  100% { left:230px; top:0px; opacity: 0;}
+}
+
+#no-resolution {
+  visibility: hidden;
+  position: absolute;
+}
+
+@media all and (min-width:1025px){
+  #penguin-container {
+    top: 20%;
+    left:30%;
+  }
+  #penguin-down {
+    top: 30%;
+    width:700px;
+    height:700px;
+  }
+  #pet-state {
+    height: 250px;
+    width: 400px;
+    top:40%;
+  }
+  #pet-reaction {
+    font-size: 48px;
+    left:50%;
+    top: 100%;
+  }
+    
+  #img-pet-food, #img-pet-heart {
+    margin-top: 5%;
+    margin-right: 10%;
+    margin-left: 5%;
+    height:80px;
+    width: 80px;
+  }
+  meter {
+    height: 50px;
+    width: 200px;
+  }
+}
+
+@media only screen and (min-width:960px) and (max-width:1024px){
+  #penguin-container {
+    top: 20%;
+    left:30%;
+    height: 200px;
+    width: 200px;
+  }
+
+  #pet-state {
+    height: 100px;
+    width: 200px;
+    top:40%;
+    left:30%;
+  }
+  #pet-reaction {
+    font-size: 24px;
+    left:50%;
+    top: 100%;
+  }
+    
+  #img-pet-food, #img-pet-heart {
+    margin-top: 5%;
+    margin-right: 10%;
+    margin-left: 5%;
+    height:30px;
+    width: 30px;
+  }
+  meter {
+    height: 15px;
+  }
+}
+
+
+@media only screen and (min-width:768px) and (max-width:959px) { 
+  #penguin-container {
+    left:15%;
+    width:200px;
+    height:200px;
+  }
+  #penguin-down {
+    top: 60%;
+    left:30%;
+  }
+  #pet-state {
+    top: 70%;
+    left: 50%;
+  }
+  #pet-reaction {
+    font-size: 28px;
+    left:50%;
+    top: 80%;
+  }
+}
+
+@media all and (max-width:767px) {
+  .background-container{
+    visibility: hidden;
+  }
+  #penguin-container{
+    visibility: hidden;
+  }
+  .bird-container , .bird-container--one{
+      visibility: hidden;
+  }
+}
+
+@media (min-width: 1450px){
+  #penguin-container {
+      top: 30%;
+      left: 40%;
+  }
+}
+
+
+/* BIRD */
+.container {
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bird {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells.svg);
+  background-size: auto 100%;
+  width: 88px;
+  height: 125px;
+  animation-name: fly-cycle;
+  animation-timing-function: steps(10);
+  animation-iteration-count: infinite;
+}
+.bird--one {
+  animation-duration: 1s;
+  animation-delay: -0.5s;
+}
+.bird--two {
+  animation-duration: 0.9s;
+  animation-delay: -0.75s;
+}
+.bird--three {
+  animation-duration: 1.25s;
+  animation-delay: -0.25s;
+}
+.bird--four {
+  animation-duration: 1.1s;
+  animation-delay: -0.5s;
+}
+.bird-container {
+  position: absolute;
+  top: 20%;
+  left: -16.5%;
+  transform: scale(0) translateX(-10vw);
+  will-change: transform;
+  animation-name: fly-right-one;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.bird-container--one {
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+.bird-container--two {
+  animation-duration: 16s;
+  animation-delay: 1s;
+}
+.bird-container--three {
+  animation-duration: 14.6s;
+  animation-delay: 9.5s;
+}
+.bird-container--four {
+  animation-duration: 16s;
+  animation-delay: 10.25s;
+}
+@keyframes fly-cycle {
+  100% {background-position: -900px 0;}
+}
+@keyframes fly-right-one {
+  0% {transform: scale(0.3) translateX(-10vw);}
+  10% {transform: translateY(2vh) translateX(10vw) scale(0.4);}
+  20% { transform: translateY(0vh) translateX(30vw) scale(0.5);}
+  30% {transform: translateY(4vh) translateX(50vw) scale(0.6);}
+  40% { transform: translateY(2vh) translateX(70vw) scale(0.6);}
+  50% {transform: translateY(0vh) translateX(90vw) scale(0.6);}
+  60% {transform: translateY(0vh) translateX(110vw) scale(0.6);}
+  100% {transform: translateY(0vh) translateX(110vw) scale(0.6);}
+}
+@keyframes fly-right-two {
+  0% {transform: translateY(-2vh) translateX(-10vw) scale(0.5);}
+  10% {transform: translateY(0vh) translateX(10vw) scale(0.4);}
+  20% {transform: translateY(-4vh) translateX(30vw) scale(0.6);}
+  30% {transform: translateY(1vh) translateX(50vw) scale(0.45);}
+  40% {transform: translateY(-2.5vh) translateX(70vw) scale(0.5);}
+  50% {transform: translateY(0vh) translateX(90vw) scale(0.45);}
+  51% {transform: translateY(0vh) translateX(110vw) scale(0.45);}
+  100% {transform: translateY(0vh) translateX(110vw) scale(0.45);}
+}
+/* END BIRD*/

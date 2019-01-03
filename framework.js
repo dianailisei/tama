@@ -48,6 +48,7 @@
     }
 
     function loadView(routeObject, viewElement, viewHtml) {
+
         var model = {},
             renderViewDelegate = renderView.bind(null, viewElement, viewHtml, model),
             view = new viewContainer(renderViewDelegate);
@@ -59,8 +60,9 @@
         viewElement.innerHTML = viewHtml;
 
 
-        if (!view.isAsync && !_rendered)
-            renderView(viewElement, viewHtml, model)
+        if (!view.isAsync && !_rendered) {
+            renderView(viewElement, viewHtml, model);
+        }
     }
 
     function renderView(viewElement, viewHtml, model) {
@@ -83,7 +85,7 @@
                 if (link.href != 'css/menu.css') {
                     link.parentNode.removeChild(link);
                 }
-                
+
             })
         }
         this.addCssLink = function (url) {
@@ -111,8 +113,16 @@
                     if (files[i].getAttribute('href') == s) return true;
                 }
             }
-
             return false;
+        }
+        this.removeLastScripts = function (pageName) {
+            var scripts = document.getElementsByTagName('script');
+            scripts = Array.from(scripts);
+            scripts.forEach(script => {
+                if (!script.src.includes(pageName)) {
+                    script.parentNode.removeChild(script);
+                }
+            })
         }
     }
 
