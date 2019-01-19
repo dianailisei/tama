@@ -72,7 +72,7 @@
 
         _rendered = true;
     }
-
+    
     //View Container Object
     /** @constructor */
     var viewContainer = function (renderDelegate) {

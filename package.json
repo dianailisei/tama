@@ -5,11 +5,18 @@
   "main": "framework.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "lite-server"
+    "dev": "lite-server",
+    "serve": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lite-server": "^2.4.0"
+    "lite-server": "^2.4.0",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mssql": "^4.3.0"
   }
 }
