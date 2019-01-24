@@ -6,4 +6,5 @@ function PlaygroundController(view, model) {
     // view.removeLastScripts('account');
     view.addScript('services/playgroundServices.js');
     view.addScript('menu.js');
+    
 }

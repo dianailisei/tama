@@ -23,7 +23,7 @@ function changeMood(){
         pss.value--;
         pfs.value--;
         pes.value--;
-        //console.log(pes.value+" "+pfs.value+" "+pss.value);
+        console.log(pes.value+" "+pfs.value+" "+pss.value);
         changeMood();
         updatePetStateInBD();
         decreaseStatus();
@@ -90,17 +90,17 @@ function removeClassAnimation(){
 
 //post pet obj
 function updatePetStateInBD() {
-    var update = new Object;
-    update.Id = 4;
-    update.XPStatus = xp.value;  
-    update.EnergyStatus = pes.value;
-    update.LoveStatus = pss.value;
-    update.PlayStatus = pfs.value;
+    var up = new Object;
+    up.Id = 4;
+    up.XPStatus = xp.value;  
+    up.EnergyStatus = pes.value;
+    up.LoveStatus = pss.value;
+    up.PlayStatus = pfs.value;
 
 
-    var jsonString = JSON.stringify(update);
-    console.log(jsonString);
-    putToServer("http://localhost:5000/api/playground", jsonString);
+    // var jsonString = JSON.stringify(update);
+    // console.log(jsonString);
+    update("http://localhost:5000/api/playground", up, ()=>{});
 }
 
 
