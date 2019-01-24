@@ -38,21 +38,13 @@ body {
   position: relative;
 }   
 
-#penguin-down {
-  z-index:8;
-  position: absolute;
-  /* top: 60%;
-  left:30%; */
-  width:400px;
-  height:400px;
-}
 #penguin-container {
   z-index:8;
   position: absolute;
   /* top: 30%;
   left:30%; 
   width:400px;
-  height:400px;*/
+  height:400px; */
 }
 
 #pet-state {
@@ -104,6 +96,45 @@ body {
   100% { left:230px; top:0px; opacity: 0;}
 }
 
+.rollAndMoveRight{
+  animation: rollAndMoveRight 5s;
+}
+@keyframes rollAndMoveRight{
+  0% {
+    left:200px; 
+    top:500px;
+  }
+  50% { 
+    transform: translate(500px, 0px) rotate(1080deg);
+  }
+  100% { 
+    left:200px; 
+    top:500px; 
+  }
+}
+
+.roll {
+  animation: roll ;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes roll{
+  100% {left:300px; transform:rotate(1080deg); }
+}
+
+.moveRight{
+  animation: moveRight ;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes moveRight{
+  0%  {left:200px; top:500px;}
+  50% {transform: translateX(80px);}
+  100% {left:200px; top:500px;}
+}
+
 #no-resolution {
   visibility: hidden;
   position: absolute;
@@ -147,8 +178,8 @@ body {
   #penguin-container {
     top: 20%;
     left:30%;
-    height: 200px;
-    width: 200px;
+    /* height: 200px;
+    width: 200px; */
   }
 
   #pet-state {

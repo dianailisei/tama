@@ -13,12 +13,12 @@
             Menu
         </a>
     </nav>
-    <div id="penguin-container" onclick="doSpecificAnimation()"  onmouseover="showPetState()" onmouseout="hidePetState()">
+    <div id="penguin-container" onclick="doSpecificAnimation()">
         <div id="pet-reaction">💖</div>
         <div id="pet-state">
             <div id = "xp-level">
                 <img class="img-pet shield" alt="pet experience level" src="../resources/medal.png">
-                number
+                {{level}}
             </div>
             <div onclick="changeAnimation('food')">
                 <label for="food-level">
@@ -44,12 +44,13 @@
                 </meter>
             </div>
         </div>
+        <div id="pet-container">
         <svg width="170" height="170" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
             <g id="svg_1">
-             <ellipse ry="48.5" rx="53.5" id="svg_54" cy="79.98" cx="83.98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" fill="#ff0000"/>
+             <ellipse id= "pet-belly"  ry="48.5" rx="53.5" id="svg_54" cy="79.98" cx="83.98" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="null" />
              <style>
-                    #penguin--white-belly {
-                        fill: #ffffff;
+                    #pet-belly {
+                        fill: white;
                     }
                 </style>    
              <path id="svg_28" d="m59.5933,129.46832c-0.7,2.2 -2.5,4.2 -5.4,6.1c-2.6,1.7 5,-2.1 7.1,5.7c0.9,3.4 -0.5,-6.5 8.8,-2.7c1.6,0.6 -3.4,-3.4 -4.4,-8.6c-1.9,-0.2 -4,-0.3 -6.1,-0.5z" fill="#F15A29"/>
@@ -60,6 +61,7 @@
              <path id="svg_34" d="m92.0933,95.66832c0,0 0,0 0,0c-0.8,-0.8 -14.9,-1 -14.9,0.9c0.1,2.2 1.4,3 6.6,11.1c2.3,3.5 9,-11.1 8.3,-12z" fill="#F15A29"/>
             </g>
           </svg>
+        </div>
     </div>
     <div class="background-container">
         <svg id="outdoor-background" style="background: #9AF4EF;" viewBox="0 -140.384 1008.791 612.662" xmlns="http://www.w3.org/2000/svg"
