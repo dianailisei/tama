@@ -7,5 +7,4 @@ function AboutController(view, model) {
     view.addCssLink('css/menu.css');
     // view.removeLastScripts('about');
     view.addScript('menu.js');
-
 }

@@ -123,12 +123,12 @@
                     script.parentNode.removeChild(script);
                 }
             })
+            
         }
     }
 
     function replaceToken(viewHtml, model) {
         var modelProps = Object.getOwnPropertyNames(model);
-
         modelProps.forEach(function (element, index, array) {
             viewHtml = viewHtml.replace('{{' + element + '}}', model[element]);
         });

@@ -31,7 +31,7 @@ function updatePetStateInBD(d) {
 
 
 //get pet obj
-getFromServer("http://localhost:5000/api/test", updatePetStatusShown);
+getFromServer("http://localhost:5000/api/test", {}, updatePetStatusShown);
 function updatePetStatusShown(data) {
     console.log(data);
     var obj = JSON.parse(data);

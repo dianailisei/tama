@@ -32,16 +32,16 @@
         
         <div id="profile-info">
             <label for="email">Email: </label>
-            <input id="email" type="email" placeholder="marrypoppins@gmail.com" readonly><br>
+            <input id="email" type="email" placeholder={{email}} readonly><br>
             <label for="username">Username: </label>
-            <input id="username" type="text" placeholder="Username"><br>
+            <input id="username" type="text" placeholder={{username}}><br>
             <label for="country">Country: </label>
-            <input id="country" type="text" placeholder="Country"><br>
+            <input id="country" type="text" placeholder={{country}}><br>
             <label for="old-password">Current Password: </label>
             <input id="old-password" type="password"><br>
             <label for="new-password">Type new password: </label>
             <input id="new-password" type="password"><br>
-            <button type="submit">Update Profile</button>
+            <button id="update-profile" type="submit">Update Profile</button>
         </div>
     </form>
 </main>
