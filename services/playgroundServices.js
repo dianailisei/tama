@@ -15,7 +15,7 @@ function changeMood(){
         petMood.style.fill = "red";
     }else {
         petMood.style.fill = "white";
-    }
+    } 
 }
 
 (function decreaseStatus(){
