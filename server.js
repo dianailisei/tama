@@ -102,12 +102,63 @@ app.post('/api/users', function (req, res) {
         var request = new sql.Request();
 
         // query to the database and get the records
-        request.query(`insert into Users(Email, Username, Password, Country) values ('${email}', '${username}', '${pwd}', '${country}')`, function (err, recordset) {
+        request.query(`insert into Users(Email, Username, Password, Country) values ('${email}', '${username}', '${pwd}', '${country}')`, function (err, result) {
             if (err) console.log(err)
 
+            let request2 = new sql.Request();
+            request2.query(`SELECT Id FROM Users WHERE Email = '${email}' and Password = '${pwd}'`,function (err, recordset) {
+                if (err) console.log(err) 
+            
+                console.log(recordset.recordset);
+                console.log(recordset.recordset[0].Id);  
+
+                res.send(JSON.stringify({"id": recordset.recordset[0].Id }));
+                res.end();
+                 
+            })
             // send records as a response
             // res.send(recordset.recordset);
-            res.end();
+            // console.log(result);
+            // console.log(result.insertId);
+        });
+    });
+});
+app.post('/api/addPet', function(req, res){
+    var sql = require("mssql");
+    var name = req.body.Name;
+    var age = req.body.Age;
+    var type = req.body.Type;
+    var color = req.body.Color;
+    var description = req.body.Description;
+    var eyesColor = req.body.EyesColor;
+    var config = {
+        user: 'tama',
+        password: 'Zq4ZU299z~-0',
+        server: 'den1.mssql7.gear.host',
+        database: 'tama'
+    };
+    sql.close();
+
+    sql.connect(config, function (err) {
+
+        if (err) console.log(err);
+        console.log(req.body);
+        var request = new sql.Request();
+
+        request.query(`insert into Pets(Name, Age, Type, Color, EyesColor, Description) values ('${name}', '${age}', '${type}', '${color}','${eyesColor}', '${description}')`, function (err, result) {
+            if (err) console.log(err)
+
+            let request2 = new sql.Request();
+            request2.query(`SELECT Id FROM Pets WHERE Name = '${name}' and Age = '${age}' and Description ='${description}'`,function (err, recordset) {
+                if (err) console.log(err) 
+            
+                console.log(recordset.recordset);
+                console.log(recordset.recordset[0].Id);  
+
+                res.send(JSON.stringify({"id": recordset.recordset[0].Id }));
+                res.end();
+                 
+            })
         });
     });
 });

@@ -27,9 +27,13 @@ function RegisterController(view, model) {
             let pwdVerify = document.getElementById("check-password").value;
             if(password === pwdVerify)
             {
-                postToServer(`http://localhost:5000/api/users`, {"email":email, "username":username,"country":country, "password": password}, () => {
-            
-                    localStorage.setItem("user", JSON.stringify({"Email":email, "Username":username,"Country":country, "Password": password}));                    
+                postToServer(`http://localhost:5000/api/users`, {"email":email, "username":username,"country":country, "password": password}, (data) => {
+                    console.log(data);
+                    // console.log(data.responseText);
+                    // console.log(JSON.parse(data.responseText));
+                    console.log(JSON.parse(data).id);
+                    let id = JSON.parse(data).id;
+                    localStorage.setItem("user", JSON.stringify({"Id":id, "Email":email, "Username":username,"Country":country, "Password": password}));                    
                     register();});
             }
             else {

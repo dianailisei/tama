@@ -42,10 +42,14 @@ function postToServer(url, data, callback) {
         referrer: "no-referrer", // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-        .then(response =>
-            callback()
-        ); // parses response to JSON
+        .then(response => {
+            return response.text().then(text => {
+                callback(text);
+            });
+        }); 
+        // parses response to JSON
 }
+
 // function putToServer(url, data, callback) {
 function update(url, data, callback) {
     return fetch(url, {
