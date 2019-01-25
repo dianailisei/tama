@@ -43,7 +43,7 @@ header {
         font-size: 17px;
     }
 
-    #friends-list {
+    #friends-list, #people-list {
         width: 90%;
         list-style-type:none;
         display:grid;
@@ -85,7 +85,7 @@ header {
         font-size: 17px;
     }
 
-    #friends-list {
+    #friends-list, #people-list {
         width: 90%;
         list-style-type:none;
         display:grid;
@@ -127,7 +127,7 @@ header {
         font-size: 17px;
     }
 
-    #friends-list {
+    #friends-list, #people-list {
         width: 70%;
         list-style-type:none;
         display:grid;

@@ -41,6 +41,40 @@ app.get('/api/playground', function (req, res) {
     });
 });
 
+app.get(`/api/user`, function (req, res) {
+
+    var id = req.query.id;
+    var sql = require("mssql");
+    // config for your database
+    var config = {
+        user: 'tama',
+        password: 'Zq4ZU299z~-0',
+        server: 'den1.mssql7.gear.host',
+        database: 'tama'
+    };
+    sql.close();
+
+    // connect to your database
+    sql.connect(config, function (err) {
+
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+
+        // query to the database and get the records
+        request.query(`select * from Users where Id='${id}'`, function (err, recordset) {
+
+            if (err) console.log(err);
+            else {// send records as a response
+                // console.log(recordset);
+                res.send(recordset.recordset);
+            }
+        });
+    });
+});
+
+
 app.get(`/api/users`, function (req, res) {
 
     var username = req.query.username;
@@ -76,6 +110,72 @@ app.get(`/api/users`, function (req, res) {
     });
 });
 
+app.get(`/api/users/all`, function (req, res) {
+
+    // console.log(email, pwd);
+    var sql = require("mssql");
+    // config for your database
+    var config = {
+        user: 'tama',
+        password: 'Zq4ZU299z~-0',
+        server: 'den1.mssql7.gear.host',
+        database: 'tama'
+    };
+    sql.close();
+
+    // connect to your database
+    sql.connect(config, function (err) {
+
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+
+        // query to the database and get the records
+        request.query(`select * from Users`, function (err, recordset) {
+
+            if (err) console.log(err);
+            else {// send records as a response
+                // console.log(recordset);
+                res.send(recordset.recordset);
+            }
+        });
+    });
+});
+
+app.get(`/api/users/friends`, function (req, res) {
+
+    var id = req.query.id;
+    var sql = require("mssql");
+    // config for your database
+    var config = {
+        user: 'tama',
+        password: 'Zq4ZU299z~-0',
+        server: 'den1.mssql7.gear.host',
+        database: 'tama'
+    };
+    sql.close();
+
+    // connect to your database
+    sql.connect(config, function (err) {
+        
+        if (err) console.log(err);
+
+        // create Request object
+        var request = new sql.Request();
+
+        // query to the database and get the records
+        request.query(`select * from Friends where IdUser1='${id}'`, function (err, recordset) {
+
+            if (err) console.log(err);
+            else {// send records as a response
+                // console.log(recordset);
+                res.send(recordset.recordset);
+            }
+        });
+    });
+});
+
 app.post('/api/users', function (req, res) {
     var sql = require("mssql");
     var email = req.body.email;
@@ -97,7 +197,7 @@ app.post('/api/users', function (req, res) {
 
         if (err) console.log(err);
         //console.log(req);
-        console.log(req.body);
+        // console.log(req.body);
         // create Request object
         var request = new sql.Request();
 
@@ -133,7 +233,7 @@ app.put('/api/users', function (req, res) {
 
         if (err) console.log(err);
         //console.log(req);
-        console.log(req.body);
+        // console.log(req.body);
         // create Request object
         var request = new sql.Request();
 
@@ -170,7 +270,7 @@ app.put('/api/playground', function (req, res) {
 
         if (err) console.log(err);
         //console.log(req);
-        console.log(req.body);
+        // console.log(req.body);
         // create Request object
         var request = new sql.Request();
 
