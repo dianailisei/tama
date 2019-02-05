@@ -150,3 +150,28 @@
     }
 
 })();
+
+
+function rollAndMove(){
+    var element = document.getElementById("pet1-container");
+    element.classList.add("rollAndMoveRight");
+}
+
+function rollPet(){
+    var element = document.getElementById("pet1-container");
+    element.classList.add("roll");
+}
+
+
+function movePet(){
+    var element = document.getElementById("pet1-container");
+    element.classList.add("moveRight");
+}
+
+function removeClassAnimation(){
+    var element = document.getElementById("pet1-container");
+    element.classList.remove("roll");
+    element.classList.remove("moveRight");
+    element.classList.remove("rollAndMoveRight");
+
+}
