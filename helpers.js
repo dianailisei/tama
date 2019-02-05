@@ -46,8 +46,8 @@ function postToServer(url, data, callback) {
             return response.text().then(text => {
                 callback(text);
             });
-        }); 
-        // parses response to JSON
+        });
+    // parses response to JSON
 }
 
 // function putToServer(url, data, callback) {
@@ -80,8 +80,22 @@ function register() {
     window.location.href = "#account";
 }
 
-function updateView(user)
-{
+function updateAccountForm(user) {
     localStorage.setItem("user", JSON.stringify(user));
-    window.location.reload();
+    let usernameInput = document.getElementById("username");
+    let countryInput = document.getElementById("country");
+    if (user.Username !== usernameInput.getAttribute("placeholder")) {
+        usernameInput.setAttribute("placeholder", user.Username);
+    }
+    if (user.Country != countryInput.getAttribute("placeholder")) {
+        countryInput.setAttribute("placeholder", user.Country);
+    }
+    clearInputs();
+}
+
+function clearInputs() {
+    let inputs = document.getElementsByTagName("input");
+    for(let input of inputs) {
+        input.value = '';
+    }
 }

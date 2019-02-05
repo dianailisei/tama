@@ -54,7 +54,7 @@ app.get(`/api/users`, function (req, res) {
         request.query(`select * from Users where Username='${username}' and Password='${pwd}'`, function (err, recordset) {
             if (err) console.log(err);
             else {
-                console.log(recordset);
+                // console.log(recordset);
                 res.send(recordset.recordset);
             }
         });

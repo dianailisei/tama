@@ -24,7 +24,7 @@ function AccountController(view, model) {
             if (country === '') country = model.country;
             let oldPwd = document.getElementById("old-password").value;
             if (oldPwd === model.password) {
-                update(`http://localhost:7000/api/users`, { "email": email, "username": username, "country": country, "password": password }, () => updateView({ "Email": email, "Username": username, "Country": country, "Password": password }))
+                update(`http://localhost:7000/api/users`, { "email": email, "username": username, "country": country, "password": password }, () => updateAccountForm({ "Email": email, "Username": username, "Country": country, "Password": password }))
             };
         })
     }, 500);
