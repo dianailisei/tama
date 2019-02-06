@@ -18,7 +18,7 @@ var sql = require("mssql");
 
 app.use(express.static(__dirname));
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.sendFile('./index.html');
 });
 
@@ -85,7 +85,7 @@ app.get(`/api/users/friends`, function (req, res) {
         if (err) console.log(err);
 
         var request = new sql.Request();
-        request.query(`select * from Friends where IdUser1='${id}'`, function (err, recordset) {
+        request.query(`select * from Friends where IdUser1=${id}`, function (err, recordset) {
             if (err) console.log(err);
             else {
                 res.send(recordset.recordset);
@@ -109,15 +109,15 @@ app.post('/api/users', function (req, res) {
             if (err) console.log(err)
 
             let request2 = new sql.Request();
-            request2.query(`SELECT Id FROM Users WHERE Email = '${email}' and Password = '${pwd}'`,function (err, recordset) {
-                if (err) console.log(err) 
-            
-                console.log(recordset.recordset);
-                console.log(recordset.recordset[0].Id);  
+            request2.query(`SELECT Id FROM Users WHERE Email = '${email}' and Password = '${pwd}'`, function (err, recordset) {
+                if (err) console.log(err)
 
-                res.send(JSON.stringify({"id": recordset.recordset[0].Id }));
+                console.log(recordset.recordset);
+                console.log(recordset.recordset[0].Id);
+
+                res.send(JSON.stringify({ "id": recordset.recordset[0].Id }));
                 res.end();
-                 
+
             })
         });
     });
@@ -150,7 +150,7 @@ app.get('/api/playground', function (req, res) {
         var request = new sql.Request();
         request.query(`select * from Pets where Id='${petId}'`, function (err, recordset) {
             if (err) console.log(err)
-           res.send(recordset.recordset);
+            res.send(recordset.recordset);
         });
     });
 });
@@ -179,7 +179,7 @@ app.put('/api/playground', function (req, res) {
 });
 
 /* ADD PET */
-app.post('/api/addPet', function(req, res){
+app.post('/api/addPet', function (req, res) {
     var name = req.body.Name;
     var age = req.body.Age;
     var type = req.body.Type;
@@ -197,21 +197,21 @@ app.post('/api/addPet', function(req, res){
             if (err) console.log(err)
 
             let request2 = new sql.Request();
-            request2.query(`SELECT Id FROM Pets WHERE Name = '${name}' and Age = '${age}' and Description ='${description}'`,function (err, recordset) {
-                if (err) console.log(err) 
-            
+            request2.query(`SELECT Id FROM Pets WHERE Name = '${name}' and Age = '${age}' and Description ='${description}'`, function (err, recordset) {
+                if (err) console.log(err)
+
                 console.log(recordset.recordset);
-                console.log(recordset.recordset[0].Id);  
-                res.send(JSON.stringify({"id": recordset.recordset[0].Id }));
+                console.log(recordset.recordset[0].Id);
+                res.send(JSON.stringify({ "id": recordset.recordset[0].Id }));
                 res.end();
-                 
+
             })
         });
     });
 });
 
 /* DEFAULT */
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
     res.sendFile(`${__dirname}/index.html`);
 });
 

@@ -6,10 +6,16 @@ function getByUsernameFromServer(url, callback) {
 
     Http.onreadystatechange = (e) => {
         if (Http.readyState === 4 && Http.status === 200) {
-            if (callback) {
-                callback(Http.responseText);
+            if (Http.responseText == "[]") {
+                Alert.render("Incorrect username or password. Please try again.")
+                clearInputs();
             }
+            else
+                if (callback) {
+                    callback(Http.responseText);
+                }
         }
+        
     };
 }
 
@@ -90,12 +96,36 @@ function updateAccountForm(user) {
     if (user.Country != countryInput.getAttribute("placeholder")) {
         countryInput.setAttribute("placeholder", user.Country);
     }
+    Alert.render("Changes have been made successfully");
     clearInputs();
 }
 
 function clearInputs() {
     let inputs = document.getElementsByTagName("input");
-    for(let input of inputs) {
+    for (let input of inputs) {
         input.value = '';
     }
 }
+
+
+function CustomAlert() {
+    this.render = function (dialog) {
+        var winW = window.innerWidth;
+        var winH = window.innerHeight;
+        var dialogoverlay = document.getElementById('dialogoverlay');
+        var dialogbox = document.getElementById('dialogbox');
+        dialogoverlay.style.display = "block";
+        dialogoverlay.style.height = winH + "px";
+        dialogbox.style.left = (winW / 2) - (550 * .5) + "px";
+        dialogbox.style.top = "100px";
+        dialogbox.style.display = "block";
+        document.getElementById('dialogboxhead').innerHTML = "Warning";
+        document.getElementById('dialogboxbody').innerHTML = dialog;
+        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
+    }
+    this.ok = function () {
+        document.getElementById('dialogbox').style.display = "none";
+        document.getElementById('dialogoverlay').style.display = "none";
+    }
+}
+var Alert = new CustomAlert();

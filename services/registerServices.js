@@ -31,7 +31,7 @@ setTimeout(() => {
                 register();});
         }
         else {
-            alert("Passwords don't match!");
+            Alert.render("Passwords do not match! Please try again.")
         }
     })
 }, 500);
