@@ -8,68 +8,54 @@ function YourFriendsController(view, model) {
     let user = JSON.parse(localStorage.getItem("user"));
     model.email = user.Email;
     model.id = user.Id;
-    let friends = [];
-
+    let friends;
     setTimeout(() => {
         let friendsList = document.getElementById("friends-list");
-        // console.log(model.id);
         getFromServer(`http://localhost:7000/api/users/friends?id=${model.id}`, (data) => {
-            let people = JSON.parse(data);
-            people.forEach(user => {
-                console.log(user);
-                friends.push(user.IdUser2);
-                // 
+            friends = JSON.parse(data);
+            friends.forEach(friend => {
+                let userContainer = document.createElement("li");
+                userContainer.classList.add("friend-container");
+                let nameContainer = document.createElement("div");
+                let nameParagraph = document.createElement("p");
+                let link = document.createElement("a");
+                link.classList.add("friend-pic");
+                // link.href = "#friend-account";
+                let img = document.createElement("img");
+                img.dataset.id = friend.Id;
+                img.src = "../resources/default-profile-pic.png";
+                img.alt = "profile picture";
+                link.appendChild(img);
+                nameParagraph.classList.add("friend-name");
+                nameParagraph.innerText = friend.Username;
+                secondParagraph = document.createElement("p");
+                secondParagraph.classList.add("friend-pets-number");
+                secondParagraph.innerText = `${friend.Username} is from ${friend.Country}`;
+                nameContainer.appendChild(nameParagraph);
+                nameContainer.appendChild(secondParagraph);
+                userContainer.appendChild(link);
+                userContainer.appendChild(nameContainer);
+                friendsList.appendChild(userContainer);
             });
-            friends.forEach((friend, index) => {
-
-                getFromServer(`http://localhost:7000/api/user?id=${friend}`, (resp) => {
-
-                    let currentFriend = JSON.parse(resp)[0];
-                    let userContainer = document.createElement("li");
-                    userContainer.classList.add("friend-container");
-                    let nameContainer = document.createElement("div");
-                    let nameParagraph = document.createElement("p");
-                    let link = document.createElement("a");
-                    link.classList.add("friend-pic");
-                    link.href = "#friend-account";
-                    let img = document.createElement("img");
-                    img.src = "../resources/default-profile-pic.png";
-                    img.alt = "profile picture";
-                    link.appendChild(img);
-                    nameParagraph.classList.add("friend-name");
-                    nameParagraph.innerText = currentFriend.Username;
-                    secondParagraph = document.createElement("p");
-                    secondParagraph.classList.add("friend-pets-number");
-                    secondParagraph.innerText = `${currentFriend.Username} is from ${currentFriend.Country}`;
-                    nameContainer.appendChild(nameParagraph);
-                    nameContainer.appendChild(secondParagraph);
-                    userContainer.appendChild(link);
-                    userContainer.appendChild(nameContainer);
-                    friendsList.appendChild(userContainer);
-                });
-
-            })
         })
     }
         , 500);
 
     setTimeout(() => {
         let usersList = document.getElementById("people-list");
-        //get all users
-        //delete myself and my friends
-        // console.log(usersList);
         getFromServer(`http://localhost:7000/api/users/all`, (data) => {
             let people = JSON.parse(data);
             people.forEach(user => {
-                if (user.Email !== model.Email) {
+                if (user.Id !== model.id && isFriend(friends, user)) {
                     let userContainer = document.createElement("li");
                     userContainer.classList.add("friend-container");
                     let nameContainer = document.createElement("div");
                     let nameParagraph = document.createElement("p");
                     let link = document.createElement("a");
                     link.classList.add("friend-pic");
-                    link.href = "#friend-account";
+                    // link.href = "#friend-account";
                     let img = document.createElement("img");
+                    img.dataset.id = user.Id;
                     img.src = "../resources/default-profile-pic.png";
                     img.alt = "profile picture";
                     link.appendChild(img);
@@ -85,7 +71,43 @@ function YourFriendsController(view, model) {
                     usersList.appendChild(userContainer);
                 }
             })
-
         })
-    }, 2000)
+        let clickCount = 0;
+
+        let container = document.getElementById("friends-list-container");
+        container.addEventListener("click", e => {
+            e.preventDefault();
+            clickCount++;
+            if (clickCount === 1) {
+                singleClickTimer = setTimeout(() => {
+                    clickCount = 0;
+                    singleClick(e);
+                }, 400)
+            }
+            else if (clickCount === 2) {
+                clearTimeout(singleClickTimer);
+                clickCount = 0;
+                doubleClick(e, model.id);
+            }
+        })
+
+    }, 2000);
+}
+
+function singleClick(e) {
+    let id = e.target.dataset.id;
+    getFromServer(`http://localhost:7000/api/user?id=${id}`, (res) => {
+        localStorage.setItem("friend", JSON.stringify(JSON.parse(res)[0]));
+        window.location.href = '#friend-account';
+    })
+}
+
+function doubleClick(e, userId) {
+    let container = document.getElementById("people-list");
+    if (container.contains(e.target)) {
+        let id = e.target.dataset.id;
+        postToServer(`http://localhost:7000/api/friends`, {"id1":userId, "id2":id}, (result) => {
+            Alert.render("Friend added successfully!");
+        })
+    }
 }

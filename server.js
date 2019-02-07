@@ -85,7 +85,7 @@ app.get(`/api/users/friends`, function (req, res) {
         if (err) console.log(err);
 
         var request = new sql.Request();
-        request.query(`select * from Friends where IdUser1=${id}`, function (err, recordset) {
+        request.query(`select u.Id, u.Username, u.Country from Users as u join Friends as f on u.id = f.IdUser2 where f.IdUser1=${id}`, function (err, recordset) {
             if (err) console.log(err);
             else {
                 res.send(recordset.recordset);
@@ -112,7 +112,7 @@ app.post('/api/users', function (req, res) {
             request2.query(`SELECT Id FROM Users WHERE Email = '${email}' and Password = '${pwd}'`, function (err, recordset) {
                 if (err) console.log(err)
 
-                console.log(recordset.recordset);
+                // console.log(recordset.recordset);
                 console.log(recordset.recordset[0].Id);
 
                 res.send(JSON.stringify({ "id": recordset.recordset[0].Id }));
@@ -141,6 +141,22 @@ app.put('/api/users', function (req, res) {
     });
 });
 
+
+/* Friends */
+
+app.post('/api/friends', function (req, res) {
+    var IdUser1 = req.body.id1;
+    var IdUser2 = req.body.id2;
+    sql.close();
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(`insert into Friends (IdUser1, IdUser2) values(${IdUser1}, ${IdUser2})`, function (err, recordset) {
+            if (err) console.log(err);
+            res.end();
+        })
+    })
+});
 /* PLAYGROUND */
 app.get('/api/playground', function (req, res) {
     var id = req.query.petId;

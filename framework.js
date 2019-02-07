@@ -143,7 +143,6 @@
 
         routeName = pageHash.replace('/', '');
         routeObj = this._routeMap[routeName];
-
         if (!routeObj)
             routeObj = _defaultRoute;
         loadTemplate(routeObj, _viewElement, pageHash);
@@ -152,23 +151,23 @@
 })();
 
 
-function rollAndMove(){
+function rollAndMove() {
     var element = document.getElementById("pet1-container");
     element.classList.add("rollAndMoveRight");
 }
 
-function rollPet(){
+function rollPet() {
     var element = document.getElementById("pet1-container");
     element.classList.add("roll");
 }
 
 
-function movePet(){
+function movePet() {
     var element = document.getElementById("pet1-container");
     element.classList.add("moveRight");
 }
 
-function removeClassAnimation(){
+function removeClassAnimation() {
     var element = document.getElementById("pet1-container");
     element.classList.remove("roll");
     element.classList.remove("moveRight");

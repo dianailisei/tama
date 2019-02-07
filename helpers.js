@@ -15,7 +15,7 @@ function getByUsernameFromServer(url, callback) {
                     callback(Http.responseText);
                 }
         }
-        
+
     };
 }
 
@@ -129,3 +129,15 @@ function CustomAlert() {
     }
 }
 var Alert = new CustomAlert();
+
+function isFriend(friends, user) {
+    let ok = 0;
+    friends.forEach(friend => {
+        if (friend.Id === user.Id) {
+            ok = 1;
+            // console.log(friend.Id, user.Id);
+        }
+    });
+    if (ok === 0) return true;
+    else return false;
+}
