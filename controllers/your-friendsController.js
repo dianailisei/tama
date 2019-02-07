@@ -81,7 +81,7 @@ function YourFriendsController(view, model) {
             if (clickCount === 1) {
                 singleClickTimer = setTimeout(() => {
                     clickCount = 0;
-                    singleClick(e);
+                    singleClick(friends, e);
                 }, 400)
             }
             else if (clickCount === 2) {
@@ -94,10 +94,17 @@ function YourFriendsController(view, model) {
     }, 2000);
 }
 
-function singleClick(e) {
+function singleClick(friends, e) {
     let id = e.target.dataset.id;
     getFromServer(`http://localhost:7000/api/user?id=${id}`, (res) => {
-        localStorage.setItem("friend", JSON.stringify(JSON.parse(res)[0]));
+        let currentFriend = JSON.parse(res)[0];
+        if(isFriend(friends, currentFriend)) {
+            currentFriend.isFriend = 1;
+        }
+        else {
+            currentFriend.isFriend = 0;
+        }
+        localStorage.setItem("friend", JSON.stringify(currentFriend));
         window.location.href = '#friend-account';
     })
 }

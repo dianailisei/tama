@@ -157,6 +157,20 @@ app.post('/api/friends', function (req, res) {
         })
     })
 });
+
+app.delete('/api/friends', function (req, res) {
+    var IdUser1 = req.body.id1;
+    var IdUser2 = req.body.id2;
+    sql.close();
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(`delete from Friends where IdUser1 = ${IdUser1} and IdUser2 = ${IdUser2}`, function (err, recordset) {
+            if (err) console.log(err);
+            res.end();
+        })
+    })
+});
 /* PLAYGROUND */
 app.get('/api/playground', function (req, res) {
     var id = req.query.petId;
