@@ -10,6 +10,10 @@ body {
     grid-area: info;
 }
 
+.is-inactive {
+    display:none;
+}
+
 #pets-list {
     list-style-type:none;
 }
