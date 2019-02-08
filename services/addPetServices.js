@@ -2,78 +2,65 @@ var user = localStorage.getItem("user");
 user = JSON.parse(user);
 var userId = user.Id;
 
-//TODO: setState for form!
-//TODO: verify POST! typeof(pet.type)
-
-var type;
-var description;
-var name;
-var age;
-var color;
-const xp = 1;
-var eyesColor;
 var petForm = document.getElementById("pet-form");
-var pet = document.getElementById("pet-wrapper");
+var petContent = document.getElementById("pet-wrapper");
+// var typeArr = ["penguin", "spider", "fish", "bunny", "bird"];
+var pet;
 
-function changePetEyesColor(val) {
-    console.log(val);
-    var petEyes = document.getElementsByClassName("pet-eyes");
-    console.log(petEyes);
+function petConstructorAddPet(){
+    this.type;
+    this.name;
+    this.age;
+    this.bodyColor;
+    this.eyesColor;
+    this.description;
+    this.xp =1;
 
-    for(var i= 0; i < petEyes.length; i++){
-        petEyes.item(i).style.fill = val;
-        console.log(petEyes.item(i) +" " +val);
+    this.updateType = function(type){
+        this.type = type;
+        changePetSVG();
+    }
+    this.updateName = function(name){
+        this.name = name;
+    }
+    this.updateAge = function(age){
+        this.age = age;
+    }
+    this.updateBodyColor = function(bodyColor){
+        this.bodyColor = bodyColor;
+        changePetColor(this, petContent);
+    }
+    this.updateEyesColor = function(eyesColor){
+        this.eyesColor =eyesColor;
+        changePetEyesColor(this, petContent);
+    }
+    this.updateDescription = function(description){
+        this.description =description;
+    }
+    this.updateAll = function(){
+        pet.updateType(document.getElementById("pet-select").value);
+        pet.updateDescription(document.getElementById("pet-description").value);
+        pet.updateName(document.getElementById("pet-name").value);
+        pet.updateAge(document.getElementById("pet-age").value);
+        pet.updateBodyColor(document.getElementById("pet-color").value);
+        pet.updateEyesColor(document.getElementById("pet-eyes-color").value);
     }
 }
 
-function changePetColor(val) {
-    var petColor = document.getElementsByClassName("pet-body");
-    console.log(petColor);
-
-    for(var i= 0; i < petColor.length; i++){
-        petColor.item(i).style.fill = val;
-        console.log(petColor.item(i) +" " +val);
-    }
-}
-
-var petImage;
 function changePetSVG() {
     type = document.getElementById("pet-select").value;
-    petImage = document.getElementById(type);
-    console.log(petImage.content);
+    var petImage = document.getElementById(type);
+    // console.log(petImage.content);
 
-    pet.innerHTML = petImage.innerHTML;
+    petContent.innerHTML = petImage.innerHTML;
 }
 
 petForm.addEventListener("click", (e) =>{
-    // e.preventDefault();
-    type = document.getElementById("pet-select").value;
-    description = document.getElementById("pet-description").value;
-    name = document.getElementById("pet-name").value;
-    age = document.getElementById("pet-age").value;
-    color = document.getElementById("pet-color").value;
-    changePetColor(color);
-    eyesColor = document.getElementById("pet-eyes-color").value;
-    changePetEyesColor(eyesColor);
- })
-
-var typeArr = ["penguin", "spider", "fish", "bunny", "bird"];
+    pet = new petConstructorAddPet();
+})
 
 function postPet(){
-    if(typeArr.indexOf(type) < 0 ){
-        Alert.render("select pet!")
-        return;
-    }
-    if(!/^[a-zA-Z\d ]+$/.test(name)){
-        Alert.render("give your pet a name!")
-        return;
-    }
-    if(!/^[\d]+$/.test(age)){
-        Alert.render("age!")
-        return ;
-    }
-    
-    postToServer(`http://localhost:7000/api/addPet?id=${userId}`, { "Name": name, "Age": age, "Type": type, "Color": color, "EyesColor": eyesColor, "Description": description ,"XPStatus" : 1}, (data) => {
+    postToServer(`http://localhost:7000/api/addPet?id=${userId}`, { "Name": pet.name, "Age": pet.age, "Type": pet.type, "Color": pet.color, "EyesColor": pet.eyesColor, "Description": pet.description ,"XPStatus" : pet.xp}, (data) => {
         console.log(data);
         // console.log(data.responseText);
         // console.log(JSON.parse(data.responseText));

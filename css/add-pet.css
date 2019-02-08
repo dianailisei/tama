@@ -53,6 +53,7 @@ textarea {
 
 input {
     display: inline;
+    /* width: 80%; */
     margin: 0;
     border: none;
     font-size: inherit;

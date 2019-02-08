@@ -20,19 +20,22 @@ body {
   flex-direction: row;
   position: absolute;
   justify-content: space-evenly;
-  top: 30%;
+  top: 20%;
 }
 
 .pet-wrapperCont {
   z-index: 8;
   text-align: center;
+  width: 200px;
+  height: 200px;
 }
 
 .background-container {
   display: block;
   position: relative;
   background-color:#98F5FF;
-
+  /* height: 200%; */
+  width: 100%;
 }  
 
 .pet-state-flex {
@@ -44,8 +47,8 @@ body {
   visibility: visible;
   /* position: absolute; */
   display: block;
-  height: 200px;
-  width: 200px;
+  height: 50%;
+  width: 80%;
   top: -100px;
   background-color: white;
   border-radius: 5%;
@@ -103,7 +106,7 @@ meter::-webkit-meter-even-less-good-value  {
 }
 @keyframes rollAndMoveRight{
   0%   { left:200px; top:500px; }
-  50%  { transform: translate(500px, 0px) rotate(1080deg); }
+  50%  { transform: translate(200px, 0px) rotate(1080deg); }
   100% { left:200px; top:500px; }
 }
 
@@ -174,7 +177,10 @@ meter::-webkit-meter-even-less-good-value  {
 
 @media all and (max-width:767px) {
   .background-container{
-    visibility: hidden;
+    /* visibility: hidden; */
+    width: 200%;
+    height: 200%;
+    overflow: hidden;
   }
   .pets {
     flex-direction: column;
