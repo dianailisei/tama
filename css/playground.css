@@ -31,6 +31,8 @@ body {
 .background-container {
   display: block;
   position: relative;
+  background-color:#98F5FF;
+
 }  
 
 .pet-state-flex {
@@ -100,17 +102,19 @@ meter::-webkit-meter-even-less-good-value  {
   animation: rollAndMoveRight 5s;
 }
 @keyframes rollAndMoveRight{
-  0% {
-    left:200px; 
-    top:500px;
-  }
-  50% { 
-    transform: translate(500px, 0px) rotate(1080deg);
-  }
-  100% { 
-    left:200px; 
-    top:500px; 
-  }
+  0%   { left:200px; top:500px; }
+  50%  { transform: translate(500px, 0px) rotate(1080deg); }
+  100% { left:200px; top:500px; }
+}
+
+.rollAndMoveLeft{
+  animation: rollAndMoveLeft 5s;
+}
+
+@keyframes rollAndMoveLeft{
+  0%   { left:200px; top:500px; }
+  50%  { transform: translate(-200px, 0px) rotate(1080deg); }
+  100% { left:200px; top:500px; }
 }
 
 .roll {
@@ -121,6 +125,20 @@ meter::-webkit-meter-even-less-good-value  {
 
 @keyframes roll{
   100% {left:300px; transform:rotate(1080deg); }
+}
+
+.jumpUp {
+  animation: jumpUp;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes jumpUp{
+  0%   { transform: scale(1) translate(0px, 1px); }
+  25%  { transform: scale(0.7) translate(0px, -50px); }
+  50%  { transform: scale(1.5) translate(0px, -20px); }
+  75%  {transform: scale(0.7) translate(0px, -50px); }
+  100% { transform: scale(1) translate(0px, 0px); }
 }
 
 .moveRight{
@@ -134,6 +152,19 @@ meter::-webkit-meter-even-less-good-value  {
   50% {transform: translateX(80px);}
   100% {left:200px; top:500px;}
 }
+
+.moveLeft{
+  animation: moveLeft ;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+}
+
+@keyframes moveLeft{
+  0%  {left:200px; top:500px;}
+  50% {transform: translateX(-80px);}
+  100% {left:200px; top:500px;}
+}
+
 
 #no-resolution {
   visibility: hidden;

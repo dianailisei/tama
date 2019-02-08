@@ -157,22 +157,23 @@ app.post('/api/friends', function (req, res) {
         })
     })
 });
+
 /* PLAYGROUND */
 app.get('/api/playground', function (req, res) {
-    var id = req.query.petId;
+    var id = req.query.id;
     sql.close();
     sql.connect(config, function (err) {
         if (err) console.log(err);
         var request = new sql.Request();
-        request.query(`select * from Pets where Id='${petId}'`, function (err, recordset) {
+        request.query(`SELECT p.Id, p.Name, p.Age, p.Type, p.Color, p.EyesColor, p.XPStatus, p.EnergyStatus, p.LoveStatus, p.PlayStatus, p.Description 
+                        from Owner as o
+                        JOIN Pets as p on o.IdPet = p.Id
+                        WHERE o.IdUser =${id}`, function (err, recordset) {
             if (err) console.log(err)
             res.send(recordset.recordset);
         });
     });
 });
-
-
-
 
 app.put('/api/playground', function (req, res) {
     var id = req.body.Id;
@@ -181,6 +182,7 @@ app.put('/api/playground', function (req, res) {
     var pes = req.body.EnergyStatus;
     var pss = req.body.LoveStatus;
     sql.close();
+    console.log(id, xp, pfs, pes, pss);
 
     sql.connect(config, function (err) {
 
@@ -196,12 +198,14 @@ app.put('/api/playground', function (req, res) {
 
 /* ADD PET */
 app.post('/api/addPet', function (req, res) {
+    var userId = req.query.id;
     var name = req.body.Name;
     var age = req.body.Age;
     var type = req.body.Type;
     var color = req.body.Color;
     var description = req.body.Description;
     var eyesColor = req.body.EyesColor;
+    var xp = req.body.XPStatus;
     sql.close();
 
     sql.connect(config, function (err) {
@@ -209,15 +213,21 @@ app.post('/api/addPet', function (req, res) {
 
         console.log(req.body);
         var request = new sql.Request();
-        request.query(`insert into Pets(Name, Age, Type, Color, EyesColor, Description) values ('${name}', '${age}', '${type}', '${color}','${eyesColor}', '${description}')`, function (err, result) {
+        request.query(`insert into Pets(Name, Age, Type, Color, EyesColor, Description, XPStatus) values ('${name}', '${age}', '${type}', '${color}','${eyesColor}', '${description}', '${xp}')`, function (err, result) {
             if (err) console.log(err)
 
             let request2 = new sql.Request();
             request2.query(`SELECT Id FROM Pets WHERE Name = '${name}' and Age = '${age}' and Description ='${description}'`, function (err, recordset) {
                 if (err) console.log(err)
 
-                console.log(recordset.recordset);
-                console.log(recordset.recordset[0].Id);
+                let petId = recordset.recordset[0].Id;
+                var req3 = new sql.Request();
+                req3.query(`INSERT into Owner (owner.IdUser, owner.IdPet) values (${userId}, ${petId})`, function (err, recordset3){
+                    if (err) console.log(err)
+                })
+                
+                // console.log(recordset.recordset);
+                // console.log(recordset.recordset[0].Id);
                 res.send(JSON.stringify({ "id": recordset.recordset[0].Id }));
                 res.end();
 

@@ -20,27 +20,28 @@
     <div id="new-pet-form-container">
          <form id="pet-form">
               <label for="pet-select">This is a: </label>
-              <select id="pet-select" onchange="changePetSVG()">
-                   <option value="penguin">Penguin</option>
-                   <option value="spider">Spider</option>
-                   <option value="bunny">Bunny</option>
-                   <option value="bird">Bird</option>
+              <select requiered id="pet-select" onchange="changePetSVG()">
+                    <option value="" selected >Choose pet</option>
+                    <option value="penguin">Penguin</option>
+                    <option value="spider">Spider</option>
+                    <option value="bunny">Bunny</option>
+                    <option value="bird">Bird</option>
                     <option value="fish">Fish</option>
                 </select> <br>
               <label for="pet-name">Pet's name: </label>
-              <input id="pet-name" type="text" placeholder="Croco.."><br>
+              <input  requiered id="pet-name" type="text" placeholder="Croco.."><br>
               <label for="pet-age">Age: </label>
-              <input id="pet-age" type="text" placeholder="How old is your pet?"><br>
+              <input   requiered id="pet-age" type="text" placeholder="How old is your pet?" ><br>
               <label for="pet-color"> Pet's color: </label>
-              <input type="color" value="#D3D3D3" id="pet-color"onchange="changePetColor(value)">
+              <input   requiered type="color" value="#FFFACD" id="pet-color" onchange="changePetColor(value)" >
               <br>
               <label for="pet-eyes-color"> Pet's eyes color: </label>
-              <input type="color" value="#D3D3D3" id="pet-eyes-color" onchange="changePetEyesColor(value)">
+              <input  requiered type="color" value="#000000" id="pet-eyes-color" onchange="changePetEyesColor(value)"  >
               <br>
               <label for="pet-description">Description: </label>
               <br>
               <textarea id="pet-description"></textarea>
-              <button type="submit">Save</button>
+              <button type="submit" onclick="postPet()">Submit</button>
          </form>
     </div>
 
