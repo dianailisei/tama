@@ -46,7 +46,7 @@ function changePetSVG() {
 }
 
 petForm.addEventListener("click", (e) =>{
-    e.preventDefault();
+    // e.preventDefault();
     type = document.getElementById("pet-select").value;
     description = document.getElementById("pet-description").value;
     name = document.getElementById("pet-name").value;
@@ -55,7 +55,7 @@ petForm.addEventListener("click", (e) =>{
     changePetColor(color);
     eyesColor = document.getElementById("pet-eyes-color").value;
     changePetEyesColor(eyesColor);
-})
+ })
 
 var typeArr = ["penguin", "spider", "fish", "bunny", "bird"];
 
