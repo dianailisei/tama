@@ -182,9 +182,9 @@ app.get('/api/playground', function (req, res) {
                         from Owner as o
                         JOIN Pets as p on o.IdPet = p.Id
                         WHERE o.IdUser =${id}`, function (err, recordset) {
-            if (err) console.log(err)
-            res.send(recordset.recordset);
-        });
+                if (err) console.log(err)
+                res.send(recordset.recordset);
+            });
     });
 });
 
@@ -236,10 +236,10 @@ app.post('/api/addPet', function (req, res) {
 
                 let petId = recordset.recordset[0].Id;
                 var req3 = new sql.Request();
-                req3.query(`INSERT into Owner (owner.IdUser, owner.IdPet) values (${userId}, ${petId})`, function (err, recordset3){
+                req3.query(`INSERT into Owner (owner.IdUser, owner.IdPet) values (${userId}, ${petId})`, function (err, recordset3) {
                     if (err) console.log(err)
                 })
-                
+
                 // console.log(recordset.recordset);
                 // console.log(recordset.recordset[0].Id);
                 res.send(JSON.stringify({ "id": recordset.recordset[0].Id }));
@@ -251,24 +251,48 @@ app.post('/api/addPet', function (req, res) {
 });
 
 /* Pet */
-// app.get(`/api/pets`, function (req, res) {
-//     var id = req.query.id;
-//     sql.close();
+app.get(`/api/pets`, function (req, res) {
+    var id = req.query.id;
+    sql.close();
 
-//     sql.connect(config, function (err) {
-//         if (err) console.log(err);
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
 
-//         var request = new sql.Request();
-//         request.query(`select `, function (err, recordset) {
-//             if (err) console.log(err);
-//             else {
-//                 // console.log(recordset);
-//                 res.send(recordset.recordset);
-//             }
-//         });
-//     });
-// });
+        var request = new sql.Request();
+        request.query(`select p.Id, p.Age, p.Gender, p.Name, p.Type, p.Color, p.EyesColor, p1.Id, p1.Name, p1.Color, p1.Age, p1.EyesColor, p1.Gender, p1.Type from Pets p 
+        join Owner o on p.Id = o.IdPet 
+        left join PetFriends pf on p.Id = pf.IdPet1 
+        left join Pets p1 on pf.idPet2 = p1.Id
+        where o.IdUser = ${id}`, function (err, recordset) {
+                if (err) console.log(err);
+                else {
+                    console.log(recordset.recordset);
+                    res.send(recordset.recordset);
+                }
+            });
+    });
+});
 
+app.delete('/api/pets', function (req, res) {
+    var id = req.body.id;
+    sql.close();
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(`delete from Owner where IdPet = ${id}`, function (err, recordset) {
+            if (err) console.log(err);
+            let request2 = new sql.Request();
+            request2.query(`delete from PetFriends where IdPet1=${id} or IdPet2=${id}`, function (err, recordset1) {
+                if (err) console.log(err);
+                let request3 = new sql.Request();
+                request3.query(`delete from Pets where Id=${id}`, function (err, recordset2) {
+                    if (err) console.log(err);
+                })
+            })
+            res.end();
+        })
+    })
+});
 /* DEFAULT */
 app.get('*', function (req, res) {
     res.sendFile(`${__dirname}/index.html`);

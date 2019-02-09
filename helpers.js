@@ -129,7 +129,6 @@ function clearInputs() {
     }
 }
 
-
 function CustomAlert() {
     this.render = function (dialog) {
         var winW = window.innerWidth;

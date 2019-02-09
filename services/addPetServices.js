@@ -28,7 +28,7 @@ function petConstructorAddPet(){
         this.age = age;
     }
     this.updateGender = function(gender){
-        this.gender = gender;
+        this.gender = gender.replace(' ', '');
     }
     this.updateBodyColor = function(bodyColor){
         this.bodyColor = bodyColor;
@@ -66,10 +66,10 @@ petForm.addEventListener("click", (e) =>{
 
 function postPet(){
     postToServer(`http://localhost:7000/api/addPet?id=${userId}`, { "Name": pet.name, "Age": pet.age, "Gender":pet.gender, "Type": pet.type, "Color": pet.bodyColor, "EyesColor": pet.eyesColor, "Description": pet.description ,"XPStatus" : pet.xp}, (data) => {
-        console.log(data);
+        // console.log(data);
         // console.log(data.responseText);
         // console.log(JSON.parse(data.responseText));
-        console.log(JSON.parse(data).id);
+        // console.log(JSON.parse(data).id);
         // let id = JSON.parse(data).id;
         // localStorage.setItem("pets", JSON.stringify({ "Id": id, "Name": name, "Age": age, "Type": type, "Color": color, "Description": description }));
         window.location.href = "#playground";

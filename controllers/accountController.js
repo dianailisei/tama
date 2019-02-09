@@ -2,7 +2,7 @@ function AccountController(view, model) {
     view.removeLastCssLink();
     view.addCssLink('css/account.css');
     view.addCssLink('css/menu.css');
-    // view.removeLastScripts('account');
+    view.removeLastScripts();
     let user = JSON.parse(localStorage.getItem("user"));
     model.username = user.Username;
     model.email = user.Email;
