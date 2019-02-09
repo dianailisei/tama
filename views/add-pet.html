@@ -32,6 +32,12 @@
               <input  required id="pet-name" type="text" placeholder="Croco.." onchange="pet.updateAll()"><br>
               <label for="pet-age">Age: </label>
               <input   required id="pet-age" type="number" min="1" placeholder="How old is your pet?" onchange="pet.updateAll()"><br>
+              <label for="pet-gender">This is a: </label>
+              <select required id="pet-gender" onchange="pet.updateAll()">
+                  <option selected value="">Choose gender</option>
+                  <option value="female">Female</option>
+                  <option value="male">Male</option>
+              </select><br>
               <label for="pet-color"> Pet's color: </label>
               <input   required type="color" value="#FFFACD" id="pet-color" onchange="pet.updateAll()" >
               <br>

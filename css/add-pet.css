@@ -71,7 +71,6 @@ input {
         grid-area: pet-form;
         display: grid;
         margin-right: 1.5em;
-        padding-top: 3em;
     }
 
     #pet-svg-container {

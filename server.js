@@ -214,6 +214,7 @@ app.post('/api/addPet', function (req, res) {
     var userId = req.query.id;
     var name = req.body.Name;
     var age = req.body.Age;
+    var gender = req.body.Gender;
     var type = req.body.Type;
     var color = req.body.Color;
     var description = req.body.Description;
@@ -226,7 +227,7 @@ app.post('/api/addPet', function (req, res) {
 
         console.log(req.body);
         var request = new sql.Request();
-        request.query(`insert into Pets(Name, Age, Type, Color, EyesColor, Description, XPStatus) values ('${name}', '${age}', '${type}', '${color}','${eyesColor}', '${description}', '${xp}')`, function (err, result) {
+        request.query(`insert into Pets(Name, Age, Gender, Type, Color, EyesColor, Description, XPStatus) values ('${name}', '${age}', '${gender}', '${type}', '${color}','${eyesColor}', '${description}', '${xp}')`, function (err, result) {
             if (err) console.log(err)
 
             let request2 = new sql.Request();
@@ -248,6 +249,25 @@ app.post('/api/addPet', function (req, res) {
         });
     });
 });
+
+/* Pet */
+// app.get(`/api/pets`, function (req, res) {
+//     var id = req.query.id;
+//     sql.close();
+
+//     sql.connect(config, function (err) {
+//         if (err) console.log(err);
+
+//         var request = new sql.Request();
+//         request.query(`select `, function (err, recordset) {
+//             if (err) console.log(err);
+//             else {
+//                 // console.log(recordset);
+//                 res.send(recordset.recordset);
+//             }
+//         });
+//     });
+// });
 
 /* DEFAULT */
 app.get('*', function (req, res) {

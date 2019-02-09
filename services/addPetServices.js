@@ -11,6 +11,7 @@ function petConstructorAddPet(){
     this.type;
     this.name;
     this.age;
+    this.gender;
     this.bodyColor;
     this.eyesColor;
     this.description;
@@ -25,6 +26,9 @@ function petConstructorAddPet(){
     }
     this.updateAge = function(age){
         this.age = age;
+    }
+    this.updateGender = function(gender){
+        this.gender = gender;
     }
     this.updateBodyColor = function(bodyColor){
         this.bodyColor = bodyColor;
@@ -42,6 +46,7 @@ function petConstructorAddPet(){
         pet.updateDescription(document.getElementById("pet-description").value);
         pet.updateName(document.getElementById("pet-name").value);
         pet.updateAge(document.getElementById("pet-age").value);
+        pet.updateGender(document.getElementById("pet-gender").value);
         pet.updateBodyColor(document.getElementById("pet-color").value);
         pet.updateEyesColor(document.getElementById("pet-eyes-color").value);
     }
@@ -60,7 +65,7 @@ petForm.addEventListener("click", (e) =>{
 })
 
 function postPet(){
-    postToServer(`http://localhost:7000/api/addPet?id=${userId}`, { "Name": pet.name, "Age": pet.age, "Type": pet.type, "Color": pet.color, "EyesColor": pet.eyesColor, "Description": pet.description ,"XPStatus" : pet.xp}, (data) => {
+    postToServer(`http://localhost:7000/api/addPet?id=${userId}`, { "Name": pet.name, "Age": pet.age, "Gender":pet.gender, "Type": pet.type, "Color": pet.bodyColor, "EyesColor": pet.eyesColor, "Description": pet.description ,"XPStatus" : pet.xp}, (data) => {
         console.log(data);
         // console.log(data.responseText);
         // console.log(JSON.parse(data.responseText));
