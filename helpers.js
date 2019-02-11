@@ -163,7 +163,7 @@ function isFriend(friends, user) {
     else return false;
 }
 
-function logout(){
+function logout() {
     localStorage.removeItem("user");
     localStorage.removeItem("friend");
     window.location.href = "#home";
@@ -176,7 +176,7 @@ function changePetEyesColor(pet, petContent) {
     var petEyes = petContent.getElementsByClassName("pet-eyes");
     // console.log(petEyes);
 
-    for(var i= 0; i < petEyes.length; i++){
+    for (var i = 0; i < petEyes.length; i++) {
         petEyes.item(i).style.fill = pet.eyesColor;
         // console.log(petEyes.item(i) +" " +pet.eyesColor);
     }
@@ -186,7 +186,7 @@ function changePetColor(pet, petContent) {
     var petColor = petContent.getElementsByClassName("pet-body");
     // console.log(petColor);
 
-    for(var i= 0; i < petColor.length; i++){
+    for (var i = 0; i < petColor.length; i++) {
         petColor.item(i).style.fill = pet.bodyColor;
         // console.log(petColor.item(i) +" " +pet.bodyColor);
     }
@@ -246,25 +246,25 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
     this.age = age;
     this.description = description;
     this.animationOption = animationOption;
-    
+
     this.doSpecificAnimation = function () {
         // console.log(`you've clicked on ${this.id}: ${this.foodLevel}   ${this.sympathyLevel}  ${this.energyLevel}!`);
-        
+
         var petReaction = document.getElementById(`${this.id}-reaction`);
         petReaction.classList.add("pet-reaction-animation");
         petReaction.style.visibility = "visible";
-        
-        if(this.animationOption == "rollAndMoveRight") {
+
+        if (this.animationOption == "rollAndMoveRight") {
             rollAndMoveRight(this.id);
-        }else if(this.animationOption == "movePetRight"){
+        } else if (this.animationOption == "movePetRight") {
             movePetRight(this.id);
-        } else if(this.animationOption== "rollPet"){
+        } else if (this.animationOption == "rollPet") {
             rollPet(this.id);
-        } else if(this.animationOption =="movePetLeft"){
+        } else if (this.animationOption == "movePetLeft") {
             movePetLeft(this.id);
-        } else if(this.animationOption == "rollAndMoveLeft"){
+        } else if (this.animationOption == "rollAndMoveLeft") {
             rollAndMoveLeft(this.id);
-        } else if(this.animationOption == "jumpUp"){
+        } else if (this.animationOption == "jumpUp") {
             jumpUp(this.id);
         }
 
@@ -285,7 +285,7 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
     this.changeMood = function () {
         var petMood = document.getElementById(this.id).getElementsByClassName("pet-body");
         if (this.foodLevel < 50 || this.energyLevel < 50) {
-            for (let i = 0; i < petMood.length; i++) {           
+            for (let i = 0; i < petMood.length; i++) {
                 petMood.item(i).style.fill = "yellow";
             }
         } else if (this.sympathyLevel < 50) {
@@ -304,7 +304,7 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
         var petReaction = document.getElementById(`${this.id}-reaction`);
 
         petReaction.innerHTML = "💤";
-        if(this.energyLevel <= NR_MAX-NR_INCREMENT)
+        if (this.energyLevel <= NR_MAX - NR_INCREMENT)
             this.energyLevel = this.energyLevel + NR_INCREMENT;
         petEnergyLevel.value = this.energyLevel;
     }
@@ -314,7 +314,7 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
         var petReaction = document.getElementById(`${this.id}-reaction`);
 
         petReaction.innerHTML = "🎂";
-        if(this.foodLevel <=  NR_MAX-NR_INCREMENT)
+        if (this.foodLevel <= NR_MAX - NR_INCREMENT)
             this.foodLevel = this.foodLevel + NR_INCREMENT;
         petFoodLevel.value = this.foodLevel;
     }
@@ -324,25 +324,25 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
         var petReaction = document.getElementById(`${this.id}-reaction`);
 
         petReaction.innerHTML = "💖";
-        if(this.sympathyLevel <= NR_MAX-NR_INCREMENT)
+        if (this.sympathyLevel <= NR_MAX - NR_INCREMENT)
             this.sympathyLevel = this.sympathyLevel + NR_INCREMENT;
-        petSympathyLevel.value = this.sympathyLevel;    
-    }    
-    this.decreaseStatus = function decreaseStatus(){
+        petSympathyLevel.value = this.sympathyLevel;
+    }
+    this.decreaseStatus = function decreaseStatus() {
         var petFoodLevel = document.getElementById(`${this.id}-food-level`);
         var petSympathyLevel = document.getElementById(`${this.id}-sympathy-level`);
         var petEnergyLevel = document.getElementById(`${this.id}-energy-level`);
-        
+
         setTimeout(() => {
-           if(this.foodLevel > NR_MIN * 2){
+            if (this.foodLevel > NR_MIN * 2) {
                 this.foodLevel--;
                 // petFoodLevel.value = this.foodLevel;            
-           }
-           if(this.energyLevel > NR_MIN * 2){
+            }
+            if (this.energyLevel > NR_MIN * 2) {
                 this.energyLevel--;
                 // petEnergyLevel.value = this.energyLevel;
-            } 
-            if(this.sympathyLevel > NR_MIN *2){
+            }
+            if (this.sympathyLevel > NR_MIN * 2) {
                 this.sympathyLevel--;
                 // petSympathyLevel.value = this.sympathyLevel;
             }
@@ -403,7 +403,7 @@ function addStateFood(currentPet, currentStateElement) {
 
     var foodImg = currentStateElement.querySelector(".food");
     foodImg.id = currentPet.id + "-food";
-    
+
     var food = document.getElementById(`${currentPet.id}-food`);
     food.setAttribute('onclick', `pets[${pets.indexOf(currentPet)}].changeAnimationFood()`);
 }
@@ -435,7 +435,7 @@ function addStateEnergy(currentPet, currentStateElement) {
 function addPetSVG(currentElement, currentPet) {
     var currentPetContent = currentElement.querySelector(".pet-content");
     currentPetContent.id = currentPet.id + "-content";
-    
+
     var petImage = document.getElementById(currentPet.type);
 
     petContent = document.getElementById(`${currentPet.id}-content`);
@@ -444,4 +444,41 @@ function addPetSVG(currentElement, currentPet) {
 
     changePetColor(currentPet, petContent);
     changePetEyesColor(currentPet, petContent);
+}
+
+function createElement(tagName, classNames = [], id = '', text = '', attributes = {}, datasets={}) {
+    let element = document.createElement(tagName);
+    if(classNames !== []) {
+        classNames.forEach(cls => {
+            element.classList.add(cls);
+        })
+    }
+    if (id !== ''){
+        element.id = id;
+    }
+    if(text !== '') {
+        element.innerText = text;
+    }
+    if(attributes != {}) {
+        Object.keys(attributes).forEach(attr => {
+            element.setAttribute(attr, attributes[attr]);
+        })
+    }
+    if(datasets !== {}) {
+        Object.keys(datasets).forEach(key => {
+            element.dataset[key] = datasets[key];
+        })
+    }
+    return element;
+}
+
+function addClass(id, className) {
+    let element = document.getElementById(id);
+    element.classList.add(className);
+}
+
+function appendChildren(element, children){
+    children.forEach(child => {
+        element.appendChild(child);
+    })
 }

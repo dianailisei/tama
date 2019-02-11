@@ -15,27 +15,34 @@ function YourFriendsController(view, model) {
         getFromServer(`http://localhost:7000/api/users/friends?id=${model.id}`, (data) => {
             friends = JSON.parse(data);
             friends.forEach(friend => {
-                let userContainer = document.createElement("li");
-                userContainer.classList.add("friend-container");
-                let nameContainer = document.createElement("div");
-                let nameParagraph = document.createElement("p");
-                let link = document.createElement("a");
-                link.classList.add("friend-pic");
-                // link.href = "#friend-account";
-                let img = document.createElement("img");
-                img.dataset.id = friend.Id;
-                img.src = "../resources/default-profile-pic.png";
-                img.alt = "profile picture";
-                link.appendChild(img);
-                nameParagraph.classList.add("friend-name");
-                nameParagraph.innerText = friend.Username;
-                secondParagraph = document.createElement("p");
-                secondParagraph.classList.add("friend-pets-number");
-                secondParagraph.innerText = `${friend.Username} is from ${friend.Country}`;
-                nameContainer.appendChild(nameParagraph);
-                nameContainer.appendChild(secondParagraph);
-                userContainer.appendChild(link);
-                userContainer.appendChild(nameContainer);
+
+                let userContainer = document.querySelector(`[data-id="${friend.Id}"]`);
+                if (userContainer === null) {
+                    userContainer = createElement("li", ["friend-container"], '', '', {}, {"id" : friend.Id});
+                }
+                let img = createElement("img", ["friend-pic"], '', '', {"src": "../resources/default-profile-pic.png", "alt": "profile picture"}, {"id": friend.Id});
+                let friendInfo = createElement('div', ["friend-info"]);
+                let friendName = createElement("p", ["friend-name"], '', friend.Username);
+                let friendCountry = createElement("p", ["friend-pets-number"], '', `${friend.Username} is from ${friend.Country}`);
+                appendChildren(friendInfo, [friendName, friendCountry]);
+                // let deleteBtn = document.createElement("img");
+                // deleteBtn.classList.add("delete-friend-btn");
+                // deleteBtn.src = "../resources/delete-btn.png";
+                let petsContainer = createElement("div", ["friend-pets-container"]);
+                let subtitle = createElement('h3', [], '', `${friend.Username}'s pets`);
+                petsContainer.appendChild(subtitle);
+                let friendPets = document.getElementById(`${friend.Id}`);
+                if (friendPets === null) {
+                    friendPets = createElement('ul', ['friend-pets'], friend.Id);
+                }
+                let pet = createElement('li', ['friend-pet']);
+                let petIcon = createElement('img', [], '', '', {"src" : "../resources/cat-icon.png", "alt": "pet-icon"}, {"petId": friend.IdPet});
+                let petName = createElement('p', ['friend-pet-name'], '', friend.Name);
+                appendChildren(pet, [petIcon, petName]);
+                friendPets.appendChild(pet);
+                petsContainer.appendChild(friendPets);
+                appendChildren(userContainer, [img, friendInfo, petsContainer]);
+                // userContainer.appendChild(deleteBtn);
                 friendsList.appendChild(userContainer);
             });
         })
@@ -48,27 +55,15 @@ function YourFriendsController(view, model) {
             let people = JSON.parse(data);
             people.forEach(user => {
                 if (user.Id !== model.id && isFriend(friends, user)) {
-                    let userContainer = document.createElement("li");
-                    userContainer.classList.add("friend-container");
-                    let nameContainer = document.createElement("div");
-                    let nameParagraph = document.createElement("p");
-                    let link = document.createElement("a");
-                    link.classList.add("friend-pic");
-                    // link.href = "#friend-account";
-                    let img = document.createElement("img");
-                    img.dataset.id = user.Id;
-                    img.src = "../resources/default-profile-pic.png";
-                    img.alt = "profile picture";
+                    let userContainer = createElement("li", ["person-container"]);
+                    let nameContainer = createElement("div");
+                    let nameParagraph = createElement("p", ["person-name"], '', user.Username);
+                    let secondParagraph = createElement('p', ["person-pets-number"], '', "Double click for add")
+                    let link = createElement("a", ["person-pic"]);
+                    let img = createElement("img", [], '', '', {"src": "../resources/default-profile-pic.png", "alt": "profile picture"}, {"id":user.Id});
                     link.appendChild(img);
-                    nameParagraph.classList.add("friend-name");
-                    nameParagraph.innerText = user.Username;
-                    secondParagraph = document.createElement("p");
-                    secondParagraph.classList.add("friend-pets-number");
-                    secondParagraph.innerText = "Double click for add";
-                    nameContainer.appendChild(nameParagraph);
-                    nameContainer.appendChild(secondParagraph);
-                    userContainer.appendChild(link);
-                    userContainer.appendChild(nameContainer);
+                    appendChildren(nameContainer, [nameParagraph, secondParagraph]);
+                    appendChildren(userContainer, [link, nameContainer]);
                     usersList.appendChild(userContainer);
                 }
             })
@@ -88,7 +83,13 @@ function YourFriendsController(view, model) {
             else if (clickCount === 2) {
                 clearTimeout(singleClickTimer);
                 clickCount = 0;
-                doubleClick(e, model.id);
+                if (e.target.dataset.id !== undefined) {
+                    doubleClick(e, model.id);
+                }
+                else
+                    if (e.target.dataset.petId !== undefined) {
+                        doubleClickPet(e.target.dataset.petId, model.id);
+                    }
             }
         })
 
@@ -99,7 +100,7 @@ function singleClick(friends, e) {
     let id = e.target.dataset.id;
     getFromServer(`http://localhost:7000/api/user?id=${id}`, (res) => {
         let currentFriend = JSON.parse(res)[0];
-        if(isFriend(friends, currentFriend)) {
+        if (isFriend(friends, currentFriend)) {
             currentFriend.isFriend = 1;
         }
         else {
@@ -111,11 +112,35 @@ function singleClick(friends, e) {
 }
 
 function doubleClick(e, userId) {
-    let container = document.getElementById("people-list");
-    if (container.contains(e.target)) {
-        let id = e.target.dataset.id;
-        postToServer(`http://localhost:7000/api/friends`, {"id1":userId, "id2":id}, (result) => {
-            Alert.render("Friend added successfully!");
+    let id = e.target.dataset.id;
+    postToServer(`http://localhost:7000/api/friends`, { "id1": userId, "id2": id }, (result) => {
+        Alert.render("Friend added successfully!");
+    })
+}
+
+function doubleClickPet(idPet, userId) {
+    getFromServer(`http://localhost:7000/api/owner?id=${userId}`, res => {
+        res = JSON.parse(res);
+        let ids = [];
+        res.forEach(element => ids.push(element.IdPet));
+        console.log(ids);
+        ids.forEach((myPetId, index) => {
+            console.log(myPetId);
+            postToServer(`http://localhost:7000/api/petFriends`, { "id1": myPetId, "id2": idPet }, result => {
+                postFriendship(ids[index + 1], idPet);
+            })
+        })
+
+
+    })
+}
+
+function postFriendship(id, idPet) {
+    if (id !== null || id !== undefined) {
+        postToServer(`http://localhost:7000/api/petFriends`, { "id1": id, "id2": idPet }, result => {
+            console.log("done");
         })
     }
+
+
 }

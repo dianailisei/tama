@@ -6,16 +6,26 @@
 // var pet2 = new petConstructor("2", "COCO", "spider", "#660066", "#fff7c0", 5, 39, 85, 120, 13, null, "jumpUp");
 // var pet3 = new petConstructor("3", "Bibo", "fish", "#660066", "#caebf2", 5, 39, 85, 180, 8, null, "movePetLeft");
 
-var user = localStorage.getItem("user");
-user = JSON.parse(user);
+if (user === undefined || user === null) {
+    var user = localStorage.getItem("user");
+    user = JSON.parse(user);
+}
 var userId = user.Id;
 
 var animationArray = ["rollPet", "rollAndMoveRight", "rollAndMoveLeft", "jumpUp", "movePetLeft", "movePetRight"];
 var pets = [];
-const NR_INCREMENT = 3;
-const NR_MIN = 3;
-const NR_MAX= 200;
-const NR_DEFAULT = 100;
+if(NR_INCREMENT === undefined){
+    var NR_INCREMENT = 3;
+}
+if(NR_MIN === undefined) {
+    var NR_MIN = 3;
+}
+if(NR_MAX === undefined){
+    var NR_MAX= 200;
+}
+if(NR_DEFAULT === undefined){
+    var NR_DEFAULT = 100;
+}
 
 //post pet obj
 function updatePetStateInBD(pet) {

@@ -85,7 +85,11 @@ app.get(`/api/users/friends`, function (req, res) {
         if (err) console.log(err);
 
         var request = new sql.Request();
-        request.query(`select u.Id, u.Username, u.Country from Users as u join Friends as f on u.id = f.IdUser2 where f.IdUser1=${id}`, function (err, recordset) {
+        request.query(`select u.Id, u.Username, u.Country, o.IdPet, p.Name, p.Color, p.EyesColor, p.Type from Users as u 
+        join Friends as f on u.id = f.IdUser2 
+        left join Owner as o on f.IdUser2 = o.IdUser
+        left join Pets as p on o.IdPet = p.Id
+        where f.IdUser1 = ${id}`, function (err, recordset) {
             if (err) console.log(err);
             else {
                 res.send(recordset.recordset);
@@ -220,6 +224,7 @@ app.post('/api/addPet', function (req, res) {
     var description = req.body.Description;
     var eyesColor = req.body.EyesColor;
     var xp = req.body.XPStatus;
+    // console.log(name, age, gender, type, color, description, eyesColor, xp);
     sql.close();
 
     sql.connect(config, function (err) {
@@ -227,13 +232,13 @@ app.post('/api/addPet', function (req, res) {
 
         console.log(req.body);
         var request = new sql.Request();
-        request.query(`insert into Pets(Name, Age, Gender, Type, Color, EyesColor, Description, XPStatus) values ('${name}', '${age}', '${gender}', '${type}', '${color}','${eyesColor}', '${description}', '${xp}')`, function (err, result) {
+        request.query(`insert into Pets(Name, Age, Gender, Type, Color, EyesColor, Description, XPStatus) values ('${name}', ${age}, '${gender}', '${type}', '${color}','${eyesColor}', '${description}', ${xp})`, function (err, result) {
             if (err) console.log(err)
 
             let request2 = new sql.Request();
-            request2.query(`SELECT Id FROM Pets WHERE Name = '${name}' and Age = '${age}' and Description ='${description}'`, function (err, recordset) {
+            request2.query(`SELECT Id FROM Pets WHERE Name = '${name}' and Age = ${age} and Description ='${description}'`, function (err, recordset) {
                 if (err) console.log(err)
-
+                console.log(recordset);
                 let petId = recordset.recordset[0].Id;
                 var req3 = new sql.Request();
                 req3.query(`INSERT into Owner (owner.IdUser, owner.IdPet) values (${userId}, ${petId})`, function (err, recordset3) {
@@ -271,6 +276,36 @@ app.get(`/api/pets`, function (req, res) {
                 }
             });
     });
+});
+
+app.get('/api/owner', function(req, res) {
+    var id = req.query.id;
+    sql.close();
+
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(`select IdPet from Owner where IdUser = ${id}`, function (err, recordset) {
+                if (err) console.log(err);
+                else {
+                    res.send(recordset.recordset);
+                }
+            });
+    });
+})
+
+app.post('/api/petFriends', function (req, res) {
+    var IdPet1 = req.body.id1;
+    var IdPet2 = req.body.id2;
+    sql.close();
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(`insert into PetFriends (IdPet1, idPet2) values(${IdPet1}, ${IdPet2})`, function (err, recordset) {
+            if (err) console.log(err);
+            res.end();
+        })
+    })
 });
 
 app.delete('/api/pets', function (req, res) {
