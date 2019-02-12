@@ -16,48 +16,48 @@ function YourFriendsController(view, model) {
             getFromServer(`http://localhost:7000/api/users/friends?id=${model.id}`, (data) => {
                 friends = JSON.parse(data);
                 friends.forEach(friend => {
-                let userContainer = document.querySelector(`[data-id="${friend.Id}"]`);
-                if (userContainer === null) {
-                    userContainer = createElement("li", ["friend-container"], '', '', {}, {"id" : friend.Id});
-                }
-                let img = createElement("img", ["friend-pic"], '', '', {"src": "../resources/default-profile-pic.png", "alt": "profile picture"}, {"id": friend.Id});
-                let friendInfo = createElement('div', ["friend-info"]);
-                let friendName = createElement("p", ["friend-name"], '', friend.Username);
-                let friendCountry = createElement("p", ["friend-pets-number"], '', `${friend.Username} is from ${friend.Country}`);
-                appendChildren(friendInfo, [friendName, friendCountry]);
-                // let deleteBtn = document.createElement("img");
-                // deleteBtn.classList.add("delete-friend-btn");
-                // deleteBtn.src = "../resources/delete-btn.png";
-                let petsContainer = createElement("div", ["friend-pets-container"]);
-                let subtitle = createElement('h3', [], '', `${friend.Username}'s pets`);
-                petsContainer.appendChild(subtitle);
-                let friendPets = document.getElementById(`${friend.Id}`);
-                if (friendPets === null) {
-                    friendPets = createElement('ul', ['friend-pets'], friend.Id);
-                }
-                let pet = createElement('li', ['friend-pet']);
-                // let petIcon = createElement('img', [], '', '', {"src" : "../resources/cat-icon.png", "alt": "pet-icon"}, {"petId": friend.IdPet});
-                
-                let templatePet = document.getElementById(friend.Type);
-                let petIcon = createElement('div', ['pet-pic']);
-                petIcon.innerHTML = templatePet.innerHTML;    
-                let petName = createElement('p', ['friend-pet-name'], '', friend.Name);
-                appendChildren(pet, [petIcon, petName]);
-                var petEyes = petIcon.getElementsByClassName("pet-eyes");
-                for (var i = 0; i < petEyes.length; i++) {
-                    petEyes.item(i).style.fill = friend.EyesColor;
-                }
-                var petColor = petIcon.getElementsByClassName("pet-body");
-                for (var i = 0; i < petColor.length; i++) {
-                    petColor.item(i).style.fill = friend.Color;
-                }
-                friendPets.appendChild(pet);
-                petsContainer.appendChild(friendPets);
-                appendChildren(userContainer, [img, friendInfo, petsContainer]);
-                // userContainer.appendChild(deleteBtn);
-                friendsList.appendChild(userContainer);
-            });
-        })
+                    let userContainer = document.querySelector(`[data-id="${friend.Id}"]`);
+                    if (userContainer === null) {
+                        userContainer = createElement("li", ["friend-container"], '', '', {}, { "id": friend.Id });
+                    }
+                    let img = createElement("img", ["friend-pic"], '', '', { "src": "../resources/default-profile-pic.png", "alt": "profile picture" }, { "id": friend.Id });
+                    let friendInfo = createElement('div', ["friend-info"]);
+                    let friendName = createElement("p", ["friend-name"], '', friend.Username);
+                    let friendCountry = createElement("p", ["friend-pets-number"], '', `${friend.Username} is from ${friend.Country}`);
+                    appendChildren(friendInfo, [friendName, friendCountry]);
+                    // let deleteBtn = document.createElement("img");
+                    // deleteBtn.classList.add("delete-friend-btn");
+                    // deleteBtn.src = "../resources/delete-btn.png";
+                    let petsContainer = createElement("div", ["friend-pets-container"]);
+                    let subtitle = createElement('h3', [], '', `${friend.Username}'s pets`);
+                    petsContainer.appendChild(subtitle);
+                    let friendPets = document.getElementById(`${friend.Id}`);
+                    if (friendPets === null) {
+                        friendPets = createElement('ul', ['friend-pets'], friend.Id);
+                    }
+                    let pet = createElement('li', ['friend-pet']);
+                    // let petIcon = createElement('img', [], '', '', {"src" : "../resources/cat-icon.png", "alt": "pet-icon"}, {"petId": friend.IdPet});
+                    let templatePet = document.getElementById(friend.Type);
+                    let petIcon = createElement('div', ['pet-pic']);
+                    petIcon.innerHTML = templatePet.innerHTML;
+                    let petName = createElement('p', ['friend-pet-name'], '', friend.Name);
+                    appendChildren(pet, [petIcon, petName]);
+                    var petEyes = petIcon.getElementsByClassName("pet-eyes");
+                    for (var i = 0; i < petEyes.length; i++) {
+                        petEyes.item(i).style.fill = friend.EyesColor;
+                    }
+                    var petColor = petIcon.getElementsByClassName("pet-body");
+                    for (var i = 0; i < petColor.length; i++) {
+                        petColor.item(i).style.fill = friend.Color;
+                    }
+                    friendPets.appendChild(pet);
+                    petsContainer.appendChild(friendPets);
+                    appendChildren(userContainer, [img, friendInfo, petsContainer]);
+                    // userContainer.appendChild(deleteBtn);
+                    friendsList.appendChild(userContainer);
+                });
+            })
+        }, 500);
     }
 
     renderFriends();
@@ -155,6 +155,4 @@ function postFriendship(id, idPet) {
             Alert.render("Pet added succesfully!");
         })
     }
-
-
 }

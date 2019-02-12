@@ -24,9 +24,20 @@ function FriendAccountController(view, model) {
             else {
                 res.forEach(element => {
                     let petContainer = createElement('li', ['pet-container']);
-                    let img = createElement('img', ['pet-pic'], '', '', { "src": "../resources/cat-icon.png", "alt": "pet-icon" });
+                    // let img = createElement('img', ['pet-pic'], '', '', { "src": "../resources/cat-icon.png", "alt": "pet-icon" });
+                    let templatePet = document.getElementById(element.Type);
+                    let img = createElement('div', ['pet-pic']);
+                    img.innerHTML = templatePet.innerHTML;
                     let p = createElement('p', ['pet-name'], '', element.Name);
                     appendChildren(petContainer, [img, p]);
+                    var petEyes = img.getElementsByClassName("pet-eyes");
+                    for (var i = 0; i < petEyes.length; i++) {
+                        petEyes.item(i).style.fill = element.EyesColor;
+                    }
+                    var petColor = img.getElementsByClassName("pet-body");
+                    for (var i = 0; i < petColor.length; i++) {
+                        petColor.item(i).style.fill = element.Color;
+                    }
                     petList.appendChild(petContainer);
                 })
             }
