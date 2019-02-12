@@ -31,6 +31,13 @@
                 </li>
                 <li>
                     <a href="#utilitareFramework"><span>4. </span>Funcții utilitare</a>
+                    <ol role="directory">
+                        <li><a href="#http"><span>4.1 </span>HTTP requests</a></li>
+                        <li><a href="#alerta"><span>4.2 </span>Alert box</a></li>
+                        <li><a href="#creareElemente"><span>4.3 </span>Funcții pentru crearea și modificarea elementelor
+                                din DOM</a></li>
+                        <li><a href="#animatii"><span>4.4 </span>Crearea animațiilor vectoriale</a></li>
+                    </ol>
                 </li>
             </ol>
             <section typeof="sa:AuthorsList">
@@ -199,14 +206,70 @@ Framework.Initialize();</code></pre>
                     pagina va arăta astfel:</p>
                 <figure typeof="sa:image">
                     <img style="width: 100%;" src="./resources/firstpage.png" alt="first page demo">
-                    <figcaption><i>Screen shot prima pagină. </figcaption>
+                    <figcaption><i>Screen shot prima pagină. </i></figcaption>
                 </figure>
             </section>
         </section>
         <section id="utilitareFramework">
             <h2 property="schema:alternateName">4. Funcții utilitare</h2>
-            <p>Aici găsiți o listă cu cele mai importante funcții puse la dispoziție de framework, cât și exemple de
-                utilizare:</p>
+            <p>Aici găsiți o listă cu cele mai importante funcții puse la dispoziție de framework:</p>
+            <section id="http">
+                <h4>4.1 HTTP requests</h4>
+                <ul>
+                    <li><code>getFromServer(url, callback)</code> - executa cererea HTTP GET reprezentată de parametrul
+                        <code>url</code> și execută <code>callback</code> în caz de succes.</li>
+                    <li><code>postToServer(url, data, callback)</code> - executa cererea HTTP POST reprezentată de
+                        parametrul
+                        <code>url</code>, trimite ca <code>body</code> al cererii parametrul <code>data</code>
+                        reprezentat ca obiect și execută <code>callback</code> în caz de succes.</li>
+                    <li><code>deleteFromServer(url, data, callback)</code> - executa cererea HTTP DELETE reprezentată de
+                        parametrul
+                        <code>url</code>, trimite ca <code>body</code> al cererii parametrul <code>data</code>
+                        reprezentat ca obiect și execută <code>callback</code> în caz de succes.</li>
+                    <li><code>update(url, data, callback)</code> - executa cererea HTTP PUT reprezentată de
+                        parametrul
+                        <code>url</code>, trimite ca <code>body</code> al cererii parametrul <code>data</code>
+                        reprezentat ca obiect și execută <code>callback</code> în caz de succes.</li>
+                </ul>
+            </section>
+            <section id="alerta">
+                <h4>4.2 Alert box</h4>
+                <p>Framework-ul Makiko oferă o alertă proprie care poate fi apelată prin
+                    <code>Alert.render("mesaj")</code></p>
+            </section>
+            <section id="creareElemente">
+                <h4>4.3 Funcții pentru crearea și modificarea elementelor din DOM</h4>
+                <p>Din moment ce componentele sunt adăugate în mod dinamic, crearea dinamică de noi elemente este
+                    necesară. Pentru a evita repetiția acelorași comenzi pentru elemente diferite, framework-ul Makiko
+                    pune la dispoziție o funcție capabilă să creeze elemente noi cu proprietăți diferite. De asemenea,
+                    există și funcții prin care se pot modifica dinamic elemente deja existente.</p>
+                <ul>
+                    <li><code>createElement(tagName, classNames, id, text, attributes, datasets)</code>
+                        <ul>
+                            <li><code>tagName</code> - numele tag-ului noului element (de ex: "div", "p", "img");
+                                valoare implicita: ''</li>
+                            <li><code>classNames</code> - listă cu toate clasele ce vor fi adăugate elementului (de ex:
+                                ['div-wrapper', 'aside-background']); valoare implicita: []</li>
+                            <li><code>id</code> - valoarea id-ului noului element (de ex: "login-form"); valoare
+                                implicită: ''</li>
+                            <li><code>text</code>- textul ce va fi inserat între tag-urile corespunzătoare noului
+                                element - <code>innerText</code> (de ex: "mesaj"); valoare implicită: ''</li>
+                            <li><code>attributes</code> - obiect ce conține perechi <code>nume_atribut: valoare</code>
+                                (de ex: {"src": "./resources/logo.png", "alt": "logo"}); valoare implicită: {}</li>
+                            <li><code>datasets</code> - obiect ce conține perechi
+                                <code>nume_atribut_custom: valoare</code> (de ex: {"idUser": "1234"}); valoare
+                                implicită: {}</li>
+                        </ul>
+                    </li>
+                    <li><code>addClass(idElement, className)</code> - adaugă clasa <code>className</code> la elementul
+                        din DOM identificat prin <code>idElement</code></li>
+                    <li><code>appendChildren(element, children)</code> - adaugă lista de elemente <code>children</code>
+                        în <code>element</code></li>
+                </ul>
+            </section>
+            <section id="animatii">
+                <h4>4.4 Crearea animațiilor vectoriale</h4>
+            </section>
         </section>
     </article>
 

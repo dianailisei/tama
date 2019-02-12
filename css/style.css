@@ -1,0 +1,23 @@
+/* ALERT BOX */
+#dialogoverlay{
+	display: none;
+	opacity: .8;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background: #FFF;
+	width: 100%;
+	z-index: 10;
+}
+#dialogbox{
+	display: none;
+	position: fixed;
+	background: #FFF;
+	border-radius:7px; 
+	width:600px;
+	z-index: 10;
+}
+#dialogbox > div{ background:rgb(250, 124, 146); margin:8px; font-family: 'Montserrat', sans-serif;}
+#dialogbox > div > #dialogboxhead{  font-size:25px; padding:20px; color:#FFF; }
+#dialogbox > div > #dialogboxbody{  padding:25px; color:#FFF; }
+#dialogbox > div > #dialogboxfoot{  padding:25px; text-align:right; }
