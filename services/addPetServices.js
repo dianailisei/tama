@@ -38,7 +38,7 @@ var pet = {
         changePetColor(this, petContent);
     },
     updateEyesColor: function (eyesColor) {
-        eyesColor = eyesColor;
+        this.eyesColor = eyesColor;
         changePetEyesColor(this, petContent);
     },
     updateDescription: function (description) {

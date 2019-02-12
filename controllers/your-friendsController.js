@@ -36,12 +36,12 @@ function YourFriendsController(view, model) {
                         friendPets = createElement('ul', ['friend-pets'], friend.Id);
                     }
                     let pet = createElement('li', ['friend-pet']);
+                    let petName = createElement('p', ['friend-pet-name'], '', friend.Name);
                     // let petIcon = createElement('img', [], '', '', {"src" : "../resources/cat-icon.png", "alt": "pet-icon"}, {"petId": friend.IdPet});
                     let templatePet = document.getElementById(friend.Type);
                     let petIcon = createElement('div', ['pet-pic']);
                     petIcon.innerHTML = templatePet.innerHTML;
-                    let petName = createElement('p', ['friend-pet-name'], '', friend.Name);
-                    appendChildren(pet, [petIcon, petName]);
+                    appendChildren(pet, [petName, petIcon]);
                     var petEyes = petIcon.getElementsByClassName("pet-eyes");
                     for (var i = 0; i < petEyes.length; i++) {
                         petEyes.item(i).style.fill = friend.EyesColor;
