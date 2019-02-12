@@ -3,13 +3,22 @@ if (user === undefined || user === null) {
     var user = localStorage.getItem("user");
     user = JSON.parse(user);
 }
-let petsList = document.getElementById('pets-list');
+
+if (petsList === undefined)
+{
+    var petsList = document.getElementById('pets-list');
+}
 
 showPets(petsList, user);
 
 function showPets(petsList, user) {
     getFromServer(`http://localhost:7000/api/pets?id=${user.Id}`, data => {
-        data = JSON.parse(data)
+        data = JSON.parse(data);
+        // console.log(data);
+        if(data.length === 0){
+            let p = createElement('li', [], '', 'You have no pets yet.');
+            petsList.appendChild(p);
+        }
         data.forEach(pets => {
             let petContainer = document.querySelector(`[data-id="${pets.Id[0]}"]`);
             if (petContainer === null) {

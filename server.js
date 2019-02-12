@@ -133,14 +133,21 @@ app.put('/api/users', function (req, res) {
     var country = req.body.country;
     var pwd = req.body.password;
     sql.close();
-
+    var result;
     sql.connect(config, function (err) {
         if (err) console.log(err);
 
         var request = new sql.Request();
         request.query(`update Users set Username = '${username}', Password = '${pwd}', Country = '${country}' where Email='${email}'`, function (err, recordset) {
-            if (err) console.log(err)
-            res.end();
+            if (err) console.log(err);
+            var req2 = new sql.Request();
+            req2.query(`select * from Users where Email = '${email}'`, function(err, recordset2){
+                if (err) console.log(err);
+                console.log(recordset2.recordset);
+                result = recordset2.recordset;
+                res.send(result);
+            })
+            // res.end();
         });
     });
 });

@@ -93,8 +93,11 @@ function update(url, data, callback) {
         referrer: "no-referrer", // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-        .then(response =>
-            callback()
+        .then(response => {
+            return response.text().then(text => {
+                callback(text);
+            });
+        }
         );
 }
 
@@ -109,14 +112,17 @@ function register() {
 }
 
 function updateAccountForm(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+    // console.log(user, typeof(user));
+    let newUser = JSON.parse(user);
+    // console.log(newUser[0]);
+    localStorage.setItem("user", JSON.stringify(newUser[0]));
     let usernameInput = document.getElementById("username");
     let countryInput = document.getElementById("country");
     if (user.Username !== usernameInput.getAttribute("placeholder")) {
-        usernameInput.setAttribute("placeholder", user.Username);
+        usernameInput.setAttribute("placeholder", newUser[0].Username);
     }
     if (user.Country != countryInput.getAttribute("placeholder")) {
-        countryInput.setAttribute("placeholder", user.Country);
+        countryInput.setAttribute("placeholder", newUser[0].Country);
     }
     Alert.render("Changes have been made successfully");
     clearInputs();
@@ -183,7 +189,7 @@ function changePetEyesColor(pet, petContent) {
 
     for (var i = 0; i < petEyes.length; i++) {
         petEyes.item(i).style.fill = pet.eyesColor;
-        console.log(petEyes.item(i) +" " +pet.eyesColor);
+        console.log(petEyes.item(i) + " " + pet.eyesColor);
     }
 }
 
