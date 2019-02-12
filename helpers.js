@@ -1,3 +1,5 @@
+var updateIsOn = true;
+
 function getByUsernameFromServer(url, callback) {
     var Http = new XMLHttpRequest();
     Http.open("GET", url, true);
@@ -79,7 +81,7 @@ function deleteFromServer(url, data, callback) {
 }
 
 // function putToServer(url, data, callback) {
-function update(url, data, callback) {
+function update(url, data, callback, exceptionCallback) {
     return fetch(url, {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, cors, *same-origin
@@ -93,9 +95,16 @@ function update(url, data, callback) {
         referrer: "no-referrer", // no-referrer, *client
         body: JSON.stringify(data), // body data type must match "Content-Type" header
     })
-        .then(response =>
-            callback()
-        );
+        .catch(error => {
+            if (exceptionCallback) {
+                exceptionCallback(error);
+            }
+        })
+        .then(response => {
+            if (callback) {
+                callback();
+            }
+        });
 }
 
 function login(data) {
@@ -333,7 +342,7 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
         var petSympathyLevel = document.getElementById(`${this.id}-sympathy-level`);
         var petEnergyLevel = document.getElementById(`${this.id}-energy-level`);
 
-        setTimeout(() => {
+        var statusUpdateInt = setInterval(() => {
             if (this.foodLevel > NR_MIN * 2) {
                 this.foodLevel--;
                 // petFoodLevel.value = this.foodLevel;            
@@ -346,11 +355,15 @@ function petConstructor(id, name, type, bodyColor, eyesColor, xp, foodLevel, sym
                 this.sympathyLevel--;
                 // petSympathyLevel.value = this.sympathyLevel;
             }
-            updatePetStateInBD(this);
-            this.decreaseStatus();
+            if(updateIsOn) {
+                updatePetStateInBD(this);
+            } else {
+                clearInterval(statusUpdateInt);
+            }
         }, 10000);
     }
-    window.onload = this.decreaseStatus();
+    //window.onload = this.decreaseStatus();
+    this.decreaseStatus();
 }
 
 function addTemplatesContainer() {
@@ -446,25 +459,25 @@ function addPetSVG(currentElement, currentPet) {
     changePetEyesColor(currentPet, petContent);
 }
 
-function createElement(tagName, classNames = [], id = '', text = '', attributes = {}, datasets={}) {
+function createElement(tagName, classNames = [], id = '', text = '', attributes = {}, datasets = {}) {
     let element = document.createElement(tagName);
-    if(classNames !== []) {
+    if (classNames !== []) {
         classNames.forEach(cls => {
             element.classList.add(cls);
         })
     }
-    if (id !== ''){
+    if (id !== '') {
         element.id = id;
     }
-    if(text !== '') {
+    if (text !== '') {
         element.innerText = text;
     }
-    if(attributes != {}) {
+    if (attributes != {}) {
         Object.keys(attributes).forEach(attr => {
             element.setAttribute(attr, attributes[attr]);
         })
     }
-    if(datasets !== {}) {
+    if (datasets !== {}) {
         Object.keys(datasets).forEach(key => {
             element.dataset[key] = datasets[key];
         })
@@ -477,7 +490,7 @@ function addClass(id, className) {
     element.classList.add(className);
 }
 
-function appendChildren(element, children){
+function appendChildren(element, children) {
     children.forEach(child => {
         element.appendChild(child);
     })

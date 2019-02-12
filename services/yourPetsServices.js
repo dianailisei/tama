@@ -15,8 +15,19 @@ function showPets(petsList, user) {
             if (petContainer === null) {
                 petContainer = createElement('li', ["pet-container"], '', '', {}, { "id": pets.Id[0] });
             }
-            let petPicture = createElement('img', ['pet-pic'], '', '', { "src": "../resources/cat-icon.png", "alt": "pet-icon" }, {});
+            // let petPicture = createElement('img', ['pet-pic'], '', '', { "src": "../resources/cat-icon.png", "alt": "pet-icon" }, {});
+            let templatePet = document.getElementById(pets.Type[0]);
+            let petPicture = createElement('div', ['pet-pic']);
+            petPicture.innerHTML = templatePet.innerHTML;
             petContainer.appendChild(petPicture);
+            var petEyes = petPicture.getElementsByClassName("pet-eyes");
+            for (var i = 0; i < petEyes.length; i++) {
+                petEyes.item(i).style.fill = pets.EyesColor[0];
+            }
+            var petColor = petPicture.getElementsByClassName("pet-body");
+            for (var i = 0; i < petColor.length; i++) {
+                petColor.item(i).style.fill = pets.Color[0];
+            }
 
             let infoContainer = createElement('div', ['pet-info'], '', '', {}, {});
             let petName = createElement('p', ['pet-name'], '', pets.Name[0], {}, {});

@@ -40,7 +40,10 @@ function updatePetStateInBD(pet) {
     // var jsonString = JSON.stringify(update);
     // console.log(jsonString);
 
-    update(`http://localhost:7000/api/playground`, up, ()=>{});
+    update(`http://localhost:7000/api/playground`, up, null, (exception) => {
+        console.log(exception);
+        updateIsOn = false;
+    });
 }
 
 //get pet obj
