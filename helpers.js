@@ -101,9 +101,9 @@ function update(url, data, callback, exceptionCallback) {
             }
         })
         .then(response => {
-            if (callback) {
-                callback();
-            }
+            return response.text().then(text => {
+                callback(text);
+            });
         });
 }
 
@@ -118,14 +118,17 @@ function register() {
 }
 
 function updateAccountForm(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+    // console.log(user, typeof(user));
+    let newUser = JSON.parse(user);
+    // console.log(newUser[0]);
+    localStorage.setItem("user", JSON.stringify(newUser[0]));
     let usernameInput = document.getElementById("username");
     let countryInput = document.getElementById("country");
     if (user.Username !== usernameInput.getAttribute("placeholder")) {
-        usernameInput.setAttribute("placeholder", user.Username);
+        usernameInput.setAttribute("placeholder", newUser[0].Username);
     }
     if (user.Country != countryInput.getAttribute("placeholder")) {
-        countryInput.setAttribute("placeholder", user.Country);
+        countryInput.setAttribute("placeholder", newUser[0].Country);
     }
     Alert.render("Changes have been made successfully");
     clearInputs();
@@ -162,12 +165,17 @@ var Alert = new CustomAlert();
 
 function isFriend(friends, user) {
     let ok = 0;
-    friends.forEach(friend => {
-        if (friend.Id === user.Id) {
-            ok = 1;
-            // console.log(friend.Id, user.Id);
-        }
-    });
+    if (friends !== undefined) {
+        friends.forEach(friend => {
+            if (friend.Id === user.Id) {
+                ok = 1;
+                // console.log(friend.Id, user.Id);
+            }
+        });
+    }
+    else {
+        ok = 1;
+    }
     if (ok === 0) return true;
     else return false;
 }
@@ -187,7 +195,7 @@ function changePetEyesColor(pet, petContent) {
 
     for (var i = 0; i < petEyes.length; i++) {
         petEyes.item(i).style.fill = pet.eyesColor;
-        // console.log(petEyes.item(i) +" " +pet.eyesColor);
+        console.log(petEyes.item(i) + " " + pet.eyesColor);
     }
 }
 

@@ -12,10 +12,10 @@ setTimeout(() => {
         let oldPwd = document.getElementById("old-password").value;
         if (oldPwd === user.Password) {
             if (password !== '') {
-                update(`http://localhost:7000/api/users`, { "id": user.id, "email": email, "username": username, "country": country, "password": password }, () => updateAccountForm({ "Email": email, "Username": username, "Country": country, "Password": password }))
+                update(`http://localhost:7000/api/users`, { "id": user.id, "email": email, "username": username, "country": country, "password": password }, (account) => updateAccountForm(account))
             }
             else {
-                update(`http://localhost:7000/api/users`, { "id": user.id, "email": email, "username": username, "country": country, "password": oldPwd }, () => updateAccountForm({ "Email": email, "Username": username, "Country": country, "Password": oldPwd }))
+                update(`http://localhost:7000/api/users`, { "id": user.id, "email": email, "username": username, "country": country, "password": oldPwd }, (account) => updateAccountForm(account))
             }
         }
         else {

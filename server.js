@@ -90,11 +90,11 @@ app.get(`/api/users/friends`, function (req, res) {
         left join Owner as o on f.IdUser2 = o.IdUser
         left join Pets as p on o.IdPet = p.Id
         where f.IdUser1 = ${id}`, function (err, recordset) {
-            if (err) console.log(err);
-            else {
-                res.send(recordset.recordset);
-            }
-        });
+                if (err) console.log(err);
+                else {
+                    res.send(recordset.recordset);
+                }
+            });
     });
 });
 
@@ -133,14 +133,21 @@ app.put('/api/users', function (req, res) {
     var country = req.body.country;
     var pwd = req.body.password;
     sql.close();
-
+    var result;
     sql.connect(config, function (err) {
         if (err) console.log(err);
 
         var request = new sql.Request();
         request.query(`update Users set Username = '${username}', Password = '${pwd}', Country = '${country}' where Email='${email}'`, function (err, recordset) {
-            if (err) console.log(err)
-            res.end();
+            if (err) console.log(err);
+            var req2 = new sql.Request();
+            req2.query(`select * from Users where Email = '${email}'`, function(err, recordset2){
+                if (err) console.log(err);
+                console.log(recordset2.recordset);
+                result = recordset2.recordset;
+                res.send(result);
+            })
+            // res.end();
         });
     });
 });
@@ -278,7 +285,7 @@ app.get(`/api/pets`, function (req, res) {
     });
 });
 
-app.get('/api/owner', function(req, res) {
+app.get('/api/owner', function (req, res) {
     var id = req.query.id;
     sql.close();
 
@@ -286,6 +293,24 @@ app.get('/api/owner', function(req, res) {
         if (err) console.log(err);
         var request = new sql.Request();
         request.query(`select IdPet from Owner where IdUser = ${id}`, function (err, recordset) {
+            if (err) console.log(err);
+            else {
+                res.send(recordset.recordset);
+            }
+        });
+    });
+})
+
+app.get('/api/owner/pets', function (req, res) {
+    var id = req.query.id;
+    sql.close();
+
+    sql.connect(config, function (err) {
+        if (err) console.log(err);
+        var request = new sql.Request();
+        request.query(`select p.Id, p.Name, p.Type, p.Color, p.EyesColor from Owner o 
+        join Pets p on o.IdPet = p.Id
+        where IdUser = ${id}`, function (err, recordset) {
                 if (err) console.log(err);
                 else {
                     res.send(recordset.recordset);

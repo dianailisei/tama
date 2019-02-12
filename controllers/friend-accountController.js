@@ -4,15 +4,34 @@ function FriendAccountController(view, model) {
     view.addCssLink('css/menu.css');
     view.removeLastScripts();
     view.addScript('menu.js');
-
     let user = JSON.parse(localStorage.getItem("user"));
     let friend = JSON.parse(localStorage.getItem("friend"));
-    // console.log(fiend);
     model.userId = user.Id;
     model.id = friend.Id;
     model.username = friend.Username;
     model.country = friend.Country;
     model.isFriend = friend.isFriend;
+
+    setTimeout(() => {
+        getFromServer(`http://localhost:7000/api/owner/pets?id=${model.id}`, res => {
+            res = JSON.parse(res);
+            console.log(res);
+            let petList = document.getElementById('pets-list');
+            if (res === undefined || res.length === 0) {
+                let p = createElement('h2', [], '', `${model.username} has no pets yet.`);
+                petList.appendChild(p);
+            }
+            else {
+                res.forEach(element => {
+                    let petContainer = createElement('li', ['pet-container']);
+                    let img = createElement('img', ['pet-pic'], '', '', { "src": "../resources/cat-icon.png", "alt": "pet-icon" });
+                    let p = createElement('p', ['pet-name'], '', element.Name);
+                    appendChildren(petContainer, [img, p]);
+                    petList.appendChild(petContainer);
+                })
+            }
+        })
+    })
 
     setTimeout(() => {
         let removeBtn = document.getElementsByClassName("remove-btn")[0];
