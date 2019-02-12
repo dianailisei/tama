@@ -4,5 +4,4 @@ function HomeController(view, model) {
     view.addCssLink('css/menu.css');
     view.removeLastScripts();
     view.addScript('menu.js');
-
 }
