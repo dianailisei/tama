@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html property="http://scholarly-html.org/schtml" lang="ro">
+
+<head>
+    <meta charset="utf-8">
+    <title> Makiko Framework</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <script src="scholarly.min.js"></script> -->
+</head>
+
+<body prefix="schema: http://schema.org">
+    <article resource="#" typeof="schema:ScholarlyArticle">
+        <header>
+            <h1 property="schema:name">Makiko Framework</h1>
+        </header>
+        <div role="contentinfo">
+            <ol role="directory">
+                <li>
+                    <a href="#introduction"><span>1. </span>Introducere</a>
+                </li>
+                <li>
+                    <a href="#content"><span>2. </span>Componență</a>
+                </li>
+                <li>
+                    <a href="#creareComponenta"><span>3. </span>Crearea unei componente</a>
+                    <ol role="directory">
+                        <li><a href="#structuraAplicatiei"><span>3.1 </span>Structura aplicației</a></li>
+                        <li><a href="#primaPagina"><span>3.2 </span>Prima pagină</a></li>
+                        <li><a href="#rutare"><span>3.3 </span>Rutarea</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#utilitareFramework"><span>4. </span>Funcții utilitare</a>
+                </li>
+            </ol>
+            <section typeof="sa:AuthorsList">
+                <h2>Authors</h2>
+                <ul>
+                    <li typeof="sa:ContributorRole" property="schema:contributor">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Diana">
+                            <meta property="schema:familyName" content="Ilisei">
+                            <span property="schema:name">Diana Ilisei</span>
+                        </span></li>
+                    <li typeof="sa:ContributorRole" property="schema:contributor">
+                        <span typeof="schema:Person">
+                            <meta property="schema:givenName" content="Cristiana">
+                            <meta property="schema:familyName" content="Antăluț">
+                            <span property="schema:name">Cristiana Antăluț</span>
+                        </span></li>
+                </ul>
+            </section>
+        </div>
+        <section role="doc-introduction" id="introduction">
+            <h2 property="schema:alternateName">1. Introducere</h2>
+            <p>Framework-ul Makiko este un mini framework MVC pentru dezvoltarea de aplicaţii Web animate vectoriale la
+                nivel de client. Acesta oferă atât funcții speciale pentru a îndeplini sarcinile de bază ale unui
+                framework cât și metode de a crea animații pentru template-uri SVG. Mai mult decât atât, cu ajutorul
+                framework-ului se pot construi aplicații web SPA.</p>
+        </section>
+        <section id="content">
+            <h2 property="schema:alternateName">2. Componență</h2>
+            <p>Pentru a funcționa, Makiko are nevoie de câteva fișiere care asigură rutarea între paginile aplicației
+                SPA, randarea componentelor la schimbări în model și, de asemenea, asigură conexiunea între controller,
+                componentă și view.</p>
+            <ul>
+                <li>/js/framework.js</li>
+                <li>/js/helpers.js</li>
+                <li>/js/router.js</li>
+                <li>/css/style.css</li>
+                <li>index.html</li>
+            </ul>
+        </section>
+        <section id="creareComponenta">
+            <h2 property="schema:alternateName">3. Crearea unei componente</h2>
+            <section id="structuraAplicatiei">
+                <h4>1. Structura aplicației</h4>
+                <p>Pentru a implementa framework-ul este nevoie de o pagina <code>index.html</code> în care vor fi puse
+                    componentele,
+                    adică
+                    paginile propriu zise ale aplicației. Acestea vor fi injectate în singurul div din body:</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                    <code>
+&lt;DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=devide-width, initial-scale=1.0"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+    &lt;title&gt;Makiko&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;div view&gt;
+    &lt;/div&gt;
+    &lt;script src="./js/helpers.js"&gt;&lt;/script&gt;
+    &lt;script src="./js/framework.js"&gt;&lt;/script&gt;
+    &lt;script src="./js/router.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <figcaption><i>Fisierul <code>index.html</code>.</i></figcaption>
+                </figure>
+                <p>Pentru o separare mai bună a fișierelor, este recomandat să existe următoarea structură de
+                    directoare:
+                </p>
+                <ul>
+                    <li>/controllers</li>
+                    <li>/views</li>
+                    <li>/css</li>
+                    <li>/js</li>
+                    <li>index.html</li>
+                </ul>
+                <p>În <code>controllers</code> se vor păstra controllerele aferente fiecărei pagini din aplicație, iar
+                    în
+                    <code>views</code> vor fi fișierele <code>html</code>, cu alte cuvinte, componentele aplicației.
+                    În <code>js</code> rămân doar fișierele ce țin de framework-ul Makiko.</p>
+            </section>
+            <section id="primaPagina">
+                <h4>3.2 Prima pagină</h4>
+                <p>Spre exemplu, dorim să creăm pagina Home a unei aplicații. Pentru aceasta, în folderul
+                    <code>views</code> creăm un fișier <code>home.html</code> în care adăugăm:</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                        <code>
+&lt;p&gt;
+    Hello world!
+&lt;/p&gt;    </code></pre>
+                    <figcaption><i>Fișierul <code>./views/home.html</code>.</i></figcaption>
+                </figure>
+                <p>În directorul <code>controllers</code> creăm fișierul <code>homeController.js</code>.</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                            <code>
+function HomeController(view, model) {
+    
+}</code></pre>
+                    <figcaption><i>Fisierul <code>./js/homeController.js</code>.</i></figcaption>
+                </figure>
+                <p>Din această funcție putem să manipulăm atât fișierele <code>css</code> și <code>js</code> pe care le
+                    vrem inserate la încărcarea componentei, cât și datele păstrate în obiectul <code>model</code> al
+                    fiecărei pagini. Framework-ul pune la dispoziție câteva funcții prin care se pot adăuga/înlătura
+                    asset-uri din pagina specifică controller-ului. În exemplul de mai jos, înlăturăm toate fișierele
+                    css și js corespunzătoare altor componente încărcate anterior și le adăugăm pe acelea necesare
+                    paginii pe care am navigat.</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                                    <code>
+function HomeController(view, model) {
+    view.removeLastCssLink();
+    view.addCssLink('css/home.css');
+    view.removeLastScripts();
+    view.addScript('menuBar.js');
+}</code></pre>
+                    <figcaption><i>Fisierul <code>./js/homeController.js</code>.</i></figcaption>
+                </figure>
+                <p>Tot în această funcție putem modifica datele din modelul paginii, iar pentru a afișa în componenta
+                    Home valorile din model, scriem variabila astfel: <code>{{nume_variabila}}</code>.</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                                            <code>
+function HomeController(view, model) {
+    view.removeLastCssLink();
+    view.addCssLink('css/home.css');
+    view.removeLastScripts();
+    view.addScript('menuBar.js');
+    model.mesaj = "I am Makiko.";
+}</code></pre>
+                    <figcaption><i>Fisierul <code>./js/homeController.js</code>.</i></figcaption>
+                </figure>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                        <code>
+&lt;p&gt;
+    Hello world, {{ mesaj }}
+&lt;/p&gt;    </code></pre>
+                    <figcaption><i>Fisierul <code>./views/home.html</code>.</i></figcaption>
+                </figure>
+                <p>Atunci când decidem că vom mai avea o componentă, trebuie să adăugăm în
+                    <code>index.html</code> script-ul controller-ului acelei componente.</p>
+            </section>
+
+            <section id="rutare">
+                <h4>3.3 Rutarea</h4>
+                <p>Pentru a realiza rutarea între componente, în fișierul <code>./js/router.js</code>, înainte de linia
+                    de cod prin care framework-ul inițializează rutele adăugate trebuie să adăugăm următoarea linie:</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre>
+                                <code>
+Framework.AddRoute(HomeController, 'home', 'views/home.html'); 
+Framework.Initialize();</code></pre>
+                    <figcaption><i>Fisierul <code>./js/router.js</code>.</i></figcaption>
+                </figure>
+                <p>Primul argument al funcției <code>AddRoute</code> este chiar controller-ul specific paginii, al
+                    doilea reprezintă numele componentei iar ultimul face legătura celor două cu fișierul
+                    <code>html</code> corespunzător.</code></p>
+                <p>Astfel, pagina home va putea fi accesată prin URL-ul: <code>http://localhost:7000/#home</code> și
+                    pagina va arăta astfel:</p>
+                <figure typeof="sa:image">
+                    <img style="width: 100%;" src="../resources/firstpage.png" alt="first page demo">
+                    <figcaption><i>Screen shot prima pagină. </figcaption>
+                </figure>
+            </section>
+        </section>
+        <section id="utilitareFramework">
+            <h2 property="schema:alternateName">4. Funcții utilitare</h2>
+            <p>Aici găsiți o listă cu cele mai importante funcții puse la dispoziție de framework, cât și exemple de
+                utilizare:</p>
+        </section>
+    </article>
+
+</body>
+
+</html>
