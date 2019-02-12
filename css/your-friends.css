@@ -116,7 +116,7 @@ header {
         height: 5em;
     }
     
-    .friend-pet img {
+    .friend-pet svg {
         height: 3em;
         width: auto;
     }

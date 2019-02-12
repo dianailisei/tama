@@ -65,10 +65,21 @@ function showPets(petsList, user) {
             }
             if (pets.Id[1] !== null) {
                 let friend = createElement('li', ['pet-friend'], '', '', {}, {});
-                let friendPic = createElement('img', [], '', '', { "src": '../resources/cat-icon.png', "alt": 'pet-icon' }, {});
                 let friendName = createElement('p', ['pet-friend-name'], '', pets.Name[1], {}, {});
-                appendChildren(friend, [friendPic, friendName]);
+                // let friendPic = createElement('img', [], '', '', { "src": '../resources/cat-icon.png', "alt": 'pet-icon' }, {});
+                let templatePet = document.getElementById(pets.Type[1]);
+                let friendPic = createElement('div', ['pet-pic']);
+                friendPic.innerHTML = templatePet.innerHTML;
+                appendChildren(friend, [friendName, friendPic]);
                 friendsList.appendChild(friend);
+                var petEyes = friendPic.getElementsByClassName("pet-eyes");
+                for (var i = 0; i < petEyes.length; i++) {
+                    petEyes.item(i).style.fill = pets.EyesColor[1];
+                }
+                var petColor = friendPic.getElementsByClassName("pet-body");
+                for (var i = 0; i < petColor.length; i++) {
+                    petColor.item(i).style.fill = pets.Color[1];
+                }
             }
             else {
                 let message = createElement('h3', [], '', `${pets.Name[0]} has no friends yet.`, {}, {});
