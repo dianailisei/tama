@@ -153,12 +153,17 @@ var Alert = new CustomAlert();
 
 function isFriend(friends, user) {
     let ok = 0;
-    friends.forEach(friend => {
-        if (friend.Id === user.Id) {
-            ok = 1;
-            // console.log(friend.Id, user.Id);
-        }
-    });
+    if (friends !== undefined) {
+        friends.forEach(friend => {
+            if (friend.Id === user.Id) {
+                ok = 1;
+                // console.log(friend.Id, user.Id);
+            }
+        });
+    }
+    else {
+        ok = 1;
+    }
     if (ok === 0) return true;
     else return false;
 }
@@ -178,7 +183,7 @@ function changePetEyesColor(pet, petContent) {
 
     for (var i = 0; i < petEyes.length; i++) {
         petEyes.item(i).style.fill = pet.eyesColor;
-        // console.log(petEyes.item(i) +" " +pet.eyesColor);
+        console.log(petEyes.item(i) +" " +pet.eyesColor);
     }
 }
 
@@ -446,25 +451,25 @@ function addPetSVG(currentElement, currentPet) {
     changePetEyesColor(currentPet, petContent);
 }
 
-function createElement(tagName, classNames = [], id = '', text = '', attributes = {}, datasets={}) {
+function createElement(tagName, classNames = [], id = '', text = '', attributes = {}, datasets = {}) {
     let element = document.createElement(tagName);
-    if(classNames !== []) {
+    if (classNames !== []) {
         classNames.forEach(cls => {
             element.classList.add(cls);
         })
     }
-    if (id !== ''){
+    if (id !== '') {
         element.id = id;
     }
-    if(text !== '') {
+    if (text !== '') {
         element.innerText = text;
     }
-    if(attributes != {}) {
+    if (attributes != {}) {
         Object.keys(attributes).forEach(attr => {
             element.setAttribute(attr, attributes[attr]);
         })
     }
-    if(datasets !== {}) {
+    if (datasets !== {}) {
         Object.keys(datasets).forEach(key => {
             element.dataset[key] = datasets[key];
         })
@@ -477,7 +482,7 @@ function addClass(id, className) {
     element.classList.add(className);
 }
 
-function appendChildren(element, children){
+function appendChildren(element, children) {
     children.forEach(child => {
         element.appendChild(child);
     })
