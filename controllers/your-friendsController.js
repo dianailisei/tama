@@ -3,7 +3,7 @@ function YourFriendsController(view, model) {
     view.addCssLink('css/your-friends.css');
     view.addCssLink('css/menu.css');
     view.removeLastScripts();
-    view.addScript('services/friendsServices.js');
+    // view.addScript('services/friendsServices.js');
     view.addScript('menu.js');
 
     let user = JSON.parse(localStorage.getItem("user"));
@@ -16,6 +16,7 @@ function YourFriendsController(view, model) {
             getFromServer(`http://localhost:7000/api/users/friends?id=${model.id}`, (data) => {
                 friends = JSON.parse(data);
                 friends.forEach(friend => {
+                    console.log(friend);
                     let userContainer = document.querySelector(`[data-id="${friend.Id}"]`);
                     if (userContainer === null) {
                         userContainer = createElement("li", ["friend-container"], '', '', {}, { "id": friend.Id });
@@ -35,22 +36,28 @@ function YourFriendsController(view, model) {
                     if (friendPets === null) {
                         friendPets = createElement('ul', ['friend-pets'], friend.Id);
                     }
-                    let pet = createElement('li', ['friend-pet']);
-                    let petName = createElement('p', ['friend-pet-name'], '', friend.Name);
-                    // let petIcon = createElement('img', [], '', '', {"src" : "../resources/cat-icon.png", "alt": "pet-icon"}, {"petId": friend.IdPet});
-                    let templatePet = document.getElementById(friend.Type);
-                    let petIcon = createElement('div', ['pet-pic']);
-                    petIcon.innerHTML = templatePet.innerHTML;
-                    appendChildren(pet, [petName, petIcon]);
-                    var petEyes = petIcon.getElementsByClassName("pet-eyes");
-                    for (var i = 0; i < petEyes.length; i++) {
-                        petEyes.item(i).style.fill = friend.EyesColor;
+                    if (friend.Name !== null) {
+                        let pet = createElement('li', ['friend-pet']);
+                        let petName = createElement('p', ['friend-pet-name'], '', friend.Name, {}, {"petId": friend.IdPet});
+                        // let petIcon = createElement('img', [], '', '', {"src" : "../resources/cat-icon.png", "alt": "pet-icon"}, {"petId": friend.IdPet});
+                        let templatePet = document.getElementById(friend.Type);
+                        let petIcon = createElement('div', ['pet-pic']);
+                        petIcon.innerHTML = templatePet.innerHTML;
+                        appendChildren(pet, [petName, petIcon]);
+                        var petEyes = petIcon.getElementsByClassName("pet-eyes");
+                        for (var i = 0; i < petEyes.length; i++) {
+                            petEyes.item(i).style.fill = friend.EyesColor;
+                        }
+                        var petColor = petIcon.getElementsByClassName("pet-body");
+                        for (var i = 0; i < petColor.length; i++) {
+                            petColor.item(i).style.fill = friend.Color;
+                        }
+                        friendPets.appendChild(pet);
                     }
-                    var petColor = petIcon.getElementsByClassName("pet-body");
-                    for (var i = 0; i < petColor.length; i++) {
-                        petColor.item(i).style.fill = friend.Color;
+                    else {
+                        let msg = createElement('p', [], '', `${friend.Username} has no pets yet.`);
+                        friendPets.appendChild(msg);
                     }
-                    friendPets.appendChild(pet);
                     petsContainer.appendChild(friendPets);
                     appendChildren(userContainer, [img, friendInfo, petsContainer]);
                     // userContainer.appendChild(deleteBtn);
