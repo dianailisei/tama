@@ -14,7 +14,7 @@ main h1 {
 
 .pet-pic {
     grid-area: pet-pic;
-    text-align: center'
+    text-align: center;
 }
 
 .pet-pic svg{

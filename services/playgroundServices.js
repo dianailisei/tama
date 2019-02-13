@@ -23,6 +23,9 @@ if(NR_MIN === undefined) {
 if(NR_MAX === undefined){
     var NR_MAX= 200;
 }
+if(NR_DECREMENT ==undefined){
+    var NR_DECREMENT = 1;
+}
 if(NR_DEFAULT === undefined){
     var NR_DEFAULT = 100;
 }
@@ -63,6 +66,6 @@ function updatePetStatusShown(data) {
         var pet = new petConstructor(obj[i].Id, obj[i].Name, obj[i].Type, obj[i].Color, obj[i].EyesColor, obj[i].XPStatus, obj[i].PlayStatus, obj[i].LoveStatus, obj[i].EnergyStatus, obj[i].age, obj[i].Description, animationArray[randomAnimation]);
  
         // console.log(pet);
-        AddPetToPlatground(pet);
+        AddPetToPlayground(pet);
     }
 }
