@@ -36,7 +36,23 @@
                         <li><a href="#alerta"><span>4.2 </span>Alert box</a></li>
                         <li><a href="#creareElemente"><span>4.3 </span>Funcții pentru crearea și modificarea elementelor
                                 din DOM</a></li>
-                        <li><a href="#animatii"><span>4.4 </span>Crearea animațiilor vectoriale</a></li>
+                        <!-- <li><a href="#animatii"><span>4.4 </span>Crearea animațiilor vectoriale</a></li> -->
+                    </ol>
+                </li>
+                <li>
+                    <a href="#animatiiSVG"><span>5. </span> Animații SVG </a>
+                    <ol>
+                        <li><a href="#animatiiPrelucrare"><span>5.1</span> Prelucrare SVG</a></li>
+                        <li><a href="#animatiiConstructie"><span>5.2 </span> Constructori </a></li>
+                        <li><a href="#animatiiFunctii"><span>5.3 </span> Funcții de animații cu obiecte SVG </a></li>                   
+                        <li><a href="#animatiiFunctiiAjutatoare"><span>5.4 </span> Funcții cu obiecte SVG</a></li>                   
+                    </ol>
+                </li>
+                <li>
+                    <a href="#crearePet"><spam>6. </span> Crearea unui nou animalut</a>
+                    <ol>
+                        <li><a href="#generarePet"><span>6.1 </span> Generare nou pet (add-pet)</a></li>
+                        <li><a href="#jocPet"><span>6.2 </span> Introducerea noului pet in joc</a></li>
                     </ol>
                 </li>
             </ol>
@@ -267,12 +283,258 @@ Framework.Initialize();</code></pre>
                         în <code>element</code></li>
                 </ul>
             </section>
-            <section id="animatii">
-                <h4>4.4 Crearea animațiilor vectoriale</h4>
+        </section>
+        <section id="animatiiSVG">
+            <h2>5. Animații SVG</h2>
+            <section id="animatiiPrelucrare">
+                <h4>5.1 Prelucrarea obiectelor vectoriale</h4>
+                <p>Frameworkul Makiko oferă 5 obiecte SVG, modele de animăluțe.
+                    Utilizatorul are posibilitatea de a adauga noi animăluțe în formatul SVG.
+                    Pentru o ușoară manipulare a obiectelor este necesară utilizarea următoarelor clase:
+                </p>
+                <ul>
+                    <li>class="pet-eyes";</li>
+                    <li>class="pet-body".</li>
+                </ul>
+                <p>Prin atribuirea acestor clase, putem efectua dinamic, modificări asupra elementelor SVG.</p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#doc-example">
+                    <pre> <code>
+&lt;svg width="170" height="170" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"&gt;
+    &lt;ellipse class="pet-body" style="fill :#ffffff" ry="48.5" rx="53.5" id="svg_54" cy="79.98" cx="83.98" ... &gt;
+    &lt;path d="m59.5933,129.46832c- ..." &gt;
+    &lt;path class="pet-eyes" fill="black" d="m82.7933,75.66832c-..." &gt;
+    &lt;path class="pet-eyes" d="m115.2933,75.6 ..." &gt;
+    &lt;path  fill="#F15A29" d="m92.0933,95.66832c0,0 ... " &gt;
+&lt;/svg&gt;
+                    </code> </pre>
+                    <figcaption><i>Fișierul <code>./resources/pet.svg</code>.</i></figcaption>
+                </figure>
+                <p>Pentru a putea utiliza și modifica obiectele SVG, acestea vor fi adăugate în HTML sub următorul format:
+                    <pre><code>
+&lt;template id="[tip-animal]"&gt;
+    &lt;svg&gt;
+        <i>...</i>
+    &lt;/svg&gt;
+&lt;/template&gt;
+&lt;template id="[tip2-animal]"&gt;
+    &lt;svg&gt;
+        <i>...</i>
+    &lt;/svg&gt;
+&lt;/template&gt;
+                    </code></pre>
+                </p>
+            </section>
+            <section id="animatiiConstructie">
+                <h4>5.2 Constructorii obiectelor</h4>
+                <p>Punem la dispoziția utilizatorului doi constructori: <i>addPetConstructor()</i>, utilizat pentru a
+                    adauga un nou animăluț în playground și <i>petConstructor()</i> pentru procesarea și prelcrarea datelor
+                        în timpul interacțiunii cu animăluțul.</p>
+                <p>Constructorul <i>addPetConstructor()</i>:</p>
+                <ul>
+                    <li>Atribute: name, type, age, gender, bodyColor, eyesColor, description ;</li>
+                    <li>Metode: updateAll(<i>...</i>), updateName(name), updateType(type), updateAge(age),
+                        updateGender(gender), updateBodyColor(bodyColor), updateEyesColor(eyesColor),
+                        updateDescription(description).</li>
+                </ul>
+                <p>Fiecare metodă are corespondent un atribut pentru a acorda utilizatorului libertatea de a alege
+                    combinația de atribute dorită.</p>
+                <br>
+                <p>Constructorul <i>petConstructor()</i>:</p>
+                <ul>
+                    <li>Atribute: id, name, type, animationOption, foodLevel, sympathyLevel, energyLevel, bodyColor,
+                        eyesColor, description, age, xp;</li>
+                    <li>Metode:</li>
+                    <ul>
+                        <li><i>changeAnimationSleepy()</i>: Funcționalitate ce aparține elementului petState. Incrementează statusul atributului energyLevel, cu constanta <i>NR_INCREMENT</i> și schimbă reacția pet-ului(<i>petReaction</i>) cu: 💤. </li>
+                        <li><i>changeAnimationFood()</i>: Funcționalitate ce aparține elementului petState. Incrementează statusul atributului foodLevel, cu constanta <i>NR_INCREMENT</i> și schimbă reacția pet-ului(<i>petReaction</i>) cu: 🎂.</li>
+                        <li><i>changeAnimationHeart()</i>: Funcționalitate ce aparține elementului petState. Incrementează statusul atributului sympathyLevel, cu constanta <i>NR_INCREMENT</i> și schimbă reacția pet-ului(<i>petReaction</i>) cu: 💖.</li>
+                        <li><i>showPetState()</i>: petState este format din combinații:(foodLevel, energyLever,
+                            sympathyLevel). Această funcție permite vizualizarea petState și a funcționalităților
+                            oferite de aceste trei opțiuni, prin hover asupra componentei pet.</li>
+                        <li><i>hidePetState()</i>: Pentru a nu încărca spațiul vizibil, această funcție ascude petState
+                            atunci când focusul(mouse) nu este axat pe componenta pet-ului pe care îl servește.</li>
+                        <li><i>doSpecificAnimation()</i>: La modificarea unui indicator petStatus, această funcție permite desfășurarea animației aleasă prin <i>animationOption</i> și pornește animația pentru <i>petReaction</i>.</li>
+                        <li><i>decreaseStatus()</i>: Funcție de contorizare. Această funcție se autoapelează și oferă modalitatea de a descrește atributele încorporate în petState cu un număr constant <i>NR_DECREMENT</i>. Această funcție face apelul update la baza de date pentru a updata câmpurile corespunzătoare petState.</li>
+                        <li><i>changeMood()</i>: Funcție ce modifică obiectul SVG pet conform petState. Dacă un petStatus (energyLevel, foodLevel, sympathyLevel) este sub o limită stabilită de utilizator, acesta "devine bolnav", iar culoarea lui se modifică.</li>
+                    </ul>
+                </ul>
+            </section>
+            <section id="animatiiFunctii">
+                <h4>5.3 Funcții de Animații cu Obiecte SVG</h4>
+                <p>Am pus la dispoziția utilizatorului 7 funcții de animații pentru pets, formate din una sau mai multe combinații de opțiuni CSS animation. 
+                    Funcțiile sunt transmise ca opțiuni la crearea obiectului prin atributul animationOption din petConstructor.</p>
+                <p>  (În exemplul nostru am utilizat o funcție random pentru a alege opțiunea, iar la fiecare GET din DB, obiectul primește altă opțiune. Astfel utilizatorul se poate bucura de toate animațiile, chiar dacă are un singur pet.)</p>
+                <p>Obiectul petContainer primeste una din clasele animatiilor urmatoare. Animatiile sunt atribuite pe baza petId, transmis ca parametru.</p>
+                <ul> Funcții de animații:
+                    <li><i>rollAndMoveRight(id)</i>: class="rollAndMoveRight", definit prin transform cu opțiunile translate și rotate;</li>
+                    <li><i>rollAndMoveLeft(id)</i>: class="rollAndMoveLeft", definit prin transform cu opțiunile translate și rotate;</li>
+                    <li><i>movePetRight(id)</i>: class="movePetRight", definit prin transform cu opțiunea translate;</li>
+                    <li><i>movePetLeft(id)</i>: class="movePetLeft", definit prin transform cu opțiunea translate;</li>
+                    <li><i>rollPet(id)</i>: class="rollPet", definit prin transform cu opțiunea rotate;</li>
+                    <li><i>jumpUp(id)</i>: class="jumpUp", definit prin transform cu opțiunile scale și translate;</li>
+                    <li><i>removeClassAnimation(id)</i>: elimina clasele corespunztoare animațiilor din containerul pet-ului. </li>
+                </ul>
+            </section>
+            <section id="animatiiFunctiiAjutatoare">
+                <h4>5.4 Funcții cu obiecte SVG</h4>
+                <p>Fiecare animăluț, atunci când este generat, poate avea orice culoare dorește utilizatorul.
+                    Pentru a modifica culorile pet-ului, utilizăm 2 funcții: <i>changePetColor()</i> și <i>changePetEyesColor()</i>.
+                    Ambele funcții funcționeaza pe același principiu, modificarea culorii clasei selectate(pet-eyes, pet-body) cu cea din obiectul pet(parametrul 1) în obiectul SVG(petContent, parametrul 2).    
+                    Funcția <i>changeMood()</i>, menționată în <a href="#animatiiConstructie">petConstructor()</a>, utilizează aceste funcții.</p>
+                <pre><code>
+function changePetColor(pet, petContent) {
+    var petColor = petContent.getElementsByClassName("pet-body");
+    for (var i = 0; i < petColor.length; i++) {
+        petColor.item(i).style.fill = pet.bodyColor;
+    }
+}
+                </code></pre>                    
+                <pre><code>
+function changePetEyesColor(pet, petContent) {
+    var petEyes = petContent.getElementsByClassName("pet-eyes");
+    for (var i = 0; i < petEyes.length; i++) {
+        petEyes.item(i).style.fill = pet.eyesColor;
+    }
+}
+                </code></pre>
+            </section>
+        </section>
+        <section id="crearePet">
+            <h2>6. Crearea unui nou animăluț</h2>
+            <section id="generarePet">
+                <h4>Generarea noului Pet</h4>
+                <p>
+                    <figcaption><i>Fișierul <code>./view/add-pet.html</code>.</i></figcaption>
+                    <ul>Va conține următoarele:
+                        <li>Formularul cu opțiunile disponibile din addPetConstructor(). Fiecare tag de input are ca funcție pentru atributul <i>onchange</i> funcția din constructor corespunzătoare atributului pe care îl definește</li>
+                        <li>Un container pentru pet</li>
+                        <li>Adăugarea pet templates conform formatului de la <a href="#animatiiPrelucrare">Prelucrarea obiectelor vectoriale</a></li>
+                    </ul>
+                </p>
+                <p>
+                    <figcaption><i>Fisierul <code>./services/addPetServices.js</code>.</i></figcaption>
+                    <ul>Va conține urmatoarele:
+                        <li>Folosind <a href="#animatiiConstructie">addPetConstructor()</a> declarăm un nou obiect.</li>
+                        <li>EventListener pe formularul din HTML.</li>
+                        <li>Apelul POST către DataBase.</li>
+                    </ul>
+                </p>
+            </section>
+            <section id="jocPet">
+                <h4>Introducerea noului pet în joc</h4>
+                <p>
+                    <figcaption><i>Fișierul <code>./view/playground.html</code>.</i></figcaption>
+                    <ul>Va conține următoarele:
+                        <li>Un container pentru pets</li>
+                        <li>Adăugarea unui template cu proprietățile din <a href="#animatiiConstructie">petConstructor()</a> pe care dorim să le utilizăm.
+                        <pre><code>
+&lt;template id="templatePetWrapper"&gt;
+    &lt;div class="pet-wrapper"&gt;
+        &lt;div class="pet-reaction"&gt;💖&lt;/div&gt;
+        &lt;div class="pet-state"&gt;
+            &lt;div class="pet-state-flex"&gt;
+                &lt;div class="pet-xp"&gt;&lt;/div&gt;
+                &lt;div class="pet-status&gt;
+                    &lt;label for="food-level"&gt;
+                        &lt;img class="img-pet food" alt="pet saturation level" src="../resources/*.png"&gt;
+                    &lt;/label&gt;
+                    &lt;meter class="food-level" min="6" max="200" low="50" high="120" optimum="150" value="50"&gt; &lt;/meter&gt;
+                &lt;/div&gt;
+                &lt;div class="pet-status"&gt;
+                    &lt;label for="sympathy-level"&gt;
+                        &lt;img class="img-pet heart" alt="pet affection level" src="../resources/*.png"&gt;
+                    &lt;/label&gt;
+                    &lt;meter class="sympathy-level" min="6" max="200" low="50" high="120" optimum="150" value="180"&gt; &lt;meter&gt;
+                &lt;/div&gt;
+                &lt;div class="pet-status"&gt;
+                    &lt;label for="energy-level"&gt;
+                        &lt;img class="img-pet sleepy" alt="pet affection level" src="../resources/*.png"&gt;
+                        &lt;/label&gt;
+                    &lt;meter class="energy-level" min="6" max="200" low="50" high="120" optimum="150" value="180"></meter>
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="pet-content"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+                        </code></pre>
+                        
+                        
+                        </li>
+                        <li>Aăaugarea pet templates conform formatului de la <a href="#animatiiPrelucrare">Prelucrarea obiectelor vectoriale</a></li>
+                    </ul>
+                </p>
+                <p>
+                    <figcaption><i>Fișierul <code>./services/playgroundServices.js</code>.</i></figcaption>
+                    <ul>Va conține următoarele:
+                        <li>Apelul GET catre DB, care întoarce obiectul pet creat conform: <a href="#generarePet">generare Pet</a></li>
+                        <li>Folosind <a href="#animatiiConstructie">petConstructor()</a> declarăm un nou obiect cu răsponsul returnat de apelul GET prin funcția <i>AddPetToPlayground(pet)</i>.
+                            Urmează o serie de funcții aparținând frameworkului, care întroduc conform templateului de mai sus un nou obiect pet pe pagina de joc.
+                        <pre><code>
+function AddPetToPlayground(pet) {
+    var petWrapperAll = document.getElementById("pets-wrapper-all");
+    pets.push(pet);
+    var newpet = `&lt;div class="pet-wrapperCont" data-insert-pet="pets[${pets.length - 1}]" onclick="pets[${pets.length - 1}].doSpecificAnimation(${this.animationOption})" onmouseover="pets[${pets.length - 1}].showPetState()"
+    onmouseout="pets[${pets.length - 1}].hidePetState()"&gt;&lt;/div&gt;`;
+    petWrapperAll.innerHTML += newpet;
+    addTemplatesContainer();
+}
+
+function addTemplatesContainer() {
+    var elements = document.getElementsByClassName("pet-wrapperCont");
+    let templ = document.getElementById("templatePetWrapper");
+    for (let i = 0; i < pets.length; i++) {
+        elements[i].innerHTML = templ.innerHTML;
+    }
+    AddSpecificationAfterTemplates();
+}
+
+function AddSpecificationAfterTemplates() {
+    var elements = document.querySelectorAll("[data-insert-pet]");
+    if (elements) {
+        for (var i = 0; i < elements.length; i++) {
+            var currentElement = elements[i];
+            var currentPet = eval(currentElement.dataset.insertPet);
+            currentElement.querySelector(".pet-reaction").id = currentPet.id + "-reaction";
+            var currentStateElement = currentElement.querySelector(".pet-state");
+            currentStateElement.id = currentPet.id + "-state";
+            addStateFood(currentPet, currentStateElement);
+            addStateLove(currentPet, currentStateElement);
+            addStateEnergy(currentPet, currentStateElement);
+            addPetSVG(currentElement, currentPet);
+        }
+    }
+}
+
+function addStateEnergy(currentPet, currentStateElement) {
+    var energyLevelEl = currentStateElement.querySelector(".energy-level");
+    energyLevelEl.id = currentPet.id + "-energy-level";
+    energyLevelEl.value = currentPet.energyLevel;
+    var energyImg = currentStateElement.querySelector(".sleepy");
+    energyImg.id = currentPet.id + "-sleepy";
+    var energy = document.getElementById(`${currentPet.id}-sleepy`);
+    energy.setAttribute('onclick', `pets[${pets.indexOf(currentPet)}].changeAnimationSleepy()`);
+}
+
+function addPetSVG(currentElement, currentPet) {
+    var currentPetContent = currentElement.querySelector(".pet-content");
+    currentPetContent.id = currentPet.id + "-content";
+    var petImage = document.getElementById(currentPet.type);
+    petContent = document.getElementById(`${currentPet.id}-content`);
+    petContent.innerHTML = petImage.innerHTML;
+    changePetColor(currentPet, petContent);
+    changePetEyesColor(currentPet, petContent);
+}                              
+                        </code></pre>
+                        
+                        
+                        </li>
+                        <li>Apelul POST către DataBase.</li>
+                    </ul>
+                </p>
             </section>
         </section>
     </article>
-
 </body>
-
-</html>
+</html> 
